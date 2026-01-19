@@ -1,0 +1,16 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/categories/index.html.erb %>
+<% ui.layout.head.title = ["Components"] %>
+
+<div class="max-w-4xl mx-auto">
+  <h1 class="typography-h1">Components</h1>
+  <p class="typography-body mt-4">A collection of reusable UI components organized by category.</p>
+
+  <%= render_feature_list [
+    { name: "Charts", description: "Data visualization components for graphs and charts." },
+    { name: "Content", description: "Components for displaying and organizing content.", path: components_content_path },
+    { name: "Controls", description: "Interactive elements for user actions and navigation.", path: components_controls_path },
+    { name: "Feedback", description: "Components for notifications and status updates.", path: components_feedback_path },
+    { name: "Forms", description: "Input elements and layouts for building forms.", path: components_forms_path },
+    { name: "Navigation", description: "Components for navigating between pages and sections." }
+  ] %>
+</div>

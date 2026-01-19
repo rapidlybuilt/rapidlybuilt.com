@@ -1,0 +1,91 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/stimulus/expandable.html.erb %>
+<% ui.layout.head.title = ["Expandable", "Content"] %>
+<% with_breadcrumb("Expandable") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Expandable</h1>
+  <p class="typography-body">Interactive expandable content using Stimulus controller for show/hide functionality.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Basic Toggle" %>
+    <p class="demo-description">Use the toggle action to show/hide content.</p>
+
+    <%= demo_code do %>
+      <div data-controller="expandable">
+        <button class="btn btn-primary" data-action="click->expandable#toggle">
+          Toggle Content
+        </button>
+        <div class="mt-4 p-4 hidden" data-expandable-target="content">
+          <p class="typography-body">This content can be toggled on and off. Click the button above to hide me!</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Open and Close Actions" %>
+    <p class="demo-description">Use separate open and close actions for explicit control.</p>
+
+    <%= demo_code do %>
+      <div data-controller="expandable">
+        <div class="flex gap-2">
+          <button class="btn btn-primary" data-action="click->expandable#open">
+            Open
+          </button>
+          <button class="btn btn-secondary" data-action="click->expandable#close">
+            Close
+          </button>
+        </div>
+        <div class="mt-4 p-4 hidden" data-expandable-target="content" data-expandable-hidden-class="hidden">
+          <p class="typography-body">This content can be explicitly opened or closed with separate buttons.</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Animated with Transitions" %>
+    <p class="demo-description">Combine with CSS transitions for smooth animations.</p>
+
+    <%= demo_code do %>
+      <div data-controller="expandable">
+        <button class="btn btn-primary" data-action="click->expandable#toggle">
+          Toggle with Animation
+        </button>
+        <div class="mt-4 p-4 transition-all duration-300 ease-in-out max-h-0 overflow-hidden opacity-0"
+            data-expandable-target="content"
+            data-expandable-hidden-class="max-h-96 opacity-100">
+          <p class="typography-body">Welcome to our comprehensive guide on animation transitions! In this section, we'll explore how Tailwind CSS utilities can create smooth, engaging user experiences.</p>
+          <p class="typography-body">Transitions are a crucial part of modern web design. They help guide users through state changes, provide visual feedback, and make interfaces feel more polished and professional. When implemented correctly, transitions can significantly enhance the overall user experience.</p>
+          <p class="typography-body">This example demonstrates a height and opacity transition. As you can see, when the content expands, it smoothly animates from a collapsed state to its full height while simultaneously fading in. This creates a natural, fluid motion that feels intentional and refined.</p>
+          <p class="typography-body">The combination of max-height and opacity transitions, along with careful timing and easing functions, ensures that the animation feels natural and not jarring. This is just one example of how we can leverage Tailwind's utility classes to create sophisticated animations without writing custom CSS.</p>
+          <p class="typography-body">By using utility classes like transition-all, duration-300, and ease-in-out, we can easily customize the animation behavior to match our specific needs. This approach provides both flexibility and consistency across our application's interactive elements.</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Controller API" %>
+
+    <%= headers.h3 "Targets", class: "font-medium mb-3 mt-6" %>
+    <ul class="typography space-y-2">
+      <li><code>content</code> - The element to show/hide (optional, defaults to the controller element itself)</li>
+    </ul>
+
+    <%= headers.h3 "Classes", class: "font-medium mb-3 mt-6" %>
+    <ul class="typography space-y-2">
+      <li><code>hidden</code> - The CSS class to toggle (optional, defaults to "hidden")</li>
+    </ul>
+
+    <%= headers.h3 "Actions", class: "font-medium mb-3 mt-6" %>
+    <ul class="typography space-y-2">
+      <li><code>toggle()</code> - Toggles the expanded class on the content target</li>
+      <li><code>open()</code> - Adds the expanded class to the content target</li>
+      <li><code>close()</code> - Removes the expanded class from the content target</li>
+    </ul>
+  </div>
+<% end %>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Rapidlybuilt Com">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title><%= layout.full_title %></title>
+    <meta name="description" content="<%= content_for(:description) || "Rapidly Built is a growing toolkit of Rails tools built in public while I build real applications—so other developers can follow the path and reuse what works." %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="<%= asset_path('logo-32x32.png') %>" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="<%= asset_path('logo-250x250.png') %>" sizes="250x250">
+    <%= open_graph.tags self if open_graph? %>
+
+    <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="text-warm-100 min-h-screen">
+    <%= yield %>
+  </body>
+</html>
+

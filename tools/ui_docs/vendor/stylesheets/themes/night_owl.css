@@ -1,0 +1,220 @@
+/* Night Owl */
+/* A comprehensive color system inspired by the Night Owl VS Code theme, featuring semantic colors for text, backgrounds, and UI states. */
+/* Copied from RapidUI v0.1.0 | Source: rapid_ui/app/assets/stylesheets/rapid_ui/themes/night_owl.css */
+
+@import "./base.css";
+
+@theme {
+
+  /* ========================================
+     Typography Variants
+     ======================================== */
+
+  /* Core */
+  --color-core-text: #011627;
+  --color-core-text-muted: #A3A3A3;
+  --color-core-font-family: --font-family-primary;
+
+  --color-core-bg: #FFFFFF;
+  --color-core-border: #E5E5E5;
+
+  --color-core-link: #82AAFF;
+  --color-core-link-hover: #5780CC;
+  --color-core-link-active: #5780CC;
+
+  --color-core-code-text: #Ef5350;
+  --color-core-code-bg: #F5F5F5;
+  --color-core-code-font-family: --font-family-monospace;
+
+  --color-core-danger: #ef5350;
+
+  /* Shell */
+  --color-shell-text: var(--color-core-text);
+  --color-shell-text-muted: var(--color-core-text-muted);
+  --color-shell-font-family: var(--color-core-font-family);
+
+  --color-shell-bg: #F8F9fA;
+  --color-shell-border: var(--color-core-border);
+
+  --color-shell-link: var(--color-core-link);
+  --color-shell-link-hover: var(--color-core-link-hover);
+  --color-shell-link-active: var(--color-core-link-active);
+
+  --color-shell-code-text: var(--color-core-code-text);
+  --color-shell-code-bg: var(--color-core-code-bg);
+  --color-shell-code-font-family: var(--color-core-code-font-family);
+
+  /* Frame */
+  --color-frame-text: #82AAFF;
+  --color-frame-text-muted: #d6deeb;
+  --color-frame-font-family: var(--font-family-primary);
+
+  --color-frame-bg: #011627;
+  --color-frame-border: #82AAFF;
+
+  --color-frame-link: #d6deeb;
+  --color-frame-link-hover: #82AAFF;
+  --color-frame-link-active: #82AAFF;
+
+  --color-frame-code-text: #000000;
+  --color-frame-code-bg: #d6deeb;
+  --color-frame-code-font-family: --font-family-monospace;
+
+  /* Success */
+  --color-success-text: #10b981;
+  --color-success-text-muted: #addb67;
+  --color-success-font-family: --font-family-primary;
+
+  --color-success-bg: #ECFDF5;
+  --color-success-border: #10b981;
+
+  --color-success-link: #047857;
+  --color-success-link-hover: #059669;
+  --color-success-link-active: #059669;
+
+  --color-success-code-text: #059669;
+  --color-success-code-bg: #D1FAE5;
+  --color-success-code-font-family: --font-family-monospace;
+
+  /* Warning */
+  --color-warning-text: #f59e0b;
+  --color-warning-text-muted: #ffcb8b;
+  --color-warning-font-family: --font-family-primary;
+
+  --color-warning-bg: #FFF3C4;
+  --color-warning-border: #f59e0b;
+
+  --color-warning-link: #b45309;
+  --color-warning-link-hover: #ea580c;
+  --color-warning-link-active: #ea580c;
+
+  --color-warning-code-text: #d97706;
+  --color-warning-code-bg: #FFF3C4;
+  --color-warning-code-font-family: --font-family-monospace;
+
+  /* Danger */
+  --color-danger-text: #ef5350;
+  --color-danger-text-muted: #ef5350;
+  --color-danger-font-family: --font-family-primary;
+
+  --color-danger-bg: #FEE4E2;
+  --color-danger-border: #ef5350;
+
+  --color-danger-link: #dc2626;
+  --color-danger-link-hover: #ef4444;
+  --color-danger-link-active: #ef4444;
+
+  --color-danger-code-text: #b91c1c;
+  --color-danger-code-bg: #FEE4E2;
+  --color-danger-code-font-family: --font-family-monospace;
+
+  /* Info */
+  --color-info-text: #1e40af;
+  --color-info-text-muted: #60a5fa;
+  --color-info-font-family: --font-family-primary;
+
+  --color-info-bg: #EFF6FF;
+  --color-info-border: #60a5fa;
+
+  --color-info-link: #2563eb;
+  --color-info-link-hover: #1d4ed8;
+  --color-info-link-active: #1d4ed8;
+
+  --color-info-code-text: #1e40af;
+  --color-info-code-bg: #DBEAFE;
+  --color-info-code-font-family: --font-family-monospace;
+
+  /* ========================================
+     Button Variants
+     ======================================== */
+
+  /* Primary */
+  --color-btn-primary-text: #FFFFFF;
+  --color-btn-primary-border: #82AAFF;
+  --color-btn-primary-bg: #82AAFF;
+
+  --color-btn-primary-text-hover: #FFFFFF;
+  --color-btn-primary-border-hover: #6E90D9;
+  --color-btn-primary-bg-hover: #6E90D9;
+
+  /* Secondary */
+  --color-btn-secondary-text: #FFFFFF;
+  --color-btn-secondary-border: #64748b;
+  --color-btn-secondary-bg: #64748b;
+
+  --color-btn-secondary-text-hover: #FFFFFF;
+  --color-btn-secondary-border-hover: #475569;
+  --color-btn-secondary-bg-hover: #475569;
+
+  /* Success */
+  --color-btn-success-text: #FFFFFF;
+  --color-btn-success-border: #10b981;
+  --color-btn-success-bg: #10b981;
+
+  --color-btn-success-text-hover: #FFFFFF;
+  --color-btn-success-border-hover: #047857;
+  --color-btn-success-bg-hover: #047857;
+
+  /* Warning */
+  --color-btn-warning-text: #FFFFFF;
+  --color-btn-warning-border: #f59e0b;
+  --color-btn-warning-bg: #f59e0b;
+
+  --color-btn-warning-text-hover: #FFFFFF;
+  --color-btn-warning-border-hover: #b45309;
+  --color-btn-warning-bg-hover: #b45309;
+
+  /* Danger */
+  --color-btn-danger-text: #FFFFFF;
+  --color-btn-danger-border: #ef5350;
+  --color-btn-danger-bg: #ef5350;
+
+  --color-btn-danger-text-hover: #FFFFFF;
+  --color-btn-danger-border-hover: #951818;
+  --color-btn-danger-bg-hover: #951818;
+
+  /* Primary Outline */
+  --color-btn-primary-outline-text: #011627;
+  --color-btn-primary-outline-border: #011627;
+  --color-btn-primary-outline-bg: #E6EDFF;
+
+  --color-btn-primary-outline-text-hover: #011627;
+  --color-btn-primary-outline-border-hover: #011627;
+  --color-btn-primary-outline-bg-hover: #C0D5FF;
+
+  /* Secondary Outline */
+  --color-btn-secondary-outline-text: #64748b;
+  --color-btn-secondary-outline-border: #64748b;
+  --color-btn-secondary-outline-bg: #f1f5f9;
+
+  --color-btn-secondary-outline-text-hover: #475569;
+  --color-btn-secondary-outline-border-hover: #475569;
+  --color-btn-secondary-outline-bg-hover: #e2e8f0;
+
+  /* Success Outline */
+  --color-btn-success-outline-text: #10b981;
+  --color-btn-success-outline-border: #10b981;
+  --color-btn-success-outline-bg: #CFF1E6;
+
+  --color-btn-success-outline-text-hover: #10b981;
+  --color-btn-success-outline-border-hover: #047857;
+  --color-btn-success-outline-bg-hover: #87DCC0;
+
+  /* Warning Outline */
+  --color-btn-warning-outline-text: #f59e0b;
+  --color-btn-warning-outline-border: #f59e0b;
+  --color-btn-warning-outline-bg: #FEF8CE;
+
+  --color-btn-warning-outline-text-hover: #f59e0b;
+  --color-btn-warning-outline-border-hover: #b45309;
+  --color-btn-warning-outline-bg-hover: #FACF85;
+
+  /* Danger Outline */
+  --color-btn-danger-outline-text: #ef5350;
+  --color-btn-danger-outline-border: #ef5350;
+  --color-btn-danger-outline-bg: #fbe4e4;
+
+  --color-btn-danger-outline-text-hover: #ef5350;
+  --color-btn-danger-outline-border-hover: #951818;
+  --color-btn-danger-outline-bg-hover: #F7A1A1;
+}

@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./rails-error-pages";
+
+@theme {
+  /* Base - dark navy tones */
+  --color-base-950: #0c0f1a;
+  --color-base-900: #131829;
+  --color-base-800: #1e2538;
+  --color-base-700: #2a3348;
+
+  /* Accent - warm amber */
+  --color-accent-400: #f59e0b;
+  --color-accent-500: #d97706;
+  --color-accent-600: #b45309;
+
+  /* Warm - cream/ivory tones */
+  --color-warm-50: #fefdfb;
+  --color-warm-100: #faf7f2;
+  --color-warm-200: #e8e2d9;
+  --color-warm-300: #c9c1b4;
+  --color-warm-400: #9e948a;
+}
+
+body {
+  background: linear-gradient(180deg, #0c0f1a 0%, #0f1424 50%, #0c0f1a 100%);
+}

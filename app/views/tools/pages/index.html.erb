@@ -1,0 +1,26 @@
+<% content_for :title, "Toolkit — Rapidly Built" %>
+
+<div class="mx-auto max-w-4xl px-6 py-10 md:py-16">
+  <h1 class="text-4xl font-semibold leading-tight tracking-tight md:text-5xl text-warm-50">
+    The Toolkit
+  </h1>
+  <p class="mt-5 text-lg text-warm-200 max-w-2xl">
+    Reusable pieces extracted from real applications—not abstractions designed in isolation.
+    Each tool solves a problem I've hit while building, and is shared so others can skip the same work.
+  </p>
+
+  <div class="mt-12 grid gap-5">
+    <a href="<%= tools_rapid_ui_path %>" class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+      <div class="flex items-start justify-between">
+        <h2 class="text-xl font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">RapidUI</h2>
+        <%= warning_badge "beta", class: "text-xs" %>
+      </div>
+      <p class="mt-2 text-sm text-warm-200">
+        A UI foundation for building complex tools. Components, Stimulus controllers, and themeable styles—designed to work together.
+      </p>
+      <div class="mt-4 text-sm font-medium text-accent-400 group-hover:text-accent-300">
+        Browse documentation →
+      </div>
+    </a>
+  </div>
+</div>

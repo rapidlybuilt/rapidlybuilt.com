@@ -1,0 +1,27 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/categories/_list.html.erb %>
+<% ready, pending = items.partition { |item| item[:path].present? } %>
+
+<% if ready.any? %>
+  <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+    <% ready.each do |item| %>
+      <%= link_to item[:path], class: "block p-6 border border-gray-200 rounded-lg hover:border-blue-500 transition-colors" do %>
+        <h2 class="typography-h3 mb-2"><%= item[:name] %></h2>
+        <p class="typography-body text-gray-600"><%= item[:description] %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if pending.any? %>
+  <h2 class="typography-h2">Coming Soon</h2>
+  <p class="typography-body mt-2 text-gray-600">These components are planned but not yet implemented.</p>
+
+  <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <% pending.each do |item| %>
+      <div class="block p-6 border border-gray-200 rounded-lg opacity-50 cursor-not-allowed">
+        <h3 class="typography-h3 mb-2"><%= item[:name] %> <%= warning_badge "TODO", class: "text-xs" %></h3>
+        <p class="typography-body text-gray-600"><%= item[:description] %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

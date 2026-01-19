@@ -1,0 +1,42 @@
+/* Rails error pages - matches home page dark theme with error red accent */
+
+.rails-error-page {
+  @apply min-h-screen;
+  @apply grid place-items-center;
+  @apply text-center;
+  @apply p-8;
+  background: linear-gradient(180deg, #0c0f1a 0%, #0f1424 50%, #0c0f1a 100%);
+}
+
+.rails-error-page div.dialog {
+  @apply w-full max-w-lg;
+}
+
+.rails-error-page div.dialog > div {
+  @apply rounded-3xl;
+  @apply border border-base-700/50;
+  @apply bg-base-800/60 backdrop-blur-sm;
+  @apply p-8;
+  @apply border-t-4 border-t-red-500;
+  @apply shadow-xl shadow-red-500/10;
+}
+
+.rails-error-page h1 {
+  @apply text-2xl font-semibold;
+  @apply text-red-400;
+  @apply mb-4;
+}
+
+.rails-error-page div.dialog > p {
+  @apply text-warm-200 text-sm leading-relaxed;
+  @apply mt-4 pt-4;
+  @apply border-t border-base-700/50;
+}
+
+/* Link styling within error pages */
+.rails-error-page a {
+  @apply text-accent-400 hover:text-accent-500;
+  @apply font-semibold;
+  @apply underline underline-offset-2;
+  @apply transition-colors;
+}

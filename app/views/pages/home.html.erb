@@ -1,0 +1,300 @@
+<% content_for :title, "Build in the open. Share what works." %>
+
+<!-- Top bar -->
+<header class="border-b border-base-700/40">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="<%= root_path %>" class="flex items-center gap-3">
+      <div class="h-9 w-9 rounded-full bg-white shadow-lg shadow-accent-500/20 flex items-center justify-center overflow-hidden">
+        <%= image_tag "logo-250x250.png", alt: "Rapidly Built logo", class: "h-7 w-7" %>
+      </div>
+      <div class="leading-tight">
+        <div class="text-lg font-semibold tracking-wide text-warm-50">Rapidly Built</div>
+      </div>
+    </a>
+
+    <nav class="hidden items-center gap-6 text-sm text-warm-200 md:flex">
+      <a href="#applications" class="hover:text-accent-400 transition-colors">Applications</a>
+      <a href="#toolkit" class="hover:text-accent-400 transition-colors">Toolkit</a>
+      <a
+        href="#subscribe"
+        class="rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all ml-8 shadow-lg shadow-accent-500/25"
+      >
+        Follow along
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="mx-auto max-w-6xl px-6 py-5 md:py-16">
+  <div class="grid gap-10 md:grid-cols-12">
+    <div class="md:col-span-7">
+      <h1 class="text-4xl font-semibold leading-tight tracking-tight md:text-5xl md:leading-[1.3] text-warm-50">
+        Build in the open.<br />
+        <span class="text-accent-400">Share the work.</span>
+      </h1>
+
+      <p class="mt-5 max-w-xl text-lg text-warm-200">
+        I’m building applications as a craft—software that empowers people to act on their priorities—not someone else’s.
+      </p>
+
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-2xl border border-base-700/50 bg-base-800/40 p-4 backdrop-blur-sm">
+          <div class="text-sm font-semibold text-warm-50">Ship real applications</div>
+          <div class="mt-1 text-sm text-warm-300">
+            Products with users, constraints, and consequences.
+          </div>
+        </div>
+        <div class="rounded-2xl border border-base-700/50 bg-base-800/40 p-4 backdrop-blur-sm">
+          <div class="text-sm font-semibold text-warm-50">Forge the toolkit</div>
+          <div class="mt-1 text-sm text-warm-300">
+            Reusable components pulled from real work, not abstractions.
+          </div>
+        </div>
+        <div class="rounded-2xl border border-base-700/50 bg-base-800/40 p-4 backdrop-blur-sm">
+          <div class="text-sm font-semibold text-warm-50">Share the process</div>
+          <div class="mt-1 text-sm text-warm-300">
+            Tradeoffs, failures, and lessons—shared in the open.
+          </div>
+        </div>
+
+        <a
+          href="#subscribe"
+          class="flex items-center justify-center rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-3 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all shadow-lg shadow-accent-500/25 md:hidden"
+        >
+          Follow along
+        </a>
+      </div>
+    </div>
+
+    <div class="md:col-span-5">
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm">
+        <h2 class="text-lg font-semibold text-warm-50">What is Rapidly Built?</h2>
+        <p class="mt-3 text-sm leading-relaxed text-warm-200">
+          Applications, tools, writings, and videos—built in the open as a cohesive body of work.
+        </p>
+
+        <div class="mt-5 space-y-3 text-sm">
+          <div class="flex gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-accent-400"></div>
+            <div>
+              <span class="font-semibold text-warm-50">Practical</span>
+              <span class="text-warm-300">
+                — shaped by production apps, not demos or hypotheticals.
+              </span>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-accent-400"></div>
+            <div>
+              <span class="font-semibold text-warm-50">Modular</span>
+              <span class="text-warm-300">
+                — each part works on its own, but fits into a larger whole.
+              </span>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="mt-1 h-2 w-2 rounded-full bg-accent-400"></div>
+            <div>
+              <span class="font-semibold text-warm-50">Deliberate</span>
+              <span class="text-warm-300">
+                — decisions, outcomes, and the process are examined to improve the work over time.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="applications" class="border-t border-base-700/40 bg-base-900/50">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight text-warm-50">The Applications <span class="ml-2 inline-flex align-middle items-center rounded-full bg-accent-500/15 px-2.5 py-0.5 text-xs font-medium text-accent-400 ring-1 ring-inset ring-accent-500/30">work in progress</span></h2>
+        <p class="mt-2 text-sm text-warm-200">Built to explore real areas of life and needs where existing approaches fall short.</p>
+      </div>
+
+      <a href="#subscribe" class="text-sm text-warm-300 hover:text-accent-400 transition-colors">
+        Follow the progress →
+      </a>
+    </div>
+
+    <div class="mt-8 grid gap-5 md:grid-cols-2">
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Focus</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Designed to protect your attention and serve your priorities—not some company's engagement metrics.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Watching videos without wasting time or attention</li>
+          <li>Saving time on social media and your favorite sites</li>
+          <li>Reminding you what you learned from podcasts</li>
+        </ul>
+      </div>
+
+      <!-- Skill building -->
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Growth</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Created to help you actually improve at something over time, not just spend time on it.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Training recall and memory</li>
+          <li>Tracking progress over time</li>
+          <li>Practicing skills with intention and repetition</li>
+        </ul>
+      </div>
+
+      <!-- Family -->
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Family</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Meant to help families manage shared responsibilities with less friction.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Shared accounts, bills, and service notifications in one place</li>
+          <li>Household contacts, records, and details kept current together</li>
+          <li>Ongoing financial tracking, planning, and regular check-ins</li>
+        </ul>
+      </div>
+
+      <!-- Community -->
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Community</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Built to help you stay connected to your local community—without algorithms setting the agenda.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Following local news and events that matter to you</li>
+          <li>Discovering live music, events, and nearby venues</li>
+          <li>Keeping a living list of restaurants to try, revisit, or recommend</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Toolkit -->
+<section id="toolkit" class="border-t border-base-700/40">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight text-warm-50">The Toolkit <span class="ml-2 inline-flex align-middle items-center rounded-full bg-accent-500/15 px-2.5 py-0.5 text-xs font-medium text-accent-400 ring-1 ring-inset ring-accent-500/30">evolving</span></h2>
+        <p class="mt-2 text-sm text-warm-200">Categories and capabilities evolve as new needs surface.</p>
+      </div>
+      <a href="<%= tools_root_path %>" class="mt-6 inline-block rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-3 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all shadow-lg shadow-accent-500/25">
+        Browse Toolkit →
+      </a>
+    </div>
+
+    <div class="mt-8 grid gap-5 md:grid-cols-2">
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Foundations</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Unglamorous essentials that remove friction and give everything else a stable base.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Opinionated Rails structure for building tools</li>
+          <li>Deployment patterns with explicit cost control</li>
+          <li>Common patterns for accessing and moving data</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Visibility & operations</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Dashboards and instrumentation to understand how your app behaves in production—without guessing.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Application health checks and runtime diagnostics</li>
+          <li>Background job visibility (queues, failures, retries)</li>
+          <li>Request tracing and slow endpoints</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Admin workflows</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Internal tools for safely inspecting and changing live systems.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Data browsers that respect application constraints</li>
+          <li>Auditing and change history</li>
+          <li>Safe operational actions (backfills, replays, exports)</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Product Feedback</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Tools that make iteration faster through experiments, analytics, and feedback loops.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Event tracking and funnels</li>
+          <li>User session understanding</li>
+          <li>Feature flags and gradual rollouts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Follow -->
+<section id="follow" class="border-t border-base-700/40 bg-base-900/50">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="mx-auto max-w-xl">
+      <h2 class="text-2xl font-semibold tracking-tight text-warm-50">Follow the journey</h2>
+      <p class="mt-3 text-warm-200">
+        If you're curious how modern software is built, and why the choices behind it matter, follow along.
+        You don't need a project in progress—this is a front-row seat to the build.
+      </p>
+
+      <%# <form class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div class="relative flex-1 max-w-sm">
+          <input
+            id="subscribe"
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+            class="w-full rounded-xl border border-base-700 bg-base-800/60 px-4 py-3 text-sm text-warm-100 placeholder:text-warm-400 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20 transition-all"
+          />
+        </div>
+        <button
+          type="submit"
+          class="rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-3 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all shadow-lg shadow-accent-500/25"
+        >
+          Subscribe
+        </button>
+      </form> %>
+      <a
+        id="subscribe"
+        href="mailto:dan@rapidlybuilt.com?subject=Following%20the%20journey"
+        class="mt-6 inline-block rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-3 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all shadow-lg shadow-accent-500/25"
+      >
+        Email me at dan@rapidlybuilt.com
+      </a>
+
+      <p class="mt-4 text-xs text-warm-400">
+        No spam. Unsubscribe anytime.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-base-700/40">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-warm-300 md:flex-row md:items-center md:justify-between">
+    <div>© <span id="year"><%= Date.current.year %></span> Rapidly Built</div>
+    <div class="flex gap-5">
+      <a href="https://github.com/rapidlybuilt" class="hover:text-accent-400 transition-colors">GitHub</a>
+      <%# <a href="#" class="hover:text-accent-400 transition-colors">Blog</a> %>
+      <a href="mailto:dan@rapidlybuilt.com" class="hover:text-accent-400 transition-colors">Contact</a>
+      <%# TODO: social media links %>
+    </div>
+  </div>
+</footer>

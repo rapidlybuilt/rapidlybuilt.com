@@ -1,0 +1,347 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/controls/dropdowns.html.erb %>
+<% ui.layout.head.title = ["Dropdowns", "Controls"] %>
+<% with_breadcrumb("Dropdowns") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Dropdowns</h1>
+  <p class="typography-body">Dropdown components with various styles and states using the theme.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Variants" %>
+    <p class="demo-description">Dropdown variants with their default styling.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_variants do %>
+      <%= primary_dropdown "Primary" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= secondary_dropdown "Secondary" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= naked_dropdown "Naked" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= success_dropdown "Success" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= warning_dropdown "Warning" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= danger_dropdown "Danger" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Outline Variants" %>
+    <p class="demo-description">Outline dropdown variants with transparent backgrounds and colored borders.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_outline_variants do %>
+      <%= outline_primary_dropdown "Outline Primary" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= outline_success_dropdown "Outline Success" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= outline_warning_dropdown "Outline Warning" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+
+      <%= outline_danger_dropdown "Outline Danger" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Icons" %>
+    <p class="demo-description">Dropdowns with icons in both trigger and menu items.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_with_icons do %>
+      <%= primary_dropdown icon("user"), "Profile" do |menu| %>
+        <% menu.with_item "Profile", "#", icon: "user" %>
+        <% menu.with_item "Settings", "#", icon: "settings" %>
+        <% menu.with_item "Sign Out", "#", icon: "x" %>
+      <% end %>
+
+      <%= secondary_dropdown icon("settings"), "Options" do |menu| %>
+        <% menu.with_item "Search", "#", icon: "search" %>
+        <% menu.with_item "Help", "#", icon: "info" %>
+        <% menu.with_item "Delete", "#", icon: "trash" %>
+      <% end %>
+
+      <%= success_dropdown "Skip Caret", skip_caret: true do |menu| %>
+        <% menu.with_item "Search", "#", icon: "search" %>
+        <% menu.with_item "Help", "#", icon: "info" %>
+        <% menu.with_item "Delete", "#", icon: "trash" %>
+      <% end %>
+
+      <%= danger_dropdown "" do |menu| %>
+        <% menu.with_item "Search", "#", icon: "search" %>
+        <% menu.with_item "Help", "#", icon: "info" %>
+        <% menu.with_item "Delete", "#", icon: "trash" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Sizes" %>
+    <p class="demo-description">Different dropdown sizes using the size parameter.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_sizes do %>
+      <%= primary_dropdown "Small", size: "sm" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Medium (Default)" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Large", size: "lg" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Disabled" %>
+    <p class="demo-description">Disabled state for dropdown variants.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_disabled do %>
+      <%= primary_dropdown "Primary Disabled", disabled: true do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= secondary_dropdown "Secondary Disabled", disabled: true do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= naked_dropdown "Naked Disabled", disabled: true do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Positioning" %>
+    <p class="demo-description">Dropdowns with different positioning options.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_positioning do %>
+      <%= primary_dropdown "Left Aligned" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Right Aligned", align: "right" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Center Aligned", align: "center" do |menu| %>
+        <% menu.with_item "Action 1", "#" %>
+        <% menu.with_item "Action 2", "#" %>
+        <% menu.with_item "Action 3", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Drop Up", direction: "up" do |menu| %>
+        <% menu.with_item "Up", "#" %>
+        <% menu.with_item "Position", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Drop Up-Right", align: "right", direction: "up" do |menu| %>
+        <% menu.with_item "Up", "#" %>
+        <% menu.with_item "Position", "#" %>
+      <% end %>
+
+      <%= primary_dropdown "Drop Up-Center", align: "center", direction: "up" do |menu| %>
+        <% menu.with_item "Up", "#" %>
+        <% menu.with_item "Position", "#" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Active & Disabled" %>
+    <p class="demo-description">Dropdown menu items can have active and disabled states.</p>
+    <div class="demo-content">
+      <%= demo_code flex: true, helper: :component_controls_dropdowns_active_and_disabled do %>
+        <%= primary_dropdown "Active & Disabled" do |menu| %>
+          <% menu.with_item "Active Item", "#", active: true %>
+          <% menu.with_item "Normal Item", "#" %>
+          <% menu.with_item "Disabled Item", "#", disabled: true %>
+        <% end %>
+
+        <%= secondary_dropdown "With Icons" do |menu| %>
+          <% menu.with_item "Active Profile", "#", icon: "user", active: true %>
+          <% menu.with_item "Settings", "#", icon: "settings" %>
+          <% menu.with_item "Disabled Billing", "#", icon: "hash", disabled: true %>
+        <% end %>
+
+        <%= success_dropdown "Success Variant" do |menu| %>
+          <% menu.with_item "Active Success", "#", active: true %>
+          <% menu.with_item "Normal Success", "#" %>
+          <% menu.with_item "Disabled Success", "#", disabled: true %>
+        <% end %>
+
+        <%= danger_dropdown "Danger Variant" do |menu| %>
+          <% menu.with_item "Active Danger", "#", active: true %>
+          <% menu.with_item "Normal Danger", "#" %>
+          <% menu.with_item "Disabled Danger", "#", disabled: true %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Headers & Dividers" %>
+    <p class="demo-description">Dropdowns with headers, dividers, and various menu item types for each variant.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_menu_headers_and_dividers do %>
+      <%= primary_dropdown "Primary" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= secondary_dropdown "Secondary" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= naked_dropdown "Naked" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= success_dropdown "Success" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= warning_dropdown "Warning" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= danger_dropdown "Danger" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= outline_primary_dropdown "Outline Primary" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= outline_success_dropdown "Outline Success" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= outline_warning_dropdown "Outline Warning" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+
+      <%= outline_danger_dropdown "Outline Danger" do |menu| %>
+        <% menu.with_header "Account" %>
+        <% menu.with_item "Profile", "#" %>
+        <% menu.with_divider %>
+        <% menu.with_item "Sign Out", "#" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Menu HTML" %>
+    <p class="demo-description">Dropdowns with HTML content in the menu instead of menu items.</p>
+    <%= demo_code flex: true, helper: :component_controls_dropdowns_with_html_content do %>
+      <%= render new_primary_dropdown("Profile") do |dropdown| %>
+        <% dropdown.with_menu do %>
+          <p class="m-2 text-white">This is some HTML content in the menu.</p>
+        <% end %>
+      <% end %>
+
+      <%= render new_secondary_dropdown("Options") do |dropdown| %>
+        <% dropdown.with_menu do %>
+          <ul class="m-4">
+            <li>Item 1.</li>
+            <li>Item 2.</li>
+            <li>Item 3.</li>
+          </ul>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Button & Menu HTML" %>
+    <p class="demo-description"><%= link_to "ViewComponent Slots", "https://viewcomponent.org/guide/slots.html", class: "typography-link" %> gives you full control over the HTML content of the dropdown's button and menu.</p>
+    <%= demo_code flex: true do %>
+      <%= render new_success_dropdown do |dropdown| %>
+        <% dropdown.with_button icon("info"), "My Button" %>
+        <% dropdown.with_menu tag.p("This is some HTML content in the menu.", class: "m-4") %>
+      <% end %>
+
+      <%= render new_outline_warning_dropdown do |dropdown| %>
+        <% dropdown.with_button do %>
+          <code>My Button</code> <%= icon("info", class: "inline") %>
+        <% end %>
+
+        <% dropdown.with_menu do %>
+          <p class="m-4">This is some HTML content in the menu.</p>
+        <% end %>
+      <% end %>
+
+      <%= render new_outline_warning_dropdown do |dropdown| %>
+        <% dropdown.with_button icon("info"), skip_caret: true %>
+        <% dropdown.with_menu do %>
+          <p class="m-4">This is some HTML content in the menu.</p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,373 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Upgrade the ui_docs tool by copying from rapid_ui/docs
+# This script is meant to be run from the ui_docs directory
+#
+# Usage:
+#   bin/upgrade         # Clean and copy files
+#   bin/upgrade clean   # Only clean (remove copied files)
+
+require "fileutils"
+
+class Upgrade
+  UI_DOCS_DIR = File.expand_path("..", __dir__)
+  RAPIDLY_ROOT = File.expand_path("../../../..", UI_DOCS_DIR)
+  RAPID_UI_DOCS = File.join(RAPIDLY_ROOT, "rapid_ui/docs")
+
+  # Directories that get completely replaced (cleared before copy)
+  MANAGED_DIRS = {
+    controllers: "app/controllers/ui_docs",
+    controller_concerns: "app/controllers/concerns/ui_docs",
+    helpers: "app/helpers/ui_docs",
+    views: "app/views/ui_docs",
+    layouts: "app/views/layouts/ui_docs",
+    view_components: "app/view_components/ui_docs",
+    services: "app/services/ui_docs",
+    vendor_themes: "vendor/stylesheets/themes"
+  }.freeze
+
+  # Individual files that get copied
+  MANAGED_FILES = {
+    models: %w[app/models/ui_docs/theme.rb app/models/ui_docs/user.rb],
+    stylesheets: %w[
+      app/assets/stylesheets/ui_docs/demo.css
+      app/assets/stylesheets/ui_docs/code-theme-light.css
+    ],
+    routes: %w[config/routes.rb]
+  }.freeze
+
+  def run(command = "copy")
+    case command
+    when "clean"
+      clean
+    when "copy"
+      clean
+      copy
+    else
+      abort "Unknown command: #{command}\nUsage: bin/copy-app [clean]"
+    end
+  end
+
+  def clean
+    puts "Cleaning copied files..."
+
+    # Remove managed directories
+    MANAGED_DIRS.each_value do |dir|
+      path = File.join(UI_DOCS_DIR, dir)
+      if Dir.exist?(path)
+        # Remove contents but keep the directory
+        Dir.glob(File.join(path, "*")).each do |entry|
+          FileUtils.rm_rf(entry)
+          puts "  Removed: #{relative_path(entry)}"
+        end
+      end
+    end
+
+    # Remove managed files
+    MANAGED_FILES.each_value do |files|
+      files.each do |file|
+        path = File.join(UI_DOCS_DIR, file)
+        if File.exist?(path)
+          FileUtils.rm(path)
+          puts "  Removed: #{file}"
+        end
+      end
+    end
+
+    puts "Clean complete."
+    puts
+  end
+
+  def copy
+    puts "Source: #{RAPID_UI_DOCS}"
+    puts "Target: #{UI_DOCS_DIR}"
+    puts
+
+    unless Dir.exist?(RAPID_UI_DOCS)
+      abort "Error: Source directory not found: #{RAPID_UI_DOCS}"
+    end
+
+    copy_routes
+    copy_controllers
+    copy_helpers
+    copy_views
+    copy_view_components
+    copy_services
+    copy_models
+    copy_stylesheets
+    copy_theme_stylesheets
+
+    puts
+    puts "Done! Files copied successfully."
+  end
+
+  private
+
+  def relative_path(path)
+    path.sub("#{UI_DOCS_DIR}/", "")
+  end
+
+  def rapid_ui_version
+    @rapid_ui_version ||= begin
+      version_file = File.join(RAPIDLY_ROOT, "rapid_ui/lib/rapid_ui/version.rb")
+      content = File.read(version_file)
+      content.match(/VERSION\s*=\s*"([^"]+)"/)[1]
+    end
+  end
+
+  def file_header(source_path, comment_style: :ruby)
+    relative_source = source_path.sub("#{RAPIDLY_ROOT}/", "")
+
+    case comment_style
+    when :ruby
+      "# Copied from RapidUI v#{rapid_ui_version}\n# Source: #{relative_source}\n"
+    when :erb
+      "<%# Copied from RapidUI v#{rapid_ui_version} | Source: #{relative_source} %>\n"
+    when :css
+      "/* Copied from RapidUI v#{rapid_ui_version} | Source: #{relative_source} */\n"
+    end
+  end
+
+  # Wrap Ruby code in module UiDocs and indent by 2 spaces
+  def wrap_in_ui_docs_module(content)
+    # Remove leading/trailing whitespace but preserve internal structure
+    content = content.strip
+
+    # Indent each line by 2 spaces (except empty lines)
+    indented = content.lines.map do |line|
+      if line.chomp.empty?
+        "\n"
+      else
+        "  #{line.chomp}\n"
+      end
+    end.join
+
+    # Wrap in module
+    "module UiDocs\n#{indented}end\n"
+  end
+
+  # Copy a Ruby file, wrapping it in module UiDocs
+  def copy_ruby_file(source, target)
+    content = File.read(source, encoding: "UTF-8")
+
+    # Apply file-specific transformations
+    case File.basename(source)
+    when "application_controller.rb"
+      content = transform_application_controller(content)
+    when "application_helper.rb"
+      content = transform_application_helper(content)
+    when "theme.rb"
+      content = transform_theme_model(content)
+    end
+
+    wrapped = wrap_in_ui_docs_module(content)
+    FileUtils.mkdir_p(File.dirname(target))
+    File.write(target, file_header(source, comment_style: :ruby) + wrapped)
+  end
+
+  def transform_application_helper(content)
+    content.gsub(
+      "components/categories/list",
+      "ui_docs/components/categories/list"
+    )
+  end
+
+  # Transform theme.rb to use engine root for theme CSS files
+  def transform_theme_model(content)
+    content.gsub(
+      'Rails.root.join("../app/assets/stylesheets/rapid_ui/themes")',
+      'UiDocs::Engine.root.join("vendor/stylesheets/themes")'
+    )
+  end
+
+  # Transform application_controller.rb for the engine
+  def transform_application_controller(content)
+    <<~RUBY
+      class ApplicationController < ActionController::Base
+        include RapidlyBuilt::Rails::ControllerHelper
+        include UiFactories
+
+        helper RapidUI::LayoutHelper
+        helper RapidUI::IconsHelper
+
+        before_action :add_home_breadcrumb
+
+        private
+
+        def add_home_breadcrumb
+          build_breadcrumb("RapidUI", root_path)
+        end
+      end
+    RUBY
+  end
+
+  # Copy a non-Ruby file with appropriate header
+  def copy_file(source, target)
+    FileUtils.mkdir_p(File.dirname(target))
+
+    ext = File.extname(source)
+    comment_style = case ext
+                    when ".erb" then :erb
+                    when ".css" then :css
+                    else nil
+                    end
+
+    if comment_style
+      content = File.read(source, encoding: "UTF-8")
+      File.write(target, file_header(source, comment_style:) + content)
+    else
+      FileUtils.cp(source, target)
+    end
+  end
+
+  def copy_routes
+    puts "Copying routes..."
+
+    source = File.join(RAPID_UI_DOCS, "config/routes.rb")
+    target = File.join(UI_DOCS_DIR, "config/routes.rb")
+
+    content = File.read(source, encoding: "UTF-8")
+
+    # Transform Rails.application.routes to UiDocs::Engine.routes
+    content.gsub!("Rails.application.routes.draw", "UiDocs::Engine.routes.draw")
+    File.write(target, file_header(source, comment_style: :ruby) + content)
+  end
+
+  def copy_controllers
+    puts "Copying controllers..."
+
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:controllers])
+    source_dir = File.join(RAPID_UI_DOCS, "app/controllers")
+
+    copy_directory_contents(source_dir, target_dir, exclude: ["concerns"], wrap_ruby: true)
+
+    # Copy controller concerns
+    concerns_target = File.join(UI_DOCS_DIR, MANAGED_DIRS[:controller_concerns])
+    concerns_source = File.join(RAPID_UI_DOCS, "app/controllers/concerns")
+
+    FileUtils.mkdir_p(concerns_target)
+    copy_directory_contents(concerns_source, concerns_target, wrap_ruby: true) if Dir.exist?(concerns_source)
+  end
+
+  def copy_helpers
+    puts "Copying helpers..."
+
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:helpers])
+    source_dir = File.join(RAPID_UI_DOCS, "app/helpers")
+
+    copy_directory_contents(source_dir, target_dir, wrap_ruby: true)
+  end
+
+  def copy_views
+    puts "Copying views..."
+
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:views])
+    source_dir = File.join(RAPID_UI_DOCS, "app/views")
+
+    copy_directory_contents(source_dir, target_dir, exclude: ["layouts", "pwa"], wrap_ruby: false)
+
+    # Copy layouts to the right place (layouts/ui_docs/ instead of ui_docs/layouts/)
+    layouts_target = File.join(UI_DOCS_DIR, MANAGED_DIRS[:layouts])
+    layouts_source = File.join(RAPID_UI_DOCS, "app/views/layouts")
+
+    FileUtils.mkdir_p(layouts_target)
+    copy_directory_contents(layouts_source, layouts_target, wrap_ruby: false) if Dir.exist?(layouts_source)
+  end
+
+  def copy_view_components
+    puts "Copying view components..."
+
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:view_components])
+    source_dir = File.join(RAPID_UI_DOCS, "app/view_components")
+
+    FileUtils.mkdir_p(target_dir)
+    copy_directory_contents(source_dir, target_dir, wrap_ruby: true)
+  end
+
+  def copy_services
+    puts "Copying services..."
+
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:services])
+    source_dir = File.join(RAPID_UI_DOCS, "app/services")
+
+    FileUtils.mkdir_p(target_dir)
+    copy_directory_contents(source_dir, target_dir, wrap_ruby: true)
+  end
+
+  def copy_models
+    puts "Copying models..."
+
+    target_dir = File.join(UI_DOCS_DIR, "app/models/ui_docs")
+    FileUtils.mkdir_p(target_dir)
+
+    # Only copy specific models
+    %w[theme.rb user.rb].each do |model|
+      source = File.join(RAPID_UI_DOCS, "app/models", model)
+      if File.exist?(source)
+        target = File.join(target_dir, model)
+        copy_ruby_file(source, target)
+      end
+    end
+  end
+
+  def copy_stylesheets
+    puts "Copying stylesheets..."
+
+    target_dir = File.join(UI_DOCS_DIR, "app/assets/stylesheets/ui_docs")
+    FileUtils.mkdir_p(target_dir)
+
+    %w[demo.css code-theme-light.css].each do |stylesheet|
+      source = File.join(RAPID_UI_DOCS, "app/assets/stylesheets", stylesheet)
+      if File.exist?(source)
+        target = File.join(target_dir, stylesheet)
+        content = File.read(source, encoding: "UTF-8")
+        File.write(target, file_header(source, comment_style: :css) + content)
+      end
+    end
+  end
+
+  def copy_theme_stylesheets
+    puts "Copying theme stylesheets..."
+
+    source_dir = File.join(RAPIDLY_ROOT, "rapid_ui/app/assets/stylesheets/rapid_ui/themes")
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:vendor_themes])
+
+    FileUtils.mkdir_p(target_dir)
+
+    Dir.glob(File.join(source_dir, "*.css")).each do |source|
+      target = File.join(target_dir, File.basename(source))
+      content = File.read(source, encoding: "UTF-8")
+
+      # Insert header after the name/description comments (first two lines)
+      lines = content.lines
+      header_lines = lines.shift(2)
+      modified = header_lines.join + file_header(source, comment_style: :css) + lines.join
+
+      File.write(target, modified)
+    end
+  end
+
+  def copy_directory_contents(source_dir, target_dir, exclude: [], wrap_ruby: false)
+    return unless Dir.exist?(source_dir)
+
+    Dir.foreach(source_dir) do |entry|
+      next if entry.start_with?(".")
+      next if exclude.include?(entry)
+
+      source_path = File.join(source_dir, entry)
+      target_path = File.join(target_dir, entry)
+
+      if File.directory?(source_path)
+        FileUtils.mkdir_p(target_path)
+        copy_directory_contents(source_path, target_path, wrap_ruby: wrap_ruby)
+      elsif wrap_ruby && entry.end_with?(".rb")
+        copy_ruby_file(source_path, target_path)
+      else
+        copy_file(source_path, target_path)
+      end
+    end
+  end
+end
+
+Upgrade.new.run(ARGV[0] || "copy")

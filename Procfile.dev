@@ -1,0 +1,3 @@
+web: bin/rails server
+css: bin/tailwindcss watch
+css-tools: bin/tailwindcss watch --target tools

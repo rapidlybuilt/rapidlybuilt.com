@@ -1,0 +1,207 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/themes/show.html.erb %>
+<% ui.layout.head.title = [@theme.title, "Themes"] %>
+<% with_breadcrumb(@theme.title) %>
+<% ui.layout.main.data.merge!(controller: "themes") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1"><%= @theme.title %></h1>
+  <p class="typography-body"><%= @theme.description %></p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <!-- Typography Variants Section -->
+  <div class="demo-section">
+    <%= headers.h2 "Typography Variants" %>
+
+    <div class="space-y-6">
+      <% @theme.typography_variants.each do |variant| %>
+        <div class="demo-section">
+          <%= headers.h3 variant.name.titleize, id: variant.id %>
+
+          <% if variant.description %>
+            <p class="text-sm text-gray-600 mb-3">
+              <%= variant.description %>
+            </p>
+          <% end %>
+
+          <div
+            class="border rounded-lg p-6"
+            style="
+              background-color: <%= variant.bg %>;
+              border-color: <%= variant.border %>;
+              color: <%= variant.text %>;
+            "
+          >
+            <p class="mb-4" style="color: <%= variant.text %>;">
+              This is the <%= variant.name %> typography variant. It demonstrates the primary text color and background styling for this context. <a
+                href="#"
+                style="color: <%= variant.link %>;"
+                data-action="mouseenter->themes#hoverLink mouseleave->themes#unhoverLink"
+                data-themes-default-color="<%= variant.link %>"
+                data-themes-hover-color="<%= variant.link_hover %>"
+              >This is how links appear</a> within this variant, with hover effects that change the link color when you move your mouse over them.
+            </p>
+
+            <hr class="my-4" style="border-color: <%= variant.border %>;">
+
+            <p class="mb-4" style="color: <%= variant.text %>;">
+              The horizontal rule above uses the border color to create visual separation between content sections. This second paragraph demonstrates how multiple blocks of text appear together in this variant's styling.
+            </p>
+
+            <% if variant.code_text && variant.code_bg %>
+              <p>
+                <code
+                  class="px-2 py-1 rounded font-mono text-sm"
+                  style="
+                    color: <%= variant.code_text %>;
+                    background-color: <%= variant.code_bg %>;
+                  "
+                >const example = "code block";</code>
+              </p>
+            <% end %>
+          </div>
+
+          <!-- Color Swatches for this typography variant -->
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mt-4">
+            <% if variant.text %>
+              <div class="border border-gray-200 rounded-lg p-3">
+                <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.text %>;"></div>
+                <div class="font-mono text-xs text-gray-600">text</div>
+                <div class="font-mono text-xs text-gray-400 truncate"><%= variant.text %></div>
+              </div>
+            <% end %>
+
+            <% if variant.bg %>
+              <div class="border border-gray-200 rounded-lg p-3">
+                <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.bg %>;"></div>
+                <div class="font-mono text-xs text-gray-600">bg</div>
+                <div class="font-mono text-xs text-gray-400 truncate"><%= variant.bg %></div>
+              </div>
+            <% end %>
+
+            <% if variant.border %>
+              <div class="border border-gray-200 rounded-lg p-3">
+                <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.border %>;"></div>
+                <div class="font-mono text-xs text-gray-600">border</div>
+                <div class="font-mono text-xs text-gray-400 truncate"><%= variant.border %></div>
+              </div>
+            <% end %>
+
+            <% if variant.link %>
+              <div class="border border-gray-200 rounded-lg p-3">
+                <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.link %>;"></div>
+                <div class="font-mono text-xs text-gray-600">link</div>
+                <div class="font-mono text-xs text-gray-400 truncate"><%= variant.link %></div>
+              </div>
+            <% end %>
+
+            <% if variant.code_text %>
+              <div class="border border-gray-200 rounded-lg p-3">
+                <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.code_text %>;"></div>
+                <div class="font-mono text-xs text-gray-600">code-text</div>
+                <div class="font-mono text-xs text-gray-400 truncate"><%= variant.code_text %></div>
+              </div>
+            <% end %>
+
+            <% if variant.code_bg %>
+              <div class="border border-gray-200 rounded-lg p-3">
+                <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.code_bg %>;"></div>
+                <div class="font-mono text-xs text-gray-600">code-bg</div>
+                <div class="font-mono text-xs text-gray-400 truncate"><%= variant.code_bg %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Button Variants Section -->
+  <div class="demo-section">
+    <%= headers.h2 "Button Variants" %>
+
+    <div class="space-y-6">
+      <% @theme.button_variants.each do |variant| %>
+        <div class="demo-section">
+          <%= headers.h3 variant.name.titleize, id: variant.id %>
+
+          <div class="flex items-center gap-6 flex-wrap">
+            <!-- Button Demo -->
+            <div class="flex-shrink-0">
+              <button
+                class="px-6 py-2 rounded-lg font-medium transition-colors duration-200 border"
+                style="
+                  cursor: pointer;
+                  color: <%= variant.text %>;
+                  background-color: <%= variant.bg %>;
+                  border-color: <%= variant.border %>;
+                "
+                data-action="mouseenter->themes#hoverButton mouseleave->themes#unhoverButton"
+                data-themes-default-text="<%= variant.text %>"
+                data-themes-default-bg="<%= variant.bg %>"
+                data-themes-default-border="<%= variant.border %>"
+                data-themes-hover-text="<%= variant.text_hover || variant.text %>"
+                data-themes-hover-bg="<%= variant.bg_hover || variant.bg %>"
+                data-themes-hover-border="<%= variant.border_hover || variant.border %>"
+              >
+                <%= variant.name.split('-').map(&:capitalize).join(' ') %> Button
+              </button>
+            </div>
+
+            <!-- Color Swatches -->
+            <div class="flex gap-3 flex-wrap">
+              <% if variant.text %>
+                <div class="border border-gray-200 rounded-lg p-3 w-32">
+                  <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.text %>;"></div>
+                  <div class="font-mono text-xs text-gray-600">text</div>
+                  <div class="font-mono text-xs text-gray-400 truncate"><%= variant.text %></div>
+                </div>
+              <% end %>
+
+              <% if variant.bg && variant.bg != 'transparent' %>
+                <div class="border border-gray-200 rounded-lg p-3 w-32">
+                  <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.bg %>;"></div>
+                  <div class="font-mono text-xs text-gray-600">bg</div>
+                  <div class="font-mono text-xs text-gray-400 truncate"><%= variant.bg %></div>
+                </div>
+              <% end %>
+
+              <% if variant.border %>
+                <div class="border border-gray-200 rounded-lg p-3 w-32">
+                  <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.border %>;"></div>
+                  <div class="font-mono text-xs text-gray-600">border</div>
+                  <div class="font-mono text-xs text-gray-400 truncate"><%= variant.border %></div>
+                </div>
+              <% end %>
+
+              <% if variant.text_hover %>
+                <div class="border border-gray-200 rounded-lg p-3 w-32">
+                  <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.text_hover %>;"></div>
+                  <div class="font-mono text-xs text-gray-600">text-hover</div>
+                  <div class="font-mono text-xs text-gray-400 truncate"><%= variant.text_hover %></div>
+                </div>
+              <% end %>
+
+              <% if variant.bg_hover && variant.bg_hover != 'transparent' %>
+                <div class="border border-gray-200 rounded-lg p-3 w-32">
+                  <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.bg_hover %>;"></div>
+                  <div class="font-mono text-xs text-gray-600">bg-hover</div>
+                  <div class="font-mono text-xs text-gray-400 truncate"><%= variant.bg_hover %></div>
+                </div>
+              <% end %>
+
+              <% if variant.border_hover %>
+                <div class="border border-gray-200 rounded-lg p-3 w-32">
+                  <div class="w-full h-12 rounded-md border border-gray-300 mb-2" style="background-color: <%= variant.border_hover %>;"></div>
+                  <div class="font-mono text-xs text-gray-600">border-hover</div>
+                  <div class="font-mono text-xs text-gray-400 truncate"><%= variant.border_hover %></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

@@ -1,0 +1,111 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/content/typography.html.erb %>
+<% ui.layout.head.title = ["Typography", "Content"] %>
+<% with_breadcrumb("Typography") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Typography</h1>
+  <p class="typography-body">Typography is the art of arranging letters and words to create visual harmony and传达信息.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Headers" %>
+    <p class="demo-description">Use the <code class="typography-code">typography-h1</code> through <code class="typography-code">typography-h6</code> classes to style headings.</p>
+    <%= demo_code do %>
+      <h1 class="typography-h1">Heading 1 - Main Title</h1>
+      <h2 class="typography-h2">Heading 2 - Section Title</h2>
+      <h3 class="typography-h3">Heading 3 - Subsection</h3>
+      <h4 class="typography-h4">Heading 4 - Minor Heading</h4>
+      <h5 class="typography-h5">Heading 5 - Small Heading</h5>
+      <h6 class="typography-h6">Heading 6 - Smallest Heading</h6>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Paragraphs" %>
+    <p class="demo-description">Use the <code class="typography-code">typography-body</code> class to style paragraphs.</p>
+    <%= demo_code do %>
+      <p class="typography-body">This is a regular paragraph with some <strong>bold text</strong> and <em>italic text</em>. It demonstrates the default body text styling and how inline elements are rendered.</p>
+
+      <p class="typography-body text-lg">This is large text for emphasis or important content.</p>
+      <p class="typography-body text-sm">This is small text for captions, footnotes, or secondary information.</p>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Blockquotes" %>
+    <p class="demo-description">Use the <code class="typography-code">typography-blockquote</code> class to style blockquotes.</p>
+    <%= demo_code do %>
+      <blockquote class="typography-blockquote">
+        <p>This is a blockquote. It's used for highlighting important quotes or testimonials. The styling should make it stand out from regular paragraph text.</p>
+        <cite>— Author Name</cite>
+      </blockquote>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Lists" %>
+    <p class="demo-description">Use the <code class="typography-code">typography-list</code> class to style lists.</p>
+    <%= demo_code do %>
+      <ul class="typography-list">
+        <li>First unordered list item</li>
+        <li>Second item with <a href="#">a link</a></li>
+        <li>Third item with <code>inline code</code></li>
+      </ul>
+
+      <ol class="typography-list">
+        <li>First ordered list item</li>
+        <li>Second numbered item</li>
+        <li>Third item in sequence</li>
+      </ol>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Code Blocks" %>
+    <p class="demo-description">Use the <code class="typography-code">typography-code-block</code> class to style code blocks.</p>
+    <%= demo_code do %>
+    <pre class="typography-code-block"><code>// This is a code block
+function example() {
+&nbsp;&nbsp;console.log("Hello, World!");
+&nbsp;&nbsp;return true;
+}</code></pre>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Inline Elements" %>
+    <p class="demo-description">Use the <code class="typography-code">typography-kbd</code> and <code class="typography-code">typography-mark</code> classes to style inline elements.</p>
+    <%= demo_code do %>
+    <p >Here's some <kbd class="typography-kbd">keyboard input</kbd> styling and a <mark class="typography-mark">highlighted</mark> text example.</p>
+    <% end %>
+  </div>
+
+
+  <div class="demo-section">
+    <%= headers.h2 "HTML Content" %>
+    <p class="demo-description">Surround any content with the <code class="typography-code">typography</code> class to apply the default typography styling to the entire contents.</p>
+    <%= demo_code do %>
+      <div class="typography">
+        <h6>Heading 6 - Smallest Heading</h6>
+        <p>This is a regular paragraph with some <strong>bold text</strong> and <em>italic text</em>. It demonstrates the default body text styling and how inline elements are rendered.</p>
+        <p class="text-large">This is large text for emphasis or important content.</p>
+        <p class="text-small">This is small text for captions, footnotes, or secondary information.</p>
+        <blockquote>
+          <p>This is a blockquote. It's used for highlighting important quotes or testimonials. The styling should make it stand out from regular paragraph text.</p>
+          <cite>— Author Name</cite>
+        </blockquote>
+        <ul>
+          <li>First unordered list item</li>
+          <li>Second item with <a href="#">a link</a></li>
+          <li>Third item with <code>inline code</code></li>
+        </ul>
+        <ol>
+          <li>First ordered list item</li>
+          <li>Second numbered item</li>
+          <li>Third item in sequence</li>
+        </ol>
+      </div>
+    <% end %>
+  </div>
+<% end %>

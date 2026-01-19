@@ -1,0 +1,46 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/content/icons.html.erb %>
+<% ui.layout.head.title = ["Icons", "Content"] %>
+<% with_breadcrumb("Icons") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Icons</h1>
+  <p class="typography-body">Icons are used to represent various actions and concepts in the application.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Helper" %>
+    <p class="demo-description">Use the `icon` helper to render an icon.</p>
+    <%= demo_code flex: true, helper: :component_content_icons_helper do %>
+      <%= icon("user") %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Image Icons" %>
+    <p class="typography-body">These icons are image files explicitly added to the application outside of Lucide.</p>
+    <%= render "iconset", iconset: RapidUI::Icon.image_icons %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Lucide Icons" %>
+    <p class="typography-body">These icons are imported into the application from <%= link_to "Lucide", "https://lucide.dev", class: "typography-link" %>.</p>
+    <%= render "iconset", iconset: RapidUI::Icon.lucide_icons %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Importing more icons" %>
+    <p class="typography-body">A vast library of icons is available at <%= link_to "https://lucide.dev/icons/", "https://lucide.dev/icons/", class: "typography-link" %>.</p>
+
+    <%# TODO: avoid `$` being copy-able %>
+    <pre class="typography-code-block"><code>$ bin/icons import chevron-down</code></pre>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Upgrading Lucide" %>
+    <p class="typography-body">You can upgrade to a new version of Lucide icons by running the following command:</p>
+
+    <%# TODO: avoid `$` being copy-able %>
+    <pre class="typography-code-block"><code>$ bin/icons upgrade 0.546.0</code></pre>
+  </div>
+<% end %>

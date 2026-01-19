@@ -1,0 +1,155 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/forms/field_groups.html.erb %>
+<% ui.layout.head.title = ["Field Groups", "Forms"] %>
+<% build_breadcrumb "Field Groups" %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Field Groups</h1>
+  <p class="typography-body">Form field groups with automatic grid layout and Bootstrap-style styling.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Layout" %>
+    <p class="demo-description">A complete form with various field types using the grid layout system.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Grid" %>
+    <p class="demo-description">Form fields are laid out in a grid according to a <code class="typography-code">colspan</code> option.</p>
+    <%= demo_code helper: :component_forms_groups_grid_field_groups do %>
+      <%= form_field_groups "basic" do |f| %>
+        <%= f.email_field_group :email, colspan: 6 %>
+
+        <%= f.password_field_group :password, colspan: 6 %>
+
+        <%= f.text_field_group :address, placeholder: "1234 Main St" %>
+
+        <%= f.text_field_group :city, value: "Atlanta", colspan: 6 %>
+
+        <%= f.select_group :state, [ "", "California", "Georgia" ], selected: "", label: "State/Province", colspan: 4 %>
+
+        <%= f.text_field_group :zip, colspan: 2 %>
+
+        <%= f.radio_button_group :account_type do |g| %>
+          <%= g.radio_button "personal", label: "Personal Account", checked: true %>
+          <%= g.radio_button "business", label: "Business Account" %>
+          <%= g.radio_button "nonprofit", label: "Non-Profit Organization", disabled: true %>
+        <% end %>
+
+        <%= f.checkbox_group :subscribe_to_newsletter %>
+
+        <%= f.buttons do |g| %>
+          <% g.with_submit_button "Register" %>
+          <% g.with_cancel_link "/" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Horizontal" %>
+    <p class="demo-description">Labels horizontally aligned with the form fields.</p>
+    <%= demo_code helper: :component_forms_groups_horizontal_field_groups do %>
+      <%= form_field_groups "horizontal_demo", horizontal: true do |f| %>
+        <% f.with_text_field_group :email %>
+        <% f.with_text_field_group :first_name, colspan: 4 %>
+        <% f.with_text_field_group :last_name, colspan: 4 %>
+        <% f.with_radio_button_group :user_type do |g| %>
+          <%= g.radio_button "regular", label: "Regular User", checked: true %>
+          <%= g.radio_button "admin", label: "Admin User" %>
+          <%= g.radio_button "superadmin", label: "Super Admin User", disabled: true %>
+        <% end %>
+        <% f.with_checkbox_group :confirmed %>
+        <% f.with_buttons do |g| %>
+          <% g.with_submit_button "Update" %>
+          <% g.with_cancel_link "Back", "/" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Decorators" %>
+    <p class="demo-description">Field groups can be decorated with additional content.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Errors" %>
+    <p class="demo-description">When an error message is provided, the label and field turn red (text-danger) and the error message displays below the field.</p>
+    <%= demo_code helper: nil do %>
+      <%= form_field_groups "validation_demo" do |f| %>
+        <% f.with_email_field_group :email, colspan: 6, error: "Email is required" %>
+        <% f.with_password_field_group :password, colspan: 6, error: "Password must be at least 8 characters" %>
+      <% end %>
+
+      <%= form_field_groups "horizontal_validation_demo", horizontal: true, class: "mt-8" do |f| %>
+        <% f.with_group :email, error: "Please enter a valid email address" do |g| %>
+          <% g.with_error do %>
+            Please enter a valid email address. <%= link_to "Learn more", "#", class: "underline" %>
+          <% end %>
+          <%= g.email_field %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Hints" %>
+    <p class="demo-description">Hint messages provide additional guidance below the field. They appear below errors if both are present.</p>
+    <%= demo_code helper: nil do %>
+      <%= form_field_groups "hint_demo" do |f| %>
+        <% f.with_text_field_group :username, colspan: 6, hint: "Must be at least 3 characters" %>
+        <% f.with_email_field_group :email, colspan: 6, hint: "We'll never share your email with anyone else" %>
+        <% f.with_password_field_group :password, hint: "Use a mix of letters, numbers, and symbols", error: "Password is required" %>
+      <% end %>
+
+      <%= form_field_groups "horizontal_hint_demo", horizontal: true, class: "mt-8" do |f| %>
+        <% f.with_group :bio do |g| %>
+          <% g.with_hint do %>
+            Tell us about yourself in <strong>200 characters</strong> or less
+          <% end %>
+          <%= g.textarea %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Tooltips", badge: warning_badge("TODO") %>
+    <p class="demo-description">Tooltips provide additional context for form fields by displaying a small info icon next to the label. When users hover over or focus on the icon, a tooltip appears with additional guidance.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Rails" %>
+    <p class="demo-description">.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Form Builder" %>
+    <p class="demo-description">A form builder to automatically populate values and errors from a model.</p>
+    <%= demo_code do %>
+      <%= form_field_groups_for @user, url: request.path do |f| %>
+        <%= f.text_field_group :email %>
+        <%= f.text_field_group :first_name, colspan: 4 %>
+        <%= f.text_field_group :last_name, colspan: 4 %>
+        <%= f.select_group :country, [ "United States", "Canada" ], include_blank: true, colspan: 4 %>
+        <%= f.radio_button_group :user_type do |g| %>
+          <%= g.radio_button "regular", label: "Regular User" %>
+          <%= g.radio_button "admin", label: "Admin User" %>
+          <%= g.radio_button "superadmin", label: "Super Admin User", disabled: true %>
+        <% end %>
+        <%= f.checkbox_group :confirmed %>
+        <%= f.buttons do |g| %>
+          <%= g.submit_button "Update" %>
+          <%= g.cancel_link "Back", "/" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "i18n", badge: warning_badge("TODO") %>
+    <p class="demo-description">I18n support for field labels and error messages.</p>
+  </div>
+<% end %>
+

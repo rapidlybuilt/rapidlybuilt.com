@@ -1,0 +1,33 @@
+/* Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/assets/stylesheets/code-theme-light.css */
+@layer components {
+/* Light theme for Rouge */
+  .code-theme-light pre.highlight,
+  .code-theme-light pre.rouge-code,
+  pre.code-theme-light {
+    background: #fbfcfe;
+    color: #0f172a;
+    font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow: auto;
+  }
+
+  /* Base token colors (Rouge uses short classes like .k, .s, .c, etc.) */
+  .code-theme-light .c, .code-theme-light .cm, .code-theme-light .c1, .code-theme-light .cs { color: #64748b; font-style: italic; } /* comments */
+  .code-theme-light .k, .code-theme-light .kd, .code-theme-light .kn, .code-theme-light .kp, .code-theme-light .kr, .code-theme-light .kt { color: #7c3aed; font-weight: 600; } /* keywords & types */
+  .code-theme-light .s, .code-theme-light .sb, .code-theme-light .sc, .code-theme-light .sd, .code-theme-light .s1, .code-theme-light .s2, .code-theme-light .se, .code-theme-light .sh, .code-theme-light .si, .code-theme-light .sx, .code-theme-light .sr, .code-theme-light .ss { color: #16a34a; } /* strings */
+  .code-theme-light .m, .code-theme-light .mb, .code-theme-light .mf, .code-theme-light .mh, .code-theme-light .mi, .code-theme-light .il, .code-theme-light .mo { color: #2563eb; } /* numbers */
+  .code-theme-light .nf, .code-theme-light .nl, .code-theme-light .nn { color: #0d9488; } /* functions, namespaces */
+  .code-theme-light .na { color: #9333ea; } /* HTML attrs / names */
+  .code-theme-light .nt { color: #2563eb; } /* HTML tag names */
+  .code-theme-light .nc, .code-theme-light .no, .code-theme-light .bp { color: #b45309; } /* classes, constants, builtins */
+  .code-theme-light .o, .code-theme-light .ow { color: #334155; } /* operators */
+  .code-theme-light .p { color: #475569; } /* punctuation */
+  .code-theme-light .gd { background: #fee2e2; } /* diff deleted */
+  .code-theme-light .gi { background: #dcfce7; } /* diff inserted */
+  .code-theme-light .err { color: #dc2626; text-decoration: underline dotted; } /* errors */
+
+  /* Optional line highlighting (if you add <span class="hll"> wrappers) */
+  .code-theme-light .hll { background: #fff7ed; }
+}

@@ -1,0 +1,673 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/content/tables.html.erb %>
+<% ui.layout.head.title = ["Tables", "Content", "Theme"] %>
+<% with_breadcrumb("Tables") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Tables</h1>
+  <p class="typography-body">Flexible table component with color variants, striping, hover states, borders, and responsive behavior.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Basic Table" %>
+    <p class="demo-description">A simple table with default styling.</p>
+    <%= demo_code helper: :component_content_table_basic, content_class: "overflow-x-hidden" do %>
+      <%= table do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Variants" %>
+    <p class="demo-description">Apply color variants to individual rows using the theme's semantic color system.</p>
+    <%= demo_code helper: :component_content_table_variants, content_class: "overflow-x-hidden" do %>
+      <%= table do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "Variant" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row variant: "light-primary" do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Light Primary" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row variant: "light-secondary" do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Light Secondary" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row variant: "dark-primary" do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Dark Primary" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+          <% body.with_row variant: "dark-secondary" do |row| %>
+            <% row.with_cell "4", scope: "row" %>
+            <% row.with_cell "Dark Secondary" %>
+            <% row.with_cell "Sarah" %>
+            <% row.with_cell "Connor" %>
+            <% row.with_cell "@sarah" %>
+          <% end %>
+          <% body.with_row variant: "success" do |row| %>
+            <% row.with_cell "5", scope: "row" %>
+            <% row.with_cell "Success" %>
+            <% row.with_cell "John" %>
+            <% row.with_cell "Doe" %>
+            <% row.with_cell "@johndoe" %>
+          <% end %>
+          <% body.with_row variant: "danger" do |row| %>
+            <% row.with_cell "6", scope: "row" %>
+            <% row.with_cell "Danger" %>
+            <% row.with_cell "Jane" %>
+            <% row.with_cell "Smith" %>
+            <% row.with_cell "@janesmith" %>
+          <% end %>
+          <% body.with_row variant: "warning" do |row| %>
+            <% row.with_cell "7", scope: "row" %>
+            <% row.with_cell "Warning" %>
+            <% row.with_cell "Bob" %>
+            <% row.with_cell "Johnson" %>
+            <% row.with_cell "@bob" %>
+          <% end %>
+          <% body.with_row variant: "info" do |row| %>
+            <% row.with_cell "8", scope: "row" %>
+            <% row.with_cell "Info" %>
+            <% row.with_cell "Alice" %>
+            <% row.with_cell "Williams" %>
+            <% row.with_cell "@alice" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Accented Tables" %>
+    <p class="demo-description">Add visual emphasis to your tables with accent styles like striping, hovering, and borders to help organize and highlight your data.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Striped" %>
+    <p class="demo-description">Add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
+    <%= demo_code helper: :component_content_table_striped, content_class: "overflow-x-hidden" do %>
+      <%= table(striped: true) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "4", scope: "row" %>
+            <% row.with_cell "John" %>
+            <% row.with_cell "Doe" %>
+            <% row.with_cell "@johndoe" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Hoverable" %>
+    <p class="demo-description">Add hover state on table rows.</p>
+    <%= demo_code helper: :component_content_table_hover, content_class: "overflow-x-hidden" do %>
+      <%= table(hover: true) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Active" %>
+    <p class="demo-description">Highlight a table row with the <code>table-active</code> class.</p>
+    <%= demo_code helper: :component_content_table_active, content_class: "overflow-x-hidden" do %>
+      <%= table do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row active: true do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Borders" %>
+    <p class="demo-description">Add borders to your tables to create visual separation between cells and rows. Choose from bordered, borderless, or border-top styles.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Bordered" %>
+    <p class="demo-description">Add borders on all sides of the table and cells.</p>
+    <%= demo_code helper: :component_content_table_bordered, content_class: "overflow-x-hidden" do %>
+      <%= table(bordered: true) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "No borders" %>
+    <p class="demo-description">Remove all borders from the table.</p>
+    <%= demo_code helper: :component_content_table_borderless, content_class: "overflow-x-hidden" do %>
+      <%= table(borderless: true) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Small Tables" %>
+    <p class="demo-description">Make tables more compact by reducing cell padding.</p>
+    <%= demo_code helper: :component_content_table_small, content_class: "overflow-x-hidden" do %>
+      <%= table(small: true) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Larry" %>
+            <% row.with_cell "Bird" %>
+            <% row.with_cell "@twitter" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Vertical Alignment" %>
+    <p class="demo-description">Control the vertical alignment of table cells.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Top" %>
+    <%= demo_code helper: :component_content_table_align_top, content_class: "overflow-x-hidden" do %>
+      <%= table(align: :top) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "Heading 1" %>
+            <% row.with_cell "Heading 2" %>
+            <% row.with_cell "Heading 3" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "This cell has a lot of content that spans multiple lines to demonstrate vertical alignment behavior in table cells." %>
+            <% row.with_cell "Short" %>
+            <% row.with_cell "Content" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Middle (Default)" %>
+    <%= demo_code helper: :component_content_table_align_middle, content_class: "overflow-x-hidden" do %>
+      <%= table(align: :middle) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "Heading 1" %>
+            <% row.with_cell "Heading 2" %>
+            <% row.with_cell "Heading 3" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "This cell has a lot of content that spans multiple lines to demonstrate vertical alignment behavior in table cells." %>
+            <% row.with_cell "Short" %>
+            <% row.with_cell "Content" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Bottom" %>
+    <%= demo_code helper: :component_content_table_align_bottom, content_class: "overflow-x-hidden" do %>
+      <%= table(align: :bottom) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "Heading 1" %>
+            <% row.with_cell "Heading 2" %>
+            <% row.with_cell "Heading 3" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "This cell has a lot of content that spans multiple lines to demonstrate vertical alignment behavior in table cells." %>
+            <% row.with_cell "Short" %>
+            <% row.with_cell "Content" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Table Captions" %>
+    <p class="demo-description">Add a caption to provide context for your table.</p>
+    <%= demo_code helper: :component_content_table_caption_top, content_class: "overflow-x-hidden" do %>
+      <%= table do |t| %>
+        <% t.with_caption("List of users") %>
+
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Bottom Caption" %>
+    <%= demo_code helper: :component_content_table_caption_bottom, content_class: "overflow-x-hidden" do %>
+      <%= table do |t| %>
+        <% t.with_caption("List of users shown below", position: :bottom) %>
+
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "First" %>
+            <% row.with_cell "Last" %>
+            <% row.with_cell "Handle" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Mark" %>
+            <% row.with_cell "Otto" %>
+            <% row.with_cell "@mdo" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Jacob" %>
+            <% row.with_cell "Thornton" %>
+            <% row.with_cell "@fat" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Nesting" %>
+    <p class="demo-description">Tables can be nested inside table cells.</p>
+    <%= demo_code content_class: "overflow-x-hidden" do %>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>John Doe</td>
+            <td>
+              <table class="table table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Project A</td>
+                    <td>Complete</td>
+                  </tr>
+                  <tr>
+                    <td>Project B</td>
+                    <td>In Progress</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jane Smith</td>
+            <td>
+              <table class="table table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Project C</td>
+                    <td>Complete</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Responsive Tables" %>
+    <p class="demo-description">Make tables scroll horizontally on small screens.</p>
+    <%= demo_code helper: :component_content_table_responsive do %>
+      <%= table(responsive: true) do |t| %>
+        <% t.with_head do |head| %>
+          <% head.with_row do |row| %>
+            <% row.with_cell "#" %>
+            <% row.with_cell "Heading 1" %>
+            <% row.with_cell "Heading 2" %>
+            <% row.with_cell "Heading 3" %>
+            <% row.with_cell "Heading 4" %>
+            <% row.with_cell "Heading 5" %>
+            <% row.with_cell "Heading 6" %>
+            <% row.with_cell "Heading 7" %>
+            <% row.with_cell "Heading 8" %>
+            <% row.with_cell "Heading 9" %>
+          <% end %>
+        <% end %>
+
+        <% t.with_body do |body| %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "1", scope: "row" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "2", scope: "row" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+          <% end %>
+          <% body.with_row do |row| %>
+            <% row.with_cell "3", scope: "row" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+            <% row.with_cell "Cell" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Property Tables" %>
+    <p class="demo-description">Specialized two-column tables for displaying object properties, database records, or key-value pairs. Property tables provide a clean layout for showing attributes with names and values.</p>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "Basic Usage", id: "property-table-basic" %>
+    <p class="demo-description">A simple property table with name-value pairs.</p>
+    <%= demo_code helper: :component_content_property_table_basic, content_class: "overflow-x-hidden" do %>
+      <%= property_table striped: true, hover: true do |t| %>
+        <% t.with_property "Name", "John Doe" %>
+        <% t.with_property "Email", "john.doe@example.com" %>
+        <% t.with_property "Phone", "+1 (555) 123-4567" %>
+        <% t.with_property "Status", "Active" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h3 "HTML Content", id: "property-table-html" %>
+    <p class="demo-description">Property values can contain HTML content by using a block.</p>
+    <%= demo_code helper: :component_content_property_table_html, content_class: "overflow-x-hidden" do %>
+      <%= property_table do |t| %>
+        <% t.with_property "Name", "John Doe" %>
+        <% t.with_property "Email" do %>
+          <%= link_to "john.doe@example.com", "mailto:john.doe@example.com" %>
+        <% end %>
+        <% t.with_property "Status" do %>
+          <%= badge("Active", variant: "success") %>
+        <% end %>
+        <% t.with_property "Actions" do %>
+          <%= button("Edit", variant: "primary", size: "sm") %>
+          <%= button("Delete", variant: "danger", size: "sm") %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+

@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "rapid_ui/commands/tailwind_css"
+
+RapidUI::Commands::TailwindCSS.new(
+  tools: {
+    input: "app/assets/tailwind/tools.css",
+    output: "app/assets/builds/tools.css",
+    build_dir: "app/assets/builds",
+  },
+  nil => {
+    input: "app/assets/tailwind/application.css",
+    output: "app/assets/builds/application.css",
+    build_dir: "app/assets/builds",
+  }
+).run(ARGV)

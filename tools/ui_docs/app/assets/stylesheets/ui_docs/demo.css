@@ -1,0 +1,77 @@
+/* Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/assets/stylesheets/demo.css */
+/* Demo Page Utilities */
+
+@layer components {
+  .demo-header {
+    @apply mb-8;
+  }
+  .demo-header h1 {
+    @apply !mb-2;
+  }
+
+  .demo-section {
+    @apply mb-12;
+  }
+
+  .demo-flex {
+    @apply flex gap-4 flex-wrap items-center;
+  }
+
+  .demo-description {
+    @apply font-sans text-sm leading-normal font-normal mt-2 mb-4;
+  }
+
+  .demo {
+    @apply border border-gray-200 rounded-lg;
+  }
+
+  .demo-content {
+    @apply p-4 bg-white rounded-t-lg;
+  }
+
+  .demo {
+    @apply border-t border-gray-200 bg-gray-50;
+  }
+
+  .demo pre.code-theme-light {
+    @apply border-0 rounded-b-lg m-0;
+  }
+
+  .demo-code-tabs {
+    @apply flex border-b border-gray-200 bg-gray-50;
+  }
+
+  .demo-code-tab {
+    @apply px-4 py-2 text-sm font-medium cursor-pointer border-b-2 border-transparent transition-colors;
+    color: var(--color-shell-text);
+  }
+
+  .demo-code-tab:hover {
+    color: var(--color-core-text);
+    background-color: var(--color-shell-bg);
+  }
+
+  .demo-code-tab.active {
+    color: var(--color-link);
+    border-bottom-color: var(--color-link);
+    background-color: var(--color-bg-light-primary);
+  }
+
+  .demo-code-tab.disabled {
+    @apply opacity-50 cursor-not-allowed;
+    color: var(--color-shell-text);
+    background-color: transparent;
+  }
+
+  .demo-code-tab.disabled:hover {
+    color: var(--color-shell-text);
+    background-color: transparent;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .demo-header {
+      @apply mt-2 mb-2;
+    }
+  }
+}

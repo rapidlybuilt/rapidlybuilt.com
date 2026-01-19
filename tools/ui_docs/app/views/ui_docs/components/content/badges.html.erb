@@ -1,0 +1,82 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/content/badges.html.erb %>
+<% ui.layout.head.title = ["Badges", "Content", "Theme"] %>
+<% with_breadcrumb("Badges") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Badges</h1>
+  <p class="typography-body">Small count and labeling components using the theme's semantic color system.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Variants" %>
+    <p class="demo-description">All available badge variants including light, dark, and status colors.</p>
+    <%= demo_code flex: true, helper: :component_content_badge_variants do %>
+      <%= primary_badge "Primary" %>
+      <%= secondary_badge "Secondary" %>
+      <%= success_badge "Success" %>
+      <%= danger_badge "Danger" %>
+      <%= warning_badge "Warning" %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Pills" %>
+    <p class="demo-description">Fully rounded corners for a softer look. Combine <code>badge-pill</code> with any color variant.</p>
+    <%= demo_code flex: true, helper: :component_content_badge_pills do %>
+      <%= primary_pill_badge "Primary" %>
+      <%= secondary_pill_badge "Secondary" %>
+      <%= success_pill_badge "Success" %>
+      <%= danger_pill_badge "Danger" %>
+      <%= warning_pill_badge "Warning" %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Sizes" %>
+    <%= demo_code flex: true, helper: :component_content_badge_sizes do %>
+      <%= primary_badge "X-Small", class: "text-xs" %>
+      <%= primary_badge "Small", class: "text-sm" %>
+      <%= primary_badge "Medium (Default)" %>
+      <%= primary_badge "Large", class: "text-lg" %>
+      <%= primary_badge "X-Large", class: "text-xl" %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Headers" %>
+    <p class="demo-description">How badges look when used within headings for notifications and counts.</p>
+    <%= demo_code do %>
+      <h1 class="typography-h1">Example heading <%= primary_badge "New" %></h1>
+      <h2 class="typography-h2">Example heading <%= primary_badge "New" %></h2>
+      <h3 class="typography-h3">Example heading <%= primary_badge "New" %></h3>
+      <h4 class="typography-h4">Example heading <%= primary_badge "New" %></h4>
+      <h5 class="typography-h5">Example heading <%= primary_badge "New" %></h5>
+      <h6 class="typography-h6">Example heading <%= primary_badge "New" %></h6>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Buttons" %>
+    <p class="demo-description">How badges look when used inside buttons for counts and notifications.</p>
+    <%= demo_code flex: true, helper: :component_content_badge_buttons do %>
+      <%= secondary_button do %>
+        Messages <%= success_badge 12 %>
+      <% end %>
+
+      <%= outline_primary_button do %>
+        Drafts <%= primary_badge 7 %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "HTML content" %>
+    <p class="demo-description">Badges with arbitrary content using block syntax.</p>
+    <%= demo_code helper: :component_content_badge_html_content do %>
+      <%= warning_badge do %>
+        <strong>New</strong>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

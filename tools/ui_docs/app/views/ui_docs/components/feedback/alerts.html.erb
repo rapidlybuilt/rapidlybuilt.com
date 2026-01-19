@@ -1,0 +1,89 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/feedback/alerts.html.erb %>
+<% ui.layout.head.title = ["Alerts", "Feedback", "Components"] %>
+<% with_breadcrumb("Alerts") %>
+
+<div class="demo-header">
+  <h1 class="typography-h1">Alerts</h1>
+  <p class="typography-body">Provide contextual feedback messages for typical user actions with flexible alert messages.</p>
+</div>
+
+<%= table_of_contents typography: true do |headers| %>
+  <div class="demo-section">
+    <%= headers.h2 "Variants" %>
+    <p class="demo-description">All available alert variants including primary, secondary, and status colors.</p>
+    <%= demo_code content_class: "flex flex-col gap-3", helper: :component_feedback_alert_variants do %>
+      <%= info_alert "This is an informational alert." %>
+      <%= success_alert "Your action was successful!" %>
+      <%= warning_alert "Please be careful with this action." %>
+      <%= danger_alert "Something went wrong." %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Icon" %>
+    <p class="demo-description">Alerts can include icons for better visual communication.</p>
+    <%= demo_code content_class: "flex flex-col gap-3", helper: :component_feedback_alert_with_icons do %>
+      <%= info_alert "This alert includes an icon for better visual communication.", icon: "info" %>
+      <%= success_alert "Your changes have been saved successfully!", icon: "circle-check" %>
+      <%= warning_alert "This action cannot be undone.", icon: "triangle-alert" %>
+      <%= danger_alert "Failed to process your request.", icon: "circle-question-mark" %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "Dismissible" %>
+    <p class="demo-description">Alerts can be dismissible with a close button.</p>
+    <%= demo_code content_class: "flex flex-col gap-3", helper: :component_feedback_alert_dismissible do %>
+      <%= info_alert "This alert can be dismissed.", dismissible: true %>
+      <%= success_alert dismissible: true do |a| %>
+        <% a.with_close_button "Dismiss" %>
+        This alert can be dismissed.
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="demo-section">
+    <%= headers.h2 "HTML Content" %>
+    <p class="demo-description">Alerts can contain rich HTML content including links, lists, and formatting.</p>
+    <%= demo_code content_class: "flex flex-col gap-3" do %>
+      <%= info_alert icon: "info", dismissible: true do %>
+        <strong>Did you know?</strong>
+        <p class="mt-1 mb-0">
+          You can include <a href="#" class="underline">links</a>, <strong>bold text</strong>,
+          <em>italic text</em>, and other HTML elements in alerts.
+        </p>
+      <% end %>
+
+      <%= warning_alert icon: "triangle-alert" do %>
+        <strong>Important Notice</strong>
+        <p class="mt-1 mb-1">Before proceeding, please ensure:</p>
+        <ul class="list-disc ml-5 mb-0">
+          <li>All required fields are completed</li>
+          <li>You have reviewed the terms and conditions</li>
+          <li>Your changes have been saved</li>
+        </ul>
+      <% end %>
+
+      <%= success_alert dismissible: true do %>
+        <div>
+          <strong>Account Created Successfully!</strong>
+          <p class="mt-1 mb-0">
+            Your account has been created. Check your email for a verification link.
+            <a href="#" class="underline font-semibold">Resend email</a>
+          </p>
+        </div>
+      <% end %>
+
+      <%= danger_alert do %>
+        <strong>Critical System Error</strong>
+        <p class="mt-1 mb-1">The following issues were detected:</p>
+        <ul class="list-disc ml-5 mb-0">
+          <li>Database connection timeout</li>
+          <li>Background job queue is not processing</li>
+          <li>Cache server is unresponsive</li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+

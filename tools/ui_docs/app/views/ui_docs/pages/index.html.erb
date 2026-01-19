@@ -1,0 +1,39 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/pages/index.html.erb %>
+<% ui.layout.head.title = ["RapidUI"] %>
+
+<div class="max-w-4xl mx-auto">
+  <!-- Hero -->
+  <div class="text-center">
+    <h1 class="typography-h1 text-4xl mb-4">RapidUI</h1>
+    <p class="typography-body text-xl text-gray-600 max-w-2xl mx-auto">
+      A UI foundation for building complex tools. Production—all designed to work together inside a layout like this.
+    </p>
+  </div>
+
+  <!-- Quick Links -->
+  <div class="my-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <%= link_to components_root_path, class: "block p-6 border border-gray-200 rounded-lg hover:border-blue-500 transition-colors" do %>
+        <h3 class="typography-h3 mb-2">Components →</h3>
+        <p class="typography-body text-gray-600 text-sm">Buttons, forms, tables, alerts, badges, dropdowns, and more.</p>
+      <% end %>
+
+      <%= link_to stimulus_path, class: "block p-6 border border-gray-200 rounded-lg hover:border-blue-500 transition-colors" do %>
+        <h3 class="typography-h3 mb-2">Stimulus →</h3>
+        <p class="typography-body text-gray-600 text-sm">Reusable controllers for expandable content, modals, and interactions.</p>
+      <% end %>
+
+      <%= link_to themes_path, class: "block p-6 border border-gray-200 rounded-lg hover:border-blue-500 transition-colors" do %>
+        <h3 class="typography-h3 mb-2">Themes →</h3>
+        <p class="typography-body text-gray-600 text-sm">Color schemes and styling presets built on CSS custom properties.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Installation -->
+  <div class="my-12">
+    <h2 class="typography-h2 mb-4">Get Started</h2>
+    <p class="typography-body text-gray-700 mb-4">Add RapidUI to your Rails application:</p>
+    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>gem "rapid_ui"</code></pre>
+  </div>
+</div>

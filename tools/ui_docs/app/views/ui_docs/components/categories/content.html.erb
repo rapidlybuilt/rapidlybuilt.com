@@ -1,0 +1,18 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/categories/content.html.erb %>
+<% ui.layout.head.title = ["Content", "Components"] %>
+
+<div class="max-w-4xl mx-auto">
+  <h1 class="typography-h1">Content Components</h1>
+  <p class="typography-body mt-4">Components for displaying and organizing content, from text to data to visual elements.</p>
+
+  <%= render_feature_list [
+    { name: "Accordion", description: "Collapsible content sections for organizing information." },
+    { name: "Badges", description: "Small status indicators for counts, labels, and highlighting key information.", path: components_content_badges_path },
+    { name: "Card", description: "Flexible containers for grouping related content." },
+    { name: "Carousel", description: "Slideshows for cycling through images or content." },
+    { name: "Icons", description: "Lucide icons with consistent sizing and styling options.", path: components_content_icons_path },
+    { name: "List Group", description: "Vertical lists of content with optional actions." },
+    { name: "Tables", description: "Structured layouts for displaying rows and columns of data.", path: components_content_tables_path },
+    { name: "Typography", description: "Text styles for headings, paragraphs, and inline elements.", path: components_content_typography_path }
+  ] %>
+</div>

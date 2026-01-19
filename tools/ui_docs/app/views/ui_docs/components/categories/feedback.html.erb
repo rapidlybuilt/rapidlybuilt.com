@@ -1,0 +1,16 @@
+<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/components/categories/feedback.html.erb %>
+<% ui.layout.head.title = ["Feedback", "Components"] %>
+
+<div class="max-w-4xl mx-auto">
+  <h1 class="typography-h1">Feedback Components</h1>
+  <p class="typography-body mt-4">Components for providing user feedback, notifications, and status updates.</p>
+
+  <%= render_feature_list [
+    { name: "Alerts", description: "Contextual feedback messages for user actions with flexible styling and dismissible options.", path: components_feedback_alerts_path },
+    { name: "Popovers", description: "Floating content panels triggered by user interaction." },
+    { name: "Progress", description: "Visual indicators for task completion and loading states." },
+    { name: "Spinners", description: "Animated loading indicators for async operations." },
+    { name: "Toasts", description: "Lightweight notifications that auto-dismiss." },
+    { name: "Tooltips", description: "Contextual hints displayed on hover or focus." }
+  ] %>
+</div>
