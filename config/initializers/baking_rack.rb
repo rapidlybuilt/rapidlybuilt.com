@@ -1,7 +1,7 @@
 BakingRack.config do |c|
   c.build_directory = "tmp/_site"
   c.builder = BakingRack::Rails::Builder.new
-  c.deployer = BakingRack::AwsS3::Deployer.new
+  c.deployer = BakingRack::AwsS3::Deployer.new(bucket_name: "rapidlybuilt-production-www")
 
   c.terraform_directory = "../terraform"
 
