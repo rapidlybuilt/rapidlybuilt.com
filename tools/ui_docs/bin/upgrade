@@ -12,7 +12,7 @@ require "fileutils"
 
 class Upgrade
   UI_DOCS_DIR = File.expand_path("..", __dir__)
-  RAPIDLY_ROOT = File.expand_path("../../../..", UI_DOCS_DIR)
+  RAPIDLY_ROOT = File.expand_path("../../..", UI_DOCS_DIR)
   RAPID_UI_DOCS = File.join(RAPIDLY_ROOT, "rapid_ui/docs")
 
   # Directories that get completely replaced (cleared before copy)
@@ -33,6 +33,7 @@ class Upgrade
     stylesheets: %w[
       app/assets/stylesheets/ui_docs/demo.css
       app/assets/stylesheets/ui_docs/code-theme-light.css
+      app/assets/stylesheets/ui_docs/index.css
     ],
     routes: %w[config/routes.rb]
   }.freeze
@@ -317,7 +318,7 @@ class Upgrade
     target_dir = File.join(UI_DOCS_DIR, "app/assets/stylesheets/ui_docs")
     FileUtils.mkdir_p(target_dir)
 
-    %w[demo.css code-theme-light.css].each do |stylesheet|
+    %w[index.css demo.css code-theme-light.css].each do |stylesheet|
       source = File.join(RAPID_UI_DOCS, "app/assets/stylesheets", stylesheet)
       if File.exist?(source)
         target = File.join(target_dir, stylesheet)

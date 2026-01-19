@@ -8,6 +8,7 @@ RapidUI::Commands::TailwindCSS.new(
     input: "app/assets/tailwind/tools.css",
     output: "app/assets/builds/tools.css",
     build_dir: "app/assets/builds",
+    import: [ "tailwindcss", "rapid_ui/index" ]
   },
   nil => {
     input: "app/assets/tailwind/application.css",

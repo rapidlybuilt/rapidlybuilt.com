@@ -1,7 +1,3 @@
-@import "tailwindcss";
+/* tailwindcss automatically imports tailwindcss and rapid_ui/index.css */
 
-@import "../../../vendor/stylesheets/rapid_ui/index.css";
-
-/* TODO: is this the right spot for styles from the ui_docs tool? */
-@import "../../../tools/ui_docs/app/assets/stylesheets/ui_docs/code-theme-light.css";
-@import "../../../tools/ui_docs/app/assets/stylesheets/ui_docs/demo.css";
+@import "../../../tools/ui_docs/app/assets/stylesheets/ui_docs/index.css";
