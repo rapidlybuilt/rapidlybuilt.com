@@ -29,13 +29,15 @@ gem "ui_docs", path: "tools/ui_docs"
 
 # bundle config https://rubygems.pkg.github.com/dcunning USERNAME:TOKEN
 source "https://rubygems.pkg.github.com/dcunning" do
-  # gem "baking_rack"
-  # gem "rapidly_built"
-  # gem "rapid_ui"
+  gem "baking_rack"
+  gem "rapidly_built"
+  gem "rapid_ui"
 end
-gem "baking_rack", path: "../../baking_rack"
-gem "rapidly_built", path: "../rapidly_built"
-gem "rapid_ui", path: "../rapid_ui"
+# gem "baking_rack", path: "../../baking_rack"
+# gem "rapidly_built", path: "../rapidly_built"
+# gem "rapid_ui", path: "../rapid_ui"
+
+# baking_rack deploy
 gem "aws-sdk-s3", require: false
 
 group :development, :test do

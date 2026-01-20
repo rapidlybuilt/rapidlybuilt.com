@@ -1,33 +1,4 @@
 PATH
-  remote: ../../baking_rack
-  specs:
-    baking_rack (0.1.25)
-      base64 (~> 0.2)
-      colorize (~> 1)
-      mime-types (~> 3)
-      rack (>= 2.2.4)
-      thor (~> 1)
-      zeitwerk (~> 2)
-
-PATH
-  remote: ../rapid_ui
-  specs:
-    rapid_ui (0.1.0)
-      importmap-rails (~> 2.0)
-      rails (>= 8.0.3)
-      stimulus-rails (~> 1.0)
-      turbo-rails (~> 2.0)
-      view_component (~> 4)
-      zeitwerk (~> 2.6)
-
-PATH
-  remote: ../rapidly_built
-  specs:
-    rapidly_built (0.1.0)
-      rails (>= 8.1.1)
-      zeitwerk (~> 2.7)
-
-PATH
   remote: tools/ui_docs
   specs:
     ui_docs (0.1.0)
@@ -284,7 +255,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rdoc (7.0.3)
+    rdoc (7.1.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -351,7 +322,7 @@ GEM
     thruster (0.1.17-x86_64-linux)
     timeout (0.6.0)
     tsort (0.2.0)
-    turbo-rails (2.0.20)
+    turbo-rails (2.0.21)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
@@ -382,6 +353,24 @@ GEM
 GEM
   remote: https://rubygems.pkg.github.com/dcunning/
   specs:
+    baking_rack (0.1.25)
+      base64 (~> 0.2)
+      colorize (~> 1)
+      mime-types (~> 3)
+      rack (>= 2.2.4)
+      thor (~> 1)
+      zeitwerk (~> 2)
+    rapid_ui (0.1.1)
+      importmap-rails (~> 2.0)
+      rails (>= 8.0.3)
+      stimulus-rails (~> 1.0)
+      turbo-rails (~> 2.0)
+      view_component (~> 4)
+      zeitwerk (~> 2.6)
+    rapidly_built (0.1.1)
+      rails (>= 8.1.1)
+      rapid_ui (= 0.1.1)
+      zeitwerk (~> 2.7)
 
 PLATFORMS
   aarch64-linux
