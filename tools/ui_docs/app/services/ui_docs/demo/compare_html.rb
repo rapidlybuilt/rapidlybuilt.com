@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/services/demo/compare_html.rb
 module UiDocs
   class Demo::CompareHtml < ApplicationService

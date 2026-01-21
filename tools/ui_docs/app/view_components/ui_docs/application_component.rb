@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/view_components/application_component.rb
 module UiDocs
   class ApplicationComponent < RapidUI::ApplicationComponent

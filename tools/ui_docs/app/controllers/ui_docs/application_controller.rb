@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/controllers/application_controller.rb
 module UiDocs
   class ApplicationController < ActionController::Base

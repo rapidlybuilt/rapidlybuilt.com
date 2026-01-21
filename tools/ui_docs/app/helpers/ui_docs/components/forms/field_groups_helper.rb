@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/helpers/components/forms/field_groups_helper.rb
 module UiDocs
   module Components::Forms::FieldGroupsHelper

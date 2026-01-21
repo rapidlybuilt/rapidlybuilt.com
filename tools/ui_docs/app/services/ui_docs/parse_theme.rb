@@ -1,10 +1,10 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/services/parse_theme.rb
 module UiDocs
   class ParseTheme < ApplicationService::Brief
     def call(id)
       @theme = Theme.new
-      @theme.id = id
+      @theme.id = id.underscore
       @theme.typography_variants = []
       @theme.button_variants = []
 

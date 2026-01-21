@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/controllers/themes_controller.rb
 module UiDocs
   class ThemesController < ApplicationController
@@ -22,7 +22,7 @@ module UiDocs
 
         sidebar.build_navigation do |navigation|
           @available_themes.each do |theme|
-            navigation.build_link(theme.title, theme_path(theme.id))
+            navigation.build_link(theme.title, theme_path(theme.path))
           end
         end
       end

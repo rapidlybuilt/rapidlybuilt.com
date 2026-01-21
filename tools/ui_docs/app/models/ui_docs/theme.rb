@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/models/theme.rb
 module UiDocs
   class Theme
@@ -9,6 +9,10 @@ module UiDocs
     attr_accessor :description
     attr_accessor :typography_variants
     attr_accessor :button_variants
+
+    def path
+      id.dasherize
+    end
 
     class TypographyVariant
       attr_accessor :id

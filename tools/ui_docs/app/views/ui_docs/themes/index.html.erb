@@ -1,4 +1,4 @@
-<%# Copied from RapidUI v0.1.0 | Source: rapid_ui/docs/app/views/themes/index.html.erb %>
+<%# Copied from RapidUI v0.1.1 | Source: rapid_ui/docs/app/views/themes/index.html.erb %>
 <% ui.layout.head.title = ["Themes"] %>
 
 <div class="max-w-4xl mx-auto">
@@ -6,6 +6,6 @@
   <p class="typography-body mt-4">Color schemes and styling presets for consistent UI design.</p>
 
   <%= render_feature_list @available_themes.map { |theme|
-    { name: theme.title, description: theme.description, path: theme_path(theme.id) }
+    { name: theme.title, description: theme.description, path: theme_path(theme.path) }
   } %>
 </div>

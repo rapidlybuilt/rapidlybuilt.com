@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.0
+# Copied from RapidUI v0.1.1
 # Source: rapid_ui/docs/app/services/demo/format_html.rb
 module UiDocs
   # TODO: this is generally useful. Should be outside of test/demo somewhere.
