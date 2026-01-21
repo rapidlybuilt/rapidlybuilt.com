@@ -12,7 +12,7 @@ BakingRack.config do |c|
     # end
 
     UiDocs::Theme.all.each do |theme|
-      get "/tools/rapid-ui/themes/#{theme.id}"
+      get "/tools/rapid-ui/themes/#{theme.path}"
     end
 
     get_other_rails_routes

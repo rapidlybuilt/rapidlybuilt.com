@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+tool = ARGV[0]
+
+if tool.nil?
+  puts "Usage: bin/upgrade <tool>"
+  puts "Example: bin/upgrade ui_docs"
+  exit 1
+end
+
+tool_dir = File.expand_path("../tools/#{tool}", __dir__)
+
+unless Dir.exist?(tool_dir)
+  puts "Error: Tool directory not found: #{tool_dir}"
+  exit 1
+end
+
+upgrade_script = File.join(tool_dir, "bin/upgrade")
+
+unless File.exist?(upgrade_script)
+  puts "Error: No bin/upgrade found in #{tool_dir}"
+  exit 1
+end
+
+Dir.chdir(tool_dir) do
+  exec("bin/upgrade")
+end
