@@ -1,0 +1,106 @@
+# Static search index for UI Docs
+# Each item has: title, path (relative to the tool's root), description (optional)
+
+- title: RapidUI
+  path: ""
+  description: Foundation for building tools.
+
+# Stimulus
+- title: Stimulus Controllers
+  path: stimulus
+  description: Stimulus JavaScript controllers
+
+- title: Expandable Controller
+  path: stimulus/expandable
+  description: Expandable/collapsible content controller
+
+# Themes
+- title: Themes
+  path: themes
+  description: Theme customization and color schemes
+
+# Layouts
+- title: Layouts
+  path: layouts
+  description: Page layout components and templates
+
+- title: Application Layout
+  path: layouts/application
+  description: Main application layout structure
+
+- title: Head Component
+  path: layouts/application/head
+  description: HTML head section with meta tags and assets
+
+- title: Header Component
+  path: layouts/application/header
+  description: Page header with navigation and branding
+
+- title: Subheader Component
+  path: layouts/application/subheader
+  description: Secondary header with breadcrumbs and actions
+
+- title: Sidebar Component
+  path: layouts/application/sidebar
+  description: Sidebar navigation and content
+
+- title: Footer Component
+  path: layouts/application/footer
+  description: Page footer with links and copyright
+
+# Components - Categories
+- title: Components
+  path: components
+  description: All UI components
+
+- title: Content Components
+  path: components/content
+  description: Components for displaying content
+
+- title: Control Components
+  path: components/controls
+  description: Interactive control components
+
+- title: Feedback Components
+  path: components/feedback
+  description: User feedback and notification components
+
+- title: Form Components
+  path: components/forms
+  description: Form input and validation components
+
+# Content Components
+- title: Badges
+  path: components/content/badges
+  description: Small status indicators and labels
+
+- title: Tables
+  path: components/content/tables
+  description: Data tables and property tables
+
+- title: Typography
+  path: components/content/typography
+  description: Text styles and formatting
+
+- title: Icons
+  path: components/content/icons
+  description: Icon library and usage
+
+# Control Components
+- title: Buttons
+  path: components/controls/buttons
+  description: Button styles and variants
+
+- title: Dropdowns
+  path: components/controls/dropdowns
+  description: Dropdown menus and selects
+
+# Feedback Components
+- title: Alerts
+  path: components/feedback/alerts
+  description: Alert messages and notifications
+
+# Form Components
+- title: Field Groups
+  path: components/forms/field-groups
+  description: Form field grouping and layout
