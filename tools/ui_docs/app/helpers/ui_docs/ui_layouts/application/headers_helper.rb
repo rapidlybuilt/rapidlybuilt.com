@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.3
+# Copied from RapidUI v0.1.4
 # Source: rapid_ui/docs/app/helpers/ui_layouts/application/headers_helper.rb
 module UiDocs
   module UiLayouts::Application::HeadersHelper
@@ -21,7 +21,7 @@ module UiDocs
       demo_components do |c|
         c << layout.build_header do |header|
           header.build_left do |left|
-            left.build_search(path: "/your-search-path")
+            left.build_search_bar(static_path: "/tools/search.json")
           end
         end
       end
@@ -112,7 +112,7 @@ module UiDocs
               end
             end
 
-            left.build_search(path: "#")
+            left.build_search_bar(static_path: "/tools/search.json")
           end
 
           header.build_right do |right|

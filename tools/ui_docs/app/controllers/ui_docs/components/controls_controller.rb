@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.3
+# Copied from RapidUI v0.1.4
 # Source: rapid_ui/docs/app/controllers/components/controls_controller.rb
 module UiDocs
   class Components::ControlsController < Components::BaseController

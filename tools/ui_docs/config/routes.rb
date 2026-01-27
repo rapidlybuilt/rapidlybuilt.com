@@ -1,9 +1,9 @@
-# Copied from RapidUI v0.1.3
+# Copied from RapidUI v0.1.4
 # Source: rapid_ui/docs/config/routes.rb
 UiDocs::Engine.routes.draw do
   root to: "pages#index"
 
-  get "search", to: "search#show"
+  # get "search", to: "search#show"
 
   resource :stimulus, only: [ :show ] do
     get :expandable
