@@ -1,0 +1,20 @@
+<div class="max-w-2xl mx-auto py-8 px-4">
+  <h1 class="text-2xl font-bold mb-6">Search</h1>
+
+  <%= form_with url: tools_search_path, method: :get, local: true, class: "mb-8" do |f| %>
+    <div class="flex gap-2">
+      <%= f.text_field :q, value: @query, placeholder: "Search...", class: "flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500", autofocus: true %>
+      <%= f.submit "Search", class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <% if @query.present? %>
+    <div class="text-sm text-gray-500 mb-4">
+      Results for "<%= @query %>"
+    </div>
+  <% end %>
+
+  <div class="search-results-page">
+    <%= render ui.build(RapidUI::Search::Results, results: @results, skip_empty_results: @skip_empty_results) %>
+  </div>
+</div>

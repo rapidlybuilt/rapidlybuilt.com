@@ -4,7 +4,7 @@ class ContextMiddleware
     layout = context.layout
     request = context.request
     main_app = context.controller.main_app
-    view_context = context.view_context
+    # view_context = context.view_context # no guarentee what's available inside of this
 
     # set nav links as active based on the current path
     ui.factory.register_polish! RapidUI::Layout::Sidebar::Navigation::Link, ->(link) do
@@ -39,7 +39,7 @@ class ContextMiddleware
           link.body.first.css_class = "hover:scale-110 rounded-full"
         end
 
-        # left.build_search(path: search_path)
+        left.build_search_bar(static_path: main_app.tools_search_path(format: :json))
       end
 
       header.build_right do |right|
@@ -48,7 +48,7 @@ class ContextMiddleware
         right.build_text_link("Tools", main_app.tools_root_path, class: "hidden md:block")
 
         right.build_dropdown(align: "right", class: "block md:hidden", skip_caret: true) do |dropdown|
-          dropdown.build_button(view_context.new_icon("menu"))
+          dropdown.build_button(ui.factory.build(RapidUI::Icon, "menu")) # TODO: clean up this
 
           dropdown.build_menu do |menu|
             menu.build_item("Home", main_app.root_path)

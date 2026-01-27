@@ -35,6 +35,7 @@ class Upgrade
       app/assets/stylesheets/ui_docs/code-theme-light.css
       app/assets/stylesheets/ui_docs/index.css
     ],
+    config: %w[config/static_search.yml],
     routes: %w[config/routes.rb]
   }.freeze
 
@@ -90,6 +91,7 @@ class Upgrade
     end
 
     copy_routes
+    copy_config
     copy_controllers
     copy_helpers
     copy_views
@@ -235,13 +237,26 @@ class Upgrade
     File.write(target, file_header(source, comment_style: :ruby) + content)
   end
 
+  def copy_config
+    puts "Copying config files..."
+
+    source = File.join(RAPID_UI_DOCS, "config/static_search.yml")
+    target = File.join(UI_DOCS_DIR, "config/static_search.yml")
+
+    if File.exist?(source)
+      FileUtils.mkdir_p(File.dirname(target))
+      FileUtils.cp(source, target)
+      puts "  Copied: #{relative_path(target)}"
+    end
+  end
+
   def copy_controllers
     puts "Copying controllers..."
 
     target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:controllers])
     source_dir = File.join(RAPID_UI_DOCS, "app/controllers")
 
-    copy_directory_contents(source_dir, target_dir, exclude: ["concerns"], wrap_ruby: true)
+    copy_directory_contents(source_dir, target_dir, exclude: ["concerns", "search_controller.rb"], wrap_ruby: true)
 
     # Copy controller concerns
     concerns_target = File.join(UI_DOCS_DIR, MANAGED_DIRS[:controller_concerns])
