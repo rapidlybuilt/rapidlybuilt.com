@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :tools, defaults: { app_id: "tools" } do
     root to: "pages#index"
-    get "search", to: "searches#index"
+    get "search", to: "searches#show"
 
     mount UiDocs::Engine => "rapid-ui", as: :rapid_ui
   end
