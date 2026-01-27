@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-tool = ARGV[0]
+tool = ARGV.shift
 
 if tool.nil?
-  puts "Usage: bin/upgrade <tool>"
+  puts "Usage: bin/upgrade <tool> [options]"
   puts "Example: bin/upgrade ui_docs"
   exit 1
 end
@@ -24,5 +24,5 @@ unless File.exist?(upgrade_script)
 end
 
 Dir.chdir(tool_dir) do
-  exec("bin/upgrade")
+  exec("bin/upgrade", *ARGV)
 end

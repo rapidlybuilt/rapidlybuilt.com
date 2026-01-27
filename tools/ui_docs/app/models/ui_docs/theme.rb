@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.3
+# Copied from RapidUI v0.1.4
 # Source: rapid_ui/docs/app/models/theme.rb
 module UiDocs
   class Theme

@@ -1,4 +1,4 @@
-# Copied from RapidUI v0.1.3
+# Copied from RapidUI v0.1.4
 # Source: rapid_ui/docs/app/controllers/components/categories_controller.rb
 module UiDocs
   class Components::CategoriesController < Components::BaseController

@@ -1,3 +1,4 @@
+require "yaml"
 require "rapidly_built"
 
 require "ui_docs/version"
