@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     root to: "pages#index"
     get "search", to: "searches#show"
 
+    # only static because we're pre-rendering in production
+    get "api/search", to: "/rapidly_built/api/searches#static", as: :search_api
+
     mount UiDocs::Engine => "rapid-ui", as: :rapid_ui
   end
 
