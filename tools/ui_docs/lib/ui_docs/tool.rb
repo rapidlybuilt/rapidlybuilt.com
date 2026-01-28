@@ -1,5 +1,5 @@
 module UiDocs
-  class Tool < RapidlyBuilt::Tool
+  class Tool < RapidlyBuilt::Tool::Base
     def initialize(path: "rapid-ui", **kwargs)
       super(**kwargs, path:)
     end
@@ -13,10 +13,6 @@ module UiDocs
           description: item["description"]
         )
       end
-    end
-
-    def mount(routes)
-      routes.mount UiDocs::Engine => path
     end
 
     private

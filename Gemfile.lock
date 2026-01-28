@@ -203,7 +203,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.8.0)
+    prism (1.9.0)
     propshaft (1.3.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -360,16 +360,16 @@ GEM
       rack (>= 2.2.4)
       thor (~> 1)
       zeitwerk (~> 2)
-    rapid_ui (0.1.4)
+    rapid_ui (0.1.5)
       importmap-rails (~> 2.0)
       rails (>= 8.0.3)
       stimulus-rails (~> 1.0)
       turbo-rails (~> 2.0)
       view_component (~> 4)
       zeitwerk (~> 2.6)
-    rapidly_built (0.1.4)
+    rapidly_built (0.1.5)
       rails (>= 8.1.1)
-      rapid_ui (= 0.1.4)
+      rapid_ui (= 0.1.5)
       zeitwerk (~> 2.7)
 
 PLATFORMS

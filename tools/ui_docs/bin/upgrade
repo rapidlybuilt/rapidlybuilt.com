@@ -188,7 +188,7 @@ class Upgrade
   def transform_application_controller(content)
     <<~RUBY
       class ApplicationController < ActionController::Base
-        include RapidlyBuilt::Rails::ControllerHelper
+        include RapidlyBuilt::Setup
         include UiFactories
 
         helper RapidUI::LayoutHelper

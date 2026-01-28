@@ -2,7 +2,7 @@
 # Source: rapid_ui/docs/app/controllers/application_controller.rb
 module UiDocs
   class ApplicationController < ActionController::Base
-    include RapidlyBuilt::Rails::ControllerHelper
+    include RapidlyBuilt::Setup
     include UiFactories
 
     helper RapidUI::LayoutHelper
