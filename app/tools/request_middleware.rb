@@ -1,4 +1,4 @@
-class ContextMiddleware
+class RequestMiddleware
   def call(context)
     ui = context.ui
     layout = context.layout

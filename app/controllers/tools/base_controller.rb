@@ -1,3 +1,3 @@
 class Tools::BaseController < ActionController::Base
-  include RapidlyBuilt::Rails::ControllerHelper
+  include RapidlyBuilt::Setup
 end
