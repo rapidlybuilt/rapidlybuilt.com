@@ -1,0 +1,20 @@
+source "https://rubygems.org"
+
+ruby "3.4.4"
+
+# TODO: dewpoint should remove the need for these
+gem "bootsnap", require: false
+gem "propshaft"
+
+gem "debug", require: false
+gem "openssl", "4.0" # HACK: shouldn't need to specify this
+
+# bundle config https://rubygems.pkg.github.com/dcunning USERNAME:TOKEN
+source "https://rubygems.pkg.github.com/dcunning" do
+  gem "dewpoint"
+  gem "motor_mail"
+  gem "rapid-props"
+end
+# gem "dewpoint", path: "../../dewpoint"
+# gem "motor_mail", path: "../../motor_mail"
+# gem "rapid-props", path: "../../rapid-props"

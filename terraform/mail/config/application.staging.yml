@@ -1,0 +1,14 @@
+aws_bucket_name: rapidlybuilt-staging-mail
+
+domains:
+- staging.rapidlybuilt.com
+
+dynamodb:
+  endpoint: https://dynamodb.us-east-1.amazonaws.com
+  region: us-east-1
+  table_name_prefix: rapidlybuilt-staging-mail-
+
+forward_mailer:
+  to: dan@cunning.cc
+  from: bot@staging.rapidlybuilt.com
+  prefix: "[staging.rapidlybuilt.com] "
