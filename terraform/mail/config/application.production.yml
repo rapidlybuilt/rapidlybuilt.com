@@ -1,0 +1,14 @@
+aws_bucket_name: rapidlybuilt-production-mail
+
+domains:
+- rapidlybuilt.com
+
+dynamodb:
+  endpoint: https://dynamodb.us-east-1.amazonaws.com
+  region: us-east-1
+  table_name_prefix: rapidlybuilt-production-mail-
+
+forward_mailer:
+  to: dan@cunning.cc
+  from: bot@rapidlybuilt.com
+  prefix: "[rapidlybuilt.com] "
