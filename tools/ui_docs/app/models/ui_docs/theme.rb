@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/models/theme.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/models/theme.rb
 module UiDocs
   class Theme
     DIRECTORY = UiDocs::Engine.root.join("vendor/stylesheets/themes")

@@ -5,14 +5,29 @@ class Tools::PagesController < Tools::BaseController
   helper RapidUI::Content::BadgesHelper
 
   def index
-    build_breadcrumb "Home", tools_root_path
+    build_breadcrumb "Home"
+  end
 
-    with_navigation_sidebar do |sidebar|
-      sidebar.title = "Home"
+  def baking_rack
+    build_breadcrumb "Baking Rack"
+    add_github_button "https://github.com/rapidlybuilt/baking_rack"
 
-      sidebar.build_navigation do |navigation|
-        navigation.build_link("RapidUI", tools_rapid_ui_path).with_badge(variant: "warning", class: "text-xs").with_content("beta")
-      end
-    end
+    @gem_name = "baking_rack"
+    render :readme
+  end
+
+  def rapidly_built
+    build_breadcrumb "Rapidly Built"
+    add_github_button "https://github.com/rapidlybuilt/rapidly_built"
+
+    @gem_name = "rapidly_built"
+    render :readme
+  end
+
+  private
+
+  def add_github_button(url)
+    # TODO: fix rapid_ui to allow pulling in other icons (ie github)
+    # ui.layout.subheader.build_button("github", url, title: "GitHub")
   end
 end

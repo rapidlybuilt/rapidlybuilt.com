@@ -1,0 +1,14 @@
+<% content_for :title, "Apps — Rapidly Built" %>
+
+<div class="mx-auto max-w-4xl px-6 py-8">
+  <div class="text-center">
+    <h1 class="typography-h1 text-4xl mb-4">Apps</h1>
+    <p class="typography-body text-xl text-gray-600 max-w-2xl mx-auto">
+      Applications I've built and shipped.
+    </p>
+  </div>
+
+  <%= render_feature_list [
+    { name: "rapidlybuilt.com →", description: "This very website — a portfolio and playground for my work.", path: apps_rapidlybuilt_com_path },
+  ] %>
+</div>

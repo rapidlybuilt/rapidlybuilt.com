@@ -13,8 +13,9 @@
     </a>
 
     <nav class="hidden items-center gap-6 text-sm text-warm-200 md:flex">
-      <a href="#applications" class="hover:text-accent-400 transition-colors">Applications</a>
-      <a href="#toolkit" class="hover:text-accent-400 transition-colors">Toolkit</a>
+      <a href="<%= search_path %>" class="hover:text-accent-400 transition-colors py-4 -my-4 flex items-center"><%= render RapidUI::Icon.new("search") %></a>
+      <a href="<%= apps_root_path %>" class="hover:text-accent-400 transition-colors py-4 -my-4 flex items-center">Apps</a>
+      <a href="<%= tools_root_path %>" class="hover:text-accent-400 transition-colors py-4 -my-4 flex items-center">Toolkit</a>
       <a
         href="#subscribe"
         class="rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-4 py-2 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all ml-8 shadow-lg shadow-accent-500/25"
@@ -117,33 +118,21 @@
         <p class="mt-2 text-sm text-warm-200">Built to explore real areas of life and needs where existing approaches fall short.</p>
       </div>
 
-      <a href="#subscribe" class="text-sm text-warm-300 hover:text-accent-400 transition-colors">
-        Follow the progress →
+      <a href="<%= apps_root_path %>" class="mt-6 inline-block rounded-xl bg-gradient-to-r from-accent-400 to-accent-500 px-5 py-3 text-sm font-semibold text-base-950 hover:from-accent-500 hover:to-accent-600 transition-all shadow-lg shadow-accent-500/25">
+        View Apps →
       </a>
     </div>
 
     <div class="mt-8 grid gap-5 md:grid-cols-2">
+      <!-- Personal -->
       <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
-        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Focus</h3>
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Personal</h3>
         <p class="mt-2 text-sm text-warm-200">
-          Designed to protect your attention and serve your priorities—not some company's engagement metrics.
+          Tools to protect your attention, serve your priorities, and help you grow—on your terms.
         </p>
         <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
-          <li>Watching videos without wasting time or attention</li>
-          <li>Saving time on social media and your favorite sites</li>
-          <li>Reminding you what you learned from podcasts</li>
-        </ul>
-      </div>
-
-      <!-- Skill building -->
-      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
-        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Growth</h3>
-        <p class="mt-2 text-sm text-warm-200">
-          Created to help you actually improve at something over time, not just spend time on it.
-        </p>
-        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>Spending time online with intention, not distraction</li>
           <li>Training recall and memory</li>
-          <li>Tracking progress over time</li>
           <li>Practicing skills with intention and repetition</li>
         </ul>
       </div>
@@ -171,6 +160,19 @@
           <li>Following local news and events that matter to you</li>
           <li>Discovering live music, events, and nearby venues</li>
           <li>Keeping a living list of restaurants to try, revisit, or recommend</li>
+        </ul>
+      </div>
+
+      <!-- Business -->
+      <div class="rounded-3xl border border-base-700/50 bg-base-800/40 p-6 backdrop-blur-sm group hover:border-accent-500/30 transition-colors">
+        <h3 class="text-lg font-semibold text-warm-50 group-hover:text-accent-400 transition-colors">Business</h3>
+        <p class="mt-2 text-sm text-warm-200">
+          Software to run a small business without enterprise complexity or subscription bloat.
+        </p>
+        <ul class="mt-4 space-y-1 pl-5 text-sm text-warm-300 list-disc marker:text-accent-500/60">
+          <li>DevOps visibility without giving up control</li>
+          <li>Marketing and content tools that are simple and cheap</li>
+          <li>Security and data ownership on your own terms</li>
         </ul>
       </div>
 

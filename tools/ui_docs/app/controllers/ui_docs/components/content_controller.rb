@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/controllers/components/content_controller.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/controllers/components/content_controller.rb
 module UiDocs
   class Components::ContentController < Components::BaseController
     helper RapidUI::ContentHelper

@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/config/routes.rb
+# Copied from RapidUI | Source: rapid_ui/docs/config/routes.rb
 UiDocs::Engine.routes.draw do
   root to: "pages#index"
 

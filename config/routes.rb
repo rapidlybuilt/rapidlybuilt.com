@@ -5,12 +5,21 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  namespace :tools, defaults: { app_id: "tools" } do
-    root to: "pages#index"
-    get "search", to: "searches#show"
+  get "search", to: "searches#show"
 
-    # only static because we're pre-rendering in production
-    get "api/search", to: "/rapidly_built/api/searches#static", as: :search_api
+  # only static because we're pre-rendering in production
+  get "api/search", to: "rapidly_built/api/searches#static", as: :search_api
+
+  namespace :apps do
+    root to: "pages#index"
+    get "rapidlybuilt.com", to: "pages#rapidlybuilt_com", as: :rapidlybuilt_com
+  end
+
+  namespace :tools do
+    root to: "pages#index"
+
+    get "baking-rack", to: "pages#baking_rack", as: :baking_rack
+    get "rapidly-built", to: "pages#rapidly_built", as: :rapidly_built
 
     mount UiDocs::Engine => "rapid-ui", as: :rapid_ui
   end

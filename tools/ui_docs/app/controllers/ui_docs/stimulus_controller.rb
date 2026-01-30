@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/controllers/stimulus_controller.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/controllers/stimulus_controller.rb
 module UiDocs
   class StimulusController < ApplicationController
     before_action :set_main_sidebar

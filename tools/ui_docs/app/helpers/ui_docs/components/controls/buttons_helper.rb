@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/components/controls/buttons_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/components/controls/buttons_helper.rb
 module UiDocs
   module Components::Controls::ButtonsHelper
     def component_controls_buttons_variants

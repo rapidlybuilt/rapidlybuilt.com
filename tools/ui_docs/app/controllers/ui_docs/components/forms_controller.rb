@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/controllers/components/forms_controller.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/controllers/components/forms_controller.rb
 module UiDocs
   class Components::FormsController < Components::BaseController
     helper RapidUI::FormsHelper

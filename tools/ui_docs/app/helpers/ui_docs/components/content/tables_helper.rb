@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/components/content/tables_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/components/content/tables_helper.rb
 module UiDocs
   module Components::Content::TablesHelper
     def component_content_table_basic

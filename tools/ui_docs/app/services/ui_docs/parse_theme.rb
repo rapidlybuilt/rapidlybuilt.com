@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/services/parse_theme.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/services/parse_theme.rb
 module UiDocs
   class ParseTheme < ApplicationService::Brief
     def call(id)

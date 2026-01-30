@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/view_components/code_block.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/view_components/code_block.rb
 module UiDocs
   require "rouge"
 

@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/ui_layouts/application/subheaders_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/ui_layouts/application/subheaders_helper.rb
 module UiDocs
   module UiLayouts::Application::SubheadersHelper
     def layout_application_subheader_sidebar_toggle

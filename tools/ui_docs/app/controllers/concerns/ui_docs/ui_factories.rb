@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/controllers/concerns/ui_factories.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/controllers/concerns/ui_factories.rb
 module UiDocs
   module UiFactories
     def self.included(base)

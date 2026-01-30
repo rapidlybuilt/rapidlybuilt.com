@@ -24,11 +24,14 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
+# Markdown rendering
+gem "redcarpet"
+
 # Internal RapidlyBuilt tools
 gem "ui_docs", path: "tools/ui_docs"
 
-# bundle config https://rubygems.pkg.github.com/dcunning USERNAME:TOKEN
-source "https://rubygems.pkg.github.com/dcunning" do
+# bundle config https://rubygems.pkg.github.com/rapidlybuilt USERNAME:TOKEN
+source "https://rubygems.pkg.github.com/rapidlybuilt" do
   gem "baking_rack"
   gem "rapidly_built"
   gem "rapid_ui"

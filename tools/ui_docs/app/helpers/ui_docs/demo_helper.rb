@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/demo_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/demo_helper.rb
 module UiDocs
   module DemoHelper
     def demo_code(helper: nil, flex: false, skip_html_check: false, content_class: nil, &erb_block)
