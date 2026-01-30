@@ -124,11 +124,11 @@ class Upgrade
 
     case comment_style
     when :ruby
-      "# Copied from RapidUI v#{rapid_ui_version}\n# Source: #{relative_source}\n"
+      "# Copied from RapidUI | Source: #{relative_source}\n"
     when :erb
-      "<%# Copied from RapidUI v#{rapid_ui_version} | Source: #{relative_source} %>\n"
+      "<%# Copied from RapidUI | Source: #{relative_source} %>\n"
     when :css
-      "/* Copied from RapidUI v#{rapid_ui_version} | Source: #{relative_source} */\n"
+      "/* Copied from RapidUI | Source: #{relative_source} */\n"
     end
   end
 

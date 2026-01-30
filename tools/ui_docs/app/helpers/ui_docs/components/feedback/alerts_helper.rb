@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/components/feedback/alerts_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/components/feedback/alerts_helper.rb
 module UiDocs
   module Components::Feedback::AlertsHelper
     def component_feedback_alert_variants

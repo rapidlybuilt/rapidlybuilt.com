@@ -35,16 +35,16 @@ class RequestMiddleware
     layout.build_header do |header|
       header.build_left do |left|
         # TODO: clean this up. #build_link with a single child (the icon)
-        left.build_icon_link("logo", main_app.tools_root_path, size: 32, class: "px-0 size-[34px]") do |link|
+        left.build_icon_link("logo", main_app.root_path, size: 32, class: "px-0 size-[34px]") do |link|
           link.body.first.css_class = "hover:scale-110 rounded-full"
         end
 
-        left.build_search_bar(static_path: main_app.tools_search_api_path(format: :json))
+        left.build_search_bar(static_path: main_app.search_api_path(format: :json))
       end
 
       header.build_right do |right|
-        right.build_text_link("Home", main_app.root_path, class: "hidden md:block")
-        right.build_text_link("Applications", "#", class: "hidden md:block")
+        # TODO: active attribute when under each section
+        right.build_text_link("Apps", main_app.apps_root_path, class: "hidden md:block")
         right.build_text_link("Tools", main_app.tools_root_path, class: "hidden md:block")
 
         right.build_dropdown(align: "right", class: "block md:hidden", skip_caret: true) do |dropdown|
@@ -89,5 +89,11 @@ class RequestMiddleware
 
     layout.with_main
     layout.with_main_container
+
+    if request.path.start_with?("/tools")
+      ui.layout.subheader.breadcrumbs.build_breadcrumb "Tools", main_app.tools_root_path
+    elsif request.path.start_with?("/apps")
+      ui.layout.subheader.breadcrumbs.build_breadcrumb "Apps", main_app.apps_root_path
+    end
   end
 end

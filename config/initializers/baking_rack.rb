@@ -15,7 +15,7 @@ BakingRack.config do |c|
       get "/tools/rapid-ui/themes/#{theme.path}"
     end
 
-    get "/tools/api/search.json"
+    get "/api/search.json"
 
     get_other_rails_routes
   end

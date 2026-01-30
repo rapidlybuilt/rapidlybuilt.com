@@ -259,6 +259,7 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
+    redcarpet (3.6.1)
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -351,7 +352,7 @@ GEM
     zeitwerk (2.7.4)
 
 GEM
-  remote: https://rubygems.pkg.github.com/dcunning/
+  remote: https://rubygems.pkg.github.com/rapidlybuilt/
   specs:
     baking_rack (0.1.25)
       base64 (~> 0.2)
@@ -397,6 +398,7 @@ DEPENDENCIES
   rails (~> 8.1.1)
   rapid_ui!
   rapidly_built!
+  redcarpet
   rubocop-rails-omakase
   selenium-webdriver
   stimulus-rails

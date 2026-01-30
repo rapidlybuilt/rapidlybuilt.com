@@ -43,7 +43,7 @@ locals {
   # dynamically lookup the zone ID for the production domain
   zone_id     = data.aws_route53_zone.main.zone_id
 
-  github_repository = "rapidlybuilt/rapidlybuilt_com"
+  github_repository = "rapidlybuilt/rapidlybuilt.com"
   common_tags       = {}
 }
 

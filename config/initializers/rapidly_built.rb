@@ -1,3 +1,3 @@
 RapidlyBuilt.config do |config|
-  config.toolkits.new :tools, class_name: "ApplicationToolkit"
+  config.toolkits.new :default, class_name: "ApplicationToolkit"
 end

@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/models/user.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/models/user.rb
 module UiDocs
   class User
     include ActiveModel::Model

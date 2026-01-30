@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/components/content/icons_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/components/content/icons_helper.rb
 module UiDocs
   module Components::Content::IconsHelper
     def component_content_icons_helper

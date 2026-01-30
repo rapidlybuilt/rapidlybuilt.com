@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/services/demo/compare_html.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/services/demo/compare_html.rb
 module UiDocs
   class Demo::CompareHtml < ApplicationService
     attr_accessor :helper

@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/controllers/themes_controller.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/controllers/themes_controller.rb
 module UiDocs
   class ThemesController < ApplicationController
     before_action :set_available_themes

@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/helpers/ui_layouts/application/headers_helper.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/helpers/ui_layouts/application/headers_helper.rb
 module UiDocs
   module UiLayouts::Application::HeadersHelper
     def layout_application_header_position
@@ -21,7 +20,7 @@ module UiDocs
       demo_components do |c|
         c << layout.build_header do |header|
           header.build_left do |left|
-            left.build_search_bar(static_path: "/tools/search.json")
+            left.build_search_bar(static_path: "/search.json")
           end
         end
       end
@@ -112,7 +111,7 @@ module UiDocs
               end
             end
 
-            left.build_search_bar(static_path: "/tools/search.json")
+            left.build_search_bar(static_path: "search.json")
           end
 
           header.build_right do |right|

@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/services/demo/format_html.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/services/demo/format_html.rb
 module UiDocs
   # TODO: this is generally useful. Should be outside of test/demo somewhere.
   class Demo::FormatHtml < ApplicationService

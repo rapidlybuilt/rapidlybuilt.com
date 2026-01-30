@@ -1,5 +1,4 @@
-# Copied from RapidUI v0.1.4
-# Source: rapid_ui/docs/app/controllers/components/feedback_controller.rb
+# Copied from RapidUI | Source: rapid_ui/docs/app/controllers/components/feedback_controller.rb
 module UiDocs
   class Components::FeedbackController < Components::BaseController
     helper RapidUI::FeedbackHelper
