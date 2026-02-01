@@ -38,18 +38,23 @@ function handler(event) {
     };
   }
 
-  // Rule 4: Rewrite paths without file extension to serve index.html
-  // Check if URI doesn't have a file extension (no dot after last slash)
+  // Rule 4: Rewrite paths to serve index.html unless they have .html or .json extension
+  var knownExtensions = ['html', 'json'];
   var lastSlashIndex = uri.lastIndexOf('/');
   var lastDotIndex = uri.lastIndexOf('.');
+  var extension = '';
+  if (lastDotIndex > lastSlashIndex) {
+    extension = uri.substring(lastDotIndex + 1).toLowerCase();
+  }
+  if (knownExtensions.indexOf(extension) === -1) {
+    var acceptHeader = request.headers['accept'] ? request.headers['accept'].value : '';
+    var indexFile = acceptHeader.indexOf('application/json') !== -1 ? 'index.json' : 'index.html';
 
-  // If no dot after the last slash, or the dot is before the last slash, assume directory
-  if (lastDotIndex <= lastSlashIndex) {
-    // Rewrite to index.html (not a redirect, just internal routing)
+    // Rewrite to index file (not a redirect, just internal routing)
     if (uri.endsWith('/')) {
-      request.uri = uri + 'index.html';
+      request.uri = uri + indexFile;
     } else {
-      request.uri = uri + '/index.html';
+      request.uri = uri + '/' + indexFile;
     }
   }
 

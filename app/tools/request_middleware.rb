@@ -39,7 +39,7 @@ class RequestMiddleware
           link.body.first.css_class = "hover:scale-110 rounded-full"
         end
 
-        left.build_search_bar(static_path: main_app.search_api_path(format: :json))
+        left.build_search_bar(static_path: main_app.search_api_path)
       end
 
       header.build_right do |right|
