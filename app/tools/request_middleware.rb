@@ -52,7 +52,7 @@ class RequestMiddleware
 
           dropdown.build_menu do |menu|
             menu.build_item("Home", main_app.root_path)
-            menu.build_item("Applications", "#")
+            menu.build_item("Apps", main_app.apps_root_path)
             menu.build_item("Tools", main_app.tools_root_path)
           end
         end
