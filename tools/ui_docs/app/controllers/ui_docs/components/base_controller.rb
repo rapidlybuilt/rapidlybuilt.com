@@ -31,7 +31,7 @@ module UiDocs
 
           section.build_link("Buttons", components_controls_buttons_path)
           pending_badge section.build_link("Button group", "#")
-          pending_badge section.build_link("Datatables", "#")
+          section.build_link("Datatables", components_controls_datatables_path)
           section.build_link("Dropdowns", components_controls_dropdowns_path)
           pending_badge section.build_link("Modals", "#")
           pending_badge section.build_link("Tabs", "#")

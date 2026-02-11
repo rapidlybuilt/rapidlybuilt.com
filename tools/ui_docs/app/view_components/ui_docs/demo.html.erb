@@ -5,12 +5,12 @@
   </div>
 
   <div class="demo-code-tabs">
-    <%= tab_button erb_code, "ERB", "erb" %>
-    <%= tab_button ruby_code, "Ruby", "ruby" %>
-    <%= tab_button html_code, "HTML", "html" %>
+    <% tabs.each do |tab| %>
+      <%= tab_button tab %>
+    <% end %>
   </div>
 
-  <%= tab_panel erb_code, "erb" %>
-  <%= tab_panel ruby_code, "ruby" %>
-  <%= tab_panel html_code, "html" %>
+  <% tabs.each do |tab| %>
+    <%= tab_panel tab %>
+  <% end %>
 <% end %>

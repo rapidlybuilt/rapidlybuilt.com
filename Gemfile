@@ -29,19 +29,23 @@ gem "redcarpet"
 
 # Internal RapidlyBuilt tools
 gem "ui_docs", path: "tools/ui_docs"
+gem "kramdown"
+gem "kramdown-parser-gfm"
+gem "rouge", "~> 4.0"
 
 # bundle config https://rubygems.pkg.github.com/rapidlybuilt USERNAME:TOKEN
 source "https://rubygems.pkg.github.com/rapidlybuilt" do
   gem "baking_rack"
-  gem "rapidly_built"
-  gem "rapid_ui"
+  # gem "rapidly_built"
+  # gem "rapid_ui"
 end
 # gem "baking_rack", path: "../../baking_rack"
-# gem "rapidly_built", path: "../rapidly_built"
-# gem "rapid_ui", path: "../rapid_ui"
+gem "rapidly_built", path: "../rapidly_built"
+gem "rapid_ui", path: "../rapid_ui"
 
 # baking_rack deploy
 gem "aws-sdk-s3", require: false
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

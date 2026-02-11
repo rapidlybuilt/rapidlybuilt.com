@@ -1,5 +1,9 @@
 # Copied from RapidUI | Source: rapid_ui/docs/config/routes.rb
 UiDocs::Engine.routes.draw do
+  redirect2 = ->(a) do
+    redirect { |_params, request| "#{request.script_name}#{a}" }
+  end
+
   root to: "pages#index"
 
   # get "search", to: "search#show"
@@ -38,6 +42,28 @@ UiDocs::Engine.routes.draw do
     namespace :controls do
       get :buttons
       get :dropdowns
+
+      resources :datatables, only: [ :index ] do
+        post :bulk_action, on: :collection
+
+        collection do
+          get :features, to: redirect2.call("/components/controls/datatables")
+          get "features/columns", as: :columns, action: :columns
+          get "features/search", as: :search, action: :search
+          get "features/sorting", as: :sorting, action: :sorting
+          get "features/export", as: :export, action: :export
+
+          get :extensions, to: redirect2.call("/components/controls/datatables")
+          get "extensions/pagination", as: :pagination, action: :pagination
+          get "extensions/bulk-actions", as: :bulk_actions, action: :bulk_actions
+          get "extensions/select-filter", as: :select_filter, action: :select_filter
+
+          get :adapters, to: redirect2.call("/components/controls/datatables")
+          get "adapters/active-record", as: :active_record, action: :active_record
+          get "adapters/array", as: :array, action: :array
+          get "adapters/kaminari", as: :kaminari, action: :kaminari
+        end
+      end
     end
     namespace :feedback do
       get :alerts
