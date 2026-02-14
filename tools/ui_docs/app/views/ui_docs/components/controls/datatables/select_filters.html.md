@@ -1,6 +1,6 @@
 # Select filter
 
-Add dropdown filters that narrow the table by a single value (e.g. status, category). Each filter is a select whose options come from a proc and whose selection is applied via a filter proc.
+Add dropdown filters that narrow the table by a single value (e.g. status, category). Each filter is a select whose choices come from a proc and whose selection is applied via a filter proc.
 
 ---
 
@@ -13,7 +13,7 @@ Per-filter definition:
 | Option | Type | Description |
 |--------|------|-------------|
 | `filter_id` | Symbol | Unique id for the filter; the request param is `:"#{filter_id}_filter"` (e.g. `:status_filter`). |
-| `options` | Proc | `->(scope) { ... }`. Called with `table.base_scope`; must return an array of values shown in the dropdown. |
+| `choices` | Proc | `->(scope) { ... }`. Called with `table.unfiltered_rows`; must return an array of values shown in the dropdown. |
 | `filter` | Proc | `->(scope, value) { ... }`. Called when a value is selected; must return the filtered scope. |
 
 ---
@@ -24,14 +24,14 @@ Define filters with `select_filter` in your table class. Each definition registe
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::SelectFilter::Container
+  include RapidUI::Datatable::Extentions::SelectFilters
 
   select_filter :status,
-    options: ->(scope) { scope.distinct.pluck(:status).compact.sort },
+    choices: ->(scope) { scope.distinct.pluck(:status).compact.sort },
     filter: ->(scope, value) { scope.where(status: value) }
 
   select_filter :role,
-    options: ->(scope) { scope.distinct.pluck(:role).compact },
+    choices: ->(scope) { scope.distinct.pluck(:role).compact },
     filter: ->(scope, value) { scope.where(role: value) }
 
   columns do |t|
@@ -53,7 +53,7 @@ Select filter definitions are class-level. At runtime you only control which fil
 
 ## Adapters
 
-No adapters are necessary since the `options` and `filter` procs perform the ORM work themselves.
+No adapters are necessary since the `choices` and `filter` procs perform the ORM work themselves.
 
 ---
 

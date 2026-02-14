@@ -20,15 +20,15 @@
     <p class="demo-description mb-8"><code class="typography-code">RapidUI::Datatable::Base</code> has these features built-in:</p>
 
     <% headers.h3 "Columns", path: url_for(action: "columns") %>
+    <% headers.h3 "Pagination", path: url_for(action: "pagination") %>
     <% headers.h3 "Search", path: url_for(action: "search") %>
     <% headers.h3 "Sorting", path: url_for(action: "sorting") %>
-    <% headers.h3 "Export", path: url_for(action: "export") %>
 
     <ul class="demo-description list-disc pl-6 space-y-4">
-      <li><strong><%= link_to "Columns", url_for(action: "columns"), class: "content-link" %></strong> — Define which columns appear in the table, their headers, how values are rendered and grouped. <%= link_to "Read more", url_for(action: "columns"), class: "content-link" %></li>
-      <li><strong><%= link_to "Sorting", url_for(action: "sorting"), class: "content-link" %></strong> — Allow users to sort rows by specific columns.</li>
+      <li><strong><%= link_to "Columns", url_for(action: "columns"), class: "content-link" %></strong> — Define which columns appear in the table, their headers, how values are rendered and grouped.</li>
+      <li><strong><%= link_to "Pagination", url_for(action: "pagination"), class: "content-link" %></strong> — Split the dataset into pages so users can navigate through large result sets.</li>
       <li><strong><%= link_to "Search", url_for(action: "search"), class: "content-link" %></strong> — Provide a search box that filters rows across specified columns.</li>
-      <li><strong><%= link_to "Export", url_for(action: "export"), class: "content-link" %></strong> — Let users export the full dataset to CSV or JSON.</li>
+      <li><strong><%= link_to "Sorting", url_for(action: "sorting"), class: "content-link" %></strong> — Allow users to sort rows by specific columns.</li>
     </ul>
   </div>
 
@@ -36,14 +36,14 @@
     <%= headers.h2 "Extensions" %>
     <p class="demo-description mb-8">Optional extensions that add additional features to the datatable.</p>
 
-    <% headers.h3 "Pagination", path: url_for(action: "pagination") %>
     <% headers.h3 "Bulk Actions", path: url_for(action: "bulk_actions") %>
-    <% headers.h3 "Select Filter", path: url_for(action: "select_filter") %>
+    <% headers.h3 "Export", path: url_for(action: "export") %>
+    <% headers.h3 "Select Filters", path: url_for(action: "select_filters") %>
 
     <ul class="demo-description list-disc pl-6 space-y-4">
-      <li><strong><%= link_to "Pagination", url_for(action: "pagination"), class: "content-link" %></strong> — Split the dataset into pages so users can navigate through large result sets.</li>
       <li><strong><%= link_to "Bulk Actions", url_for(action: "bulk_actions"), class: "content-link" %></strong> — Enable selection of multiple rows and run actions on the selected set.</li>
-      <li><strong><%= link_to "Select Filter", url_for(action: "select_filter"), class: "content-link" %></strong> — Filter rows by a column using a dropdown.</li>
+      <li><strong><%= link_to "Export", url_for(action: "export"), class: "content-link" %></strong> — Let users export the full dataset to CSV or JSON.</li>
+      <li><strong><%= link_to "Select Filters", url_for(action: "select_filters"), class: "content-link" %></strong> — Filter rows by a specific value using a dropdown.</li>
     </ul>
   </div>
 
@@ -56,8 +56,8 @@
     <% headers.h3 "Kaminari", path: url_for(action: "kaminari") %>
 
     <ul class="demo-description list-disc pl-6 space-y-4">
-      <li><strong><%= link_to "ActiveRecord", url_for(action: "active_record"), class: "content-link" %></strong> — Support for ActiveRecord models.</li>
-      <li><strong><%= link_to "Array", url_for(action: "array"), class: "content-link" %></strong> — Support for raw Ruby arrays.</li>
+      <li><strong><%= link_to "ActiveRecord", url_for(action: "active_record"), class: "content-link" %></strong> — use ActiveRecord models as the data source.</li>
+      <li><strong><%= link_to "Array", url_for(action: "array"), class: "content-link" %></strong> — use raw Ruby arrays as the data source.</li>
       <li><strong><%= link_to "Kaminari", url_for(action: "kaminari"), class: "content-link" %></strong> — Support for Kaminari pagination.</li>
     </ul>
   </div>

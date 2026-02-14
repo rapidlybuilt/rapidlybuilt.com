@@ -84,14 +84,14 @@ In the controller or view, use the group when building the table:
 
 ```ruby
 # Show only columns in the :basic group
-rapid_table(@users, table_class: UsersTable, column_group_id: :basic)
+build_datatable(UsersTable, @users, column_group_id: :basic)
 ```
 
 ---
 
 ## Cell content
 
-Override how a column’s cell is rendered with `column_html` (HTML) or `column_value` (plain value). The block receives `(record, column)` or just `(record)`.
+Override how a column’s cell is rendered with `cell_value`. The block receives `(record, column)` or just `(record)`.
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
@@ -104,12 +104,12 @@ class UsersTable < RapidUI::Datatable::Base
   delegate :mail_to, to: :helpers
 
   # Custom HTML for the email column (e.g. mailto link, styling)
-  column_html :email do |record|
+  cell_value :email, :html do |record|
     mail_to record.email.downcase
   end
 
-  # Custom value only; block can take (record) or (record, column)
-  column_value :name do |record|
+  # Fallback value for all formats
+  cell_value :name do |record|
     record.name.strip
   end
 end
@@ -123,16 +123,16 @@ You can resolve columns from the DSL with `column_ids` or `column_group_id`, and
 
 ```ruby
 # Use specific column IDs from the table’s DSL (order is preserved)
-rapid_table(@users, table_class: UsersTable, column_ids: [:name, :email, :id])
+build_datatable(UsersTable, @users, column_ids: [:name, :email, :id])
 
 # Use a column group
-rapid_table(@users, table_class: UsersTable, column_group_id: :basic)
+build_datatable(UsersTable, @users, column_group_id: :basic)
 
 # Include only these columns (filters the resolved list)
-rapid_table(@users, table_class: UsersTable, only: [:name, :email])
+build_datatable(UsersTable, @users, only: [:name, :email])
 
 # Exclude these columns (filters the resolved list)
-rapid_table(@users, table_class: UsersTable, except: [:created_at])
+build_datatable(UsersTable, @users, except: [:created_at])
 ```
 
 You cannot use both `column_ids` and `column_group_id` at once.
@@ -145,9 +145,8 @@ Instead of the DSL, you can pass a `columns` array of hashes. You must specify a
 
 ```ruby
 # Hashes: id required, label and method options optional
-rapid_table(@users, table_class: UsersTable, columns: [
+build_datatable(UsersTable, @users, columns: [
   { id: :id, label: "ID" },
   { id: :name, label: "Full Name" },
-  { id: :email, html_cell_method: :formatted_email }
 ])
 ```

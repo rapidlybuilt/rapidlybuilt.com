@@ -28,15 +28,15 @@ module UiDocs
 
         navigation.build_section("Features") do |section|
           section.build_link("Columns", columns_components_controls_datatables_path)
+          section.build_link("Pagination", pagination_components_controls_datatables_path)
           section.build_link("Search", search_components_controls_datatables_path)
           section.build_link("Sorting", sorting_components_controls_datatables_path)
-          section.build_link("Export", export_components_controls_datatables_path)
         end
 
         navigation.build_section("Extensions") do |section|
-          section.build_link("Pagination", pagination_components_controls_datatables_path)
           section.build_link("Bulk Actions", bulk_actions_components_controls_datatables_path)
-          section.build_link("Select Filter", select_filter_components_controls_datatables_path)
+          section.build_link("Export", export_components_controls_datatables_path)
+          section.build_link("Select Filters", select_filters_components_controls_datatables_path)
         end
 
         navigation.build_section("Adapters") do |section|

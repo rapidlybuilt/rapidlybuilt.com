@@ -51,12 +51,12 @@ UiDocs::Engine.routes.draw do
           get "features/columns", as: :columns, action: :columns
           get "features/search", as: :search, action: :search
           get "features/sorting", as: :sorting, action: :sorting
-          get "features/export", as: :export, action: :export
+          get "features/pagination", as: :pagination, action: :pagination
 
           get :extensions, to: redirect2.call("/components/controls/datatables")
-          get "extensions/pagination", as: :pagination, action: :pagination
           get "extensions/bulk-actions", as: :bulk_actions, action: :bulk_actions
-          get "extensions/select-filter", as: :select_filter, action: :select_filter
+          get "extensions/export", as: :export, action: :export
+          get "extensions/select-filters", as: :select_filters, action: :select_filters
 
           get :adapters, to: redirect2.call("/components/controls/datatables")
           get "adapters/active-record", as: :active_record, action: :active_record

@@ -21,8 +21,6 @@ Control how table data is split across pages and how page/per-page are read from
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::Pagination
-
   self.skip_pagination = false
   self.per_page = 25
   self.available_per_pages = [10, 25, 50, 100]
@@ -55,14 +53,17 @@ The extension registers two controls for use in the table UI.
 
 ### PerPage Select
 
+Allows adjusting how many rows at present on the table
+
 ```ruby
 table.build_footer do |footer|
-  # places per_page select on the footer
   footer.build_per_page_select
 end
 ```
 
 ### Pagination Links
+
+Allows navigating between pages using a list of links like `First Prev 1 2 3 4 [5] 6 7 8 9 Next Last`
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
@@ -70,7 +71,6 @@ end
 
 ```ruby
 table.build_footer do |footer|
-  # places "First Prev 1 2 3 4 [current] 6 7 8 9 Next Last" links on the footer
   footer.build_pagination_links
 end
 ```

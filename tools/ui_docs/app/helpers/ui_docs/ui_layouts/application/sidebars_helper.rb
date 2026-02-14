@@ -61,7 +61,7 @@ module UiDocs
               list.build_link("Installation", "#installation")
               list.build_link("Configuration", "#configuration")
               list.build_list do |list|
-                list.build_link("Subsection 1", "#subsection-1")
+                list.build_link("Settings", "#settings")
               end
             end
             toc.build_link("API Reference", "#api-reference")

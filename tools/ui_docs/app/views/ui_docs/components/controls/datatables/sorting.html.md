@@ -67,8 +67,8 @@ Column groups can define their own default `sort_column` and `sort_order`; the i
 
 Support for sorting is available through these adapters:
 
-* [ActiveRecord](/components/controls/datatables/active-record)
-* [Array](/components/controls/datatables/array)
+* [ActiveRecord](action: active_record)
+* [Array](action: array)
 
 ---
 

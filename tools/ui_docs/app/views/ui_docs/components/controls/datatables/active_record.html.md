@@ -44,10 +44,10 @@ end
 
 ## Export
 
-The adapter overrides **`each_record(batch_size:, &block)`** to use `records.unscope(:limit, :offset).find_each(batch_size:, &block)`. CSV and JSON export use this for batched iteration, so large exports don’t load the entire relation into memory.
+The adapter overrides **`each_row(batch_size:, &block)`** to use `records.unscope(:limit, :offset).find_each(batch_size:, &block)`. CSV and JSON export use this for batched iteration, so large exports don’t load the entire relation into memory.
 
 ---
 
 ## Record ID
 
-The adapter implements **`record_id(record)`** as `record.send(record.class.primary_key)`. This value is used for bulk action checkboxes (so the correct rows are submitted), for row identification in Turbo updates, and anywhere the table needs a stable id for a record.
+The adapter implements **`row_id(record)`** as `record.send(record.class.primary_key)`. This value is used for bulk action checkboxes (so the correct rows are submitted), for row identification in Turbo updates, and anywhere the table needs a stable id for a record.

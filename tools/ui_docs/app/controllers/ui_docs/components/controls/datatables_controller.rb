@@ -1,15 +1,15 @@
 # Copied from RapidUI | Source: rapid_ui/docs/app/controllers/components/controls/datatables_controller.rb
 module UiDocs
   class Components::Controls::DatatablesController < Components::BaseController
-    include UsesRapidTables
-    include ReplaysActionsWithCookie
+    include RapidUI::UsesDatatables
     include Components::Controls::DatatablesLayout
+    include ReplaysActionsWithCookie
 
     before_action :set_countries
     before_action :set_full_example_table
 
     def index
-      respond_with_rapid_table(@full_example_table)
+      respond_with_component(@full_example_table)
     end
 
     def bulk_action
@@ -23,7 +23,7 @@ module UiDocs
       end
 
       # reload the table with the latest changes
-      respond_with_rapid_table(set_full_example_table)
+      respond_with_component(set_full_example_table)
     end
 
     private
@@ -36,17 +36,17 @@ module UiDocs
 
     def set_full_example_table
       id = :full_example
-      @cookie_actions = find_cookie_actions("datatables_#{id}")
+      @cookie_actions = find_cookie_actions("datatables_#{id}", path: url_for(action: "index"))
       countries = @cookie_actions.replay(@countries)
 
-      @full_example_table = rapid_table(countries, title: "Countries", table_class: CountriesTable, id:) do |table|
-        table.table_name = "countries"
+      @full_example_table = build_datatable(CountriesTable, countries, id:) do |table|
         table.action_name = "index"
 
-        table.header.items.last.build_button(
+        table.header.items.last.build_component(
+          RapidUI::Button,
           "Reset",
           path: table.table_path(view_context:, action: "bulk_action", bulk_action: "reset"),
-          class: "btn btn-danger",
+          class: "btn btn-outline-danger",
           disabled: @cookie_actions.cookie_value.blank?,
           data: { turbo_stream: true, turbo_method: :post },
         )

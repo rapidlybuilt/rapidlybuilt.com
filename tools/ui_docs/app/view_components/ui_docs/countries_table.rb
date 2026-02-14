@@ -1,7 +1,11 @@
 # Copied from RapidUI | Source: rapid_ui/docs/app/view_components/countries_table.rb
 module UiDocs
   class CountriesTable < RapidUI::Datatable::Base
-    include RapidUI::Datatable::Adapters::Array
+    extension :bulk_actions
+    extension :export
+    extension :select_filters
+
+    adapter :array
 
     columns do |t|
       t.string :name, sortable: true, searchable: true
@@ -16,14 +20,20 @@ module UiDocs
     self.available_per_pages = [ 10, 25, 50, 100 ]
     self.per_page = 10
 
+    # Display options
+    self.responsive = true
+    self.striped = true
+    self.hover = true
+    self.bordered = true
+
     bulk_action :delete
 
-    column_html :openstreetmap do |record|
+    cell_value :openstreetmap, :html do |record|
       link_to helpers.icon("globe", size: 16), record.openstreetmap, target: "_blank"
     end
 
     select_filter :region,
-      options: ->(scope) { scope.map(&:region).uniq.sort },
+      choices: ->(scope) { scope.map(&:region).uniq.sort },
       filter: ->(scope, value) { scope.keep_if { |record| record.region == value } }
   end
 end
