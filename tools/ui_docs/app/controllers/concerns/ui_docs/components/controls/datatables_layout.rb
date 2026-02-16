@@ -12,6 +12,7 @@ module UiDocs
     private
 
     def set_child_breadcrumbs
+      build_breadcrumb("Controls", components_controls_path)
       build_breadcrumb("Datatables", components_controls_datatables_path)
 
       pieces = request.path.split("/")

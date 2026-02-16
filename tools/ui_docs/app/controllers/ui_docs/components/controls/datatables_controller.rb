@@ -23,7 +23,7 @@ module UiDocs
       end
 
       # reload the table with the latest changes
-      respond_with_component(set_full_example_table)
+      respond_with_component(set_full_example_table, action: "index")
     end
 
     private
@@ -40,13 +40,11 @@ module UiDocs
       countries = @cookie_actions.replay(@countries)
 
       @full_example_table = build_datatable(CountriesTable, countries, id:) do |table|
-        table.action_name = "index"
-
         table.header.items.last.build_component(
           RapidUI::Button,
           "Reset",
           path: table.table_path(view_context:, action: "bulk_action", bulk_action: "reset"),
-          class: "btn btn-outline-danger",
+          class: "btn btn-outline-naked",
           disabled: @cookie_actions.cookie_value.blank?,
           data: { turbo_stream: true, turbo_method: :post },
         )
