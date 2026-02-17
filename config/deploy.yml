@@ -21,7 +21,7 @@ proxy:
 
 # Credentials for your image host.
 registry:
-  server: KAMAL_REGISTRY_SERVER
+  server: 011440603192.dkr.ecr.us-east-1.amazonaws.com
   username: AWS
   password:
     - KAMAL_REGISTRY_PASSWORD
@@ -43,7 +43,6 @@ env:
 #     DB_HOST: 192.168.0.2
   secret:
     - RAILS_MASTER_KEY
-    - KAMAL_REGISTRY_SERVER
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal app logs -r job" will tail logs from the first server in the job section.

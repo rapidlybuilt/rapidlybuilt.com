@@ -30,7 +30,7 @@ class RequestMiddleware
       head.build_apple_touch_icon("rapid_ui/apple-touch-icon.png")
 
       head.stylesheet_link_sources = [ "tools" ]
-      head.skip_csrf_meta_tags = true
+      head.skip_csrf_meta_tags = !dynamic_page?(context)
     end
 
     layout.build_header do |header|
@@ -96,5 +96,14 @@ class RequestMiddleware
     elsif request.path.start_with?("/apps")
       ui.layout.subheader.breadcrumbs.build_breadcrumb "Apps", main_app.apps_root_path
     end
+  end
+
+  private
+
+  def dynamic_page?(context)
+    [
+      context.controller.tools_rapid_ui.components_controls_datatables_path,
+      context.controller.tools_rapid_ui.bulk_actions_components_controls_datatables_path,
+    ].include?(context.request.path)
   end
 end

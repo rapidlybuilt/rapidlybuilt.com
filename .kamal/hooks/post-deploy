@@ -5,12 +5,20 @@ set -e
 # this repo, then run baking_rack publish so the static site uses the same
 # digested assets as the app (no second asset build).
 
-: "${KAMAL_REGISTRY_SERVER:?post-deploy: KAMAL_REGISTRY_SERVER not set}"
 : "${KAMAL_VERSION:?post-deploy: KAMAL_VERSION not set}"
 
-IMAGE="$KAMAL_REGISTRY_SERVER/rapidlybuilt-production:$KAMAL_VERSION"
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
+
+# Read registry server and image name from config/deploy.yml (handles ERB)
+read -r KAMAL_REGISTRY_SERVER IMAGE_NAME <<< "$(ruby -ryaml -rerb -e "
+  config = YAML.load(ERB.new(File.read('config/deploy.yml')).result(binding))
+  puts [config.dig('registry', 'server'), config['image']].join(' ')
+")"
+: "${KAMAL_REGISTRY_SERVER:?post-deploy: could not read registry.server from config/deploy.yml}"
+: "${IMAGE_NAME:?post-deploy: could not read image from config/deploy.yml}"
+
+IMAGE="$KAMAL_REGISTRY_SERVER/$IMAGE_NAME:$KAMAL_VERSION"
 
 echo "Pulling image and extracting assets for Baking Rack..."
 docker pull "$IMAGE"
