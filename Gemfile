@@ -24,11 +24,17 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
+# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
+gem "kamal", require: false
+
 # Markdown rendering
 gem "redcarpet"
 
 # Internal RapidlyBuilt tools
 gem "ui_docs", path: "tools/ui_docs"
+gem "kramdown"
+gem "kramdown-parser-gfm"
+gem "rouge", "~> 4.0"
 
 # bundle config https://rubygems.pkg.github.com/rapidlybuilt USERNAME:TOKEN
 source "https://rubygems.pkg.github.com/rapidlybuilt" do
@@ -42,6 +48,7 @@ end
 
 # baking_rack deploy
 gem "aws-sdk-s3", require: false
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -24,18 +24,20 @@ class Upgrade
     layouts: "app/views/layouts/ui_docs",
     view_components: "app/view_components/ui_docs",
     services: "app/services/ui_docs",
-    vendor_themes: "vendor/stylesheets/themes"
+    vendor_themes: "vendor/stylesheets/themes",
+    vendor_lucide_icons: "vendor/lucide_icons"
   }.freeze
 
   # Individual files that get copied
   MANAGED_FILES = {
-    models: %w[app/models/ui_docs/theme.rb app/models/ui_docs/user.rb],
+    models: %w[app/models/ui_docs/theme.rb app/models/ui_docs/user.rb app/models/ui_docs/country.rb],
     stylesheets: %w[
       app/assets/stylesheets/ui_docs/demo.css
       app/assets/stylesheets/ui_docs/code-theme-light.css
       app/assets/stylesheets/ui_docs/index.css
     ],
-    config: %w[config/static_search.yml],
+    config: %w[config/static_search.yml config/initializers/markdown_handler.rb],
+    db: %w[db/countries.yml],
     routes: %w[config/routes.rb]
   }.freeze
 
@@ -92,6 +94,7 @@ class Upgrade
 
     copy_routes
     copy_config
+    copy_db
     copy_controllers
     copy_helpers
     copy_views
@@ -100,6 +103,7 @@ class Upgrade
     copy_models
     copy_stylesheets
     copy_theme_stylesheets
+    copy_vendor_lucide_icons
 
     puts
     puts "Done! Files copied successfully."
@@ -160,6 +164,8 @@ class Upgrade
       content = transform_application_controller(content)
     when "app/helpers/application_helper.rb"
       content = transform_application_helper(content)
+    when "app/controllers/components/controls/datatables_controller.rb"
+      content = transform_datatables_controller(content)
     when "app/models/theme.rb"
       content = transform_theme_model(content)
     end
@@ -181,6 +187,13 @@ class Upgrade
     content.gsub(
       'Rails.root.join("../app/assets/stylesheets/rapid_ui/themes")',
       'UiDocs::Engine.root.join("vendor/stylesheets/themes")'
+    )
+  end
+
+  def transform_datatables_controller(content)
+    content.gsub(
+      'Rails.root.join("db", "countries.yml")',
+      'UiDocs::Engine.root.join("db", "countries.yml")'
     )
   end
 
@@ -241,8 +254,27 @@ class Upgrade
   def copy_config
     puts "Copying config files..."
 
-    source = File.join(RAPID_UI_DOCS, "config/static_search.yml")
-    target = File.join(UI_DOCS_DIR, "config/static_search.yml")
+    %w[config/static_search.yml config/initializers/markdown_handler.rb].each do |rel_path|
+      source = File.join(RAPID_UI_DOCS, rel_path)
+      target = File.join(UI_DOCS_DIR, rel_path)
+      next unless File.exist?(source)
+
+      FileUtils.mkdir_p(File.dirname(target))
+      if rel_path.end_with?(".rb")
+        content = File.read(source, encoding: "UTF-8")
+        File.write(target, file_header(source, comment_style: :ruby) + content)
+      else
+        FileUtils.cp(source, target)
+      end
+      puts "  Copied: #{relative_path(target)}"
+    end
+  end
+
+  def copy_db
+    puts "Copying db files..."
+
+    source = File.join(RAPID_UI_DOCS, "db/countries.yml")
+    target = File.join(UI_DOCS_DIR, "db/countries.yml")
 
     if File.exist?(source)
       FileUtils.mkdir_p(File.dirname(target))
@@ -319,7 +351,7 @@ class Upgrade
     FileUtils.mkdir_p(target_dir)
 
     # Only copy specific models
-    %w[theme.rb user.rb].each do |model|
+    %w[theme.rb user.rb country.rb].each do |model|
       source = File.join(RAPID_UI_DOCS, "app/models", model)
       if File.exist?(source)
         target = File.join(target_dir, model)
@@ -362,6 +394,27 @@ class Upgrade
       modified = header_lines.join + file_header(source, comment_style: :css) + lines.join
 
       File.write(target, modified)
+    end
+  end
+
+  def copy_vendor_lucide_icons
+    puts "Copying vendor/lucide_icons..."
+
+    source_dir = File.join(RAPID_UI_DOCS, "vendor/lucide_icons")
+    target_dir = File.join(UI_DOCS_DIR, MANAGED_DIRS[:vendor_lucide_icons])
+
+    return unless Dir.exist?(source_dir)
+
+    FileUtils.mkdir_p(target_dir)
+
+    Dir.glob(File.join(source_dir, "*")).each do |source|
+      target = File.join(target_dir, File.basename(source))
+      if File.directory?(source)
+        FileUtils.cp_r(source, target)
+      else
+        FileUtils.cp(source, target)
+      end
+      puts "  Copied: #{relative_path(target)}"
     end
   end
 

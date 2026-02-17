@@ -91,6 +91,10 @@
   path: components/controls/buttons
   description: Button styles and variants
 
+- title: Datatables
+  path: components/controls/datatables
+  description: Interactive tables with sorting, filtering, and pagination
+
 - title: Dropdowns
   path: components/controls/dropdowns
   description: Dropdown menus and selects

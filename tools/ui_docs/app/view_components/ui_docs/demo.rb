@@ -1,56 +1,50 @@
 # Copied from RapidUI | Source: rapid_ui/docs/app/view_components/demo.rb
 module UiDocs
   class Demo < ApplicationComponent
+    Tab = Struct.new(:id, :label, :code, :current, keyword_init: true)
+
     attr_accessor :html
-
-    attr_accessor :erb_code
-    attr_accessor :ruby_code
-    attr_accessor :html_code
-
+    attr_accessor :tabs
     attr_accessor :current_tab
-
     attr_accessor :content_class
 
-    def initialize(html: nil, erb_code: nil, ruby_code: nil, html_code: nil, content_class: nil, **kwargs)
+    def initialize(html: nil, tabs: [], content_class: nil, **kwargs)
       super(**kwargs)
 
       @html = html
-
-      @erb_code = erb_code
-      @ruby_code = ruby_code
-      @html_code = html_code
-
+      @tabs = tabs
       @content_class = content_class
-      @current_tab = erb_code ? "erb" : (ruby_code ? "ruby" : "html")
+      @current_tab = tabs.find { |t| t.current }&.id || tabs.find { |t| t.code }&.id || tabs.first&.id
     end
 
     def stimulus_controller_name
-      "tabs" if [ erb_code, ruby_code, html_code ].compact.length > 1
+      "tabs" if tabs.count { |t| t.code } > 1
     end
 
-    def tab_button(code, label, panel_id)
-      disabled = !code
+    def tab_button(tab)
+      disabled = !tab.code
 
       css = "demo-code-tab"
-      css += " active" if current_tab == panel_id
-      css += " disabled" unless code
+      css += " active" if current_tab == tab.id
+      css += " disabled" unless tab.code
 
       button_tag(
-        label,
+        tab.label,
         class: css,
         data: disabled ? {} : {
           tabs_target: "tab",
-          panel_id:, action: "click->tabs#switch",
+          panel_id: tab.id,
+          action: "click->tabs#switch",
         },
       )
     end
 
-    def tab_panel(code, panel_id)
-      return unless code
+    def tab_panel(tab)
+      return unless tab.code
 
       css = "demo-code-panel"
-      css += " hidden" unless current_tab == panel_id
-      tag.div(render(code), class: css, data: { panel_id:, tabs_target: "panel" })
+      css += " hidden" unless current_tab == tab.id
+      tag.div(render(tab.code), class: css, data: { panel_id: tab.id, tabs_target: "panel" })
     end
 
     private

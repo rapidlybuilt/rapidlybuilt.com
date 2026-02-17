@@ -42,6 +42,26 @@ module UiDocs
         new(code, language:, **kwargs, &callback)
       end
 
+      def build_from_constant(mod, language: "ruby", **kwargs, &callback)
+        source_file, source_line = const_source_location(mod.name)
+        code = File.read(source_file)
+        lines = code.split("\n")
+        start_idx = source_line - 1
+        base_indent = line_indention(lines[start_idx])
+        end_marker = (" " * base_indent) + "end"
+
+        if lines.size == 1 || code.include?("Struct.new")
+          code = remove_indentation(lines[start_idx])
+        else
+            end_idx = (start_idx + 1...lines.size).find { |i| lines[i] == end_marker }
+          raise "Could not find class end for #{mod}" unless end_idx
+
+          code = remove_indentation(lines[start_idx..end_idx])
+        end
+
+        new(code, language:, **kwargs, &callback)
+      end
+
       def build_from_demo_helper(method, language: "ruby", **kwargs, &block)
         lines = extract_source!(*method.source_location, language:)
 

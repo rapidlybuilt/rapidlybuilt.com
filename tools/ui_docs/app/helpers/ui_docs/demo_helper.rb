@@ -17,12 +17,16 @@ module UiDocs
 
       erb_code = nil if erb_code && !erb_code.include?("<%")
 
+      tabs = [
+        Demo::Tab.new(id: "erb", label: "ERB", code: erb_code),
+        Demo::Tab.new(id: "ruby", label: "Ruby", code: ruby_code),
+        Demo::Tab.new(id: "html", label: "HTML", code: html_code),
+      ]
+
       render ui.build(
         Demo,
         html: erb_html || helper_html,
-        erb_code:,
-        ruby_code:,
-        html_code:,
+        tabs:,
         content_class: (content_class || (flex ? "demo-flex" : nil)), # TODO: rename flex option "inline"
       )
     end
