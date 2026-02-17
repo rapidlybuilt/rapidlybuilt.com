@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -e
+
+# After Kamal deploys: pull the image we just deployed, extract its assets into
+# this repo, then run baking_rack publish so the static site uses the same
+# digested assets as the app (no second asset build).
+
+: "${KAMAL_REGISTRY_SERVER:?post-deploy: KAMAL_REGISTRY_SERVER not set}"
+: "${KAMAL_VERSION:?post-deploy: KAMAL_VERSION not set}"
+
+IMAGE="$KAMAL_REGISTRY_SERVER/rapidlybuilt-production:$KAMAL_VERSION"
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+echo "Pulling image and extracting assets for Baking Rack..."
+docker pull "$IMAGE"
+cid=$(docker create "$IMAGE")
+mkdir -p public
+docker cp "$cid:/rails/public/assets" ./public/
+docker rm "$cid"
+
+echo "Publishing static site (Baking Rack)..."
+export RAILS_ENV=production
+export SECRET_KEY_BASE_DUMMY=1
+bundle exec baking_rack publish
+
+echo "Baking Rack publish done (Kamal deploy already finished)."
