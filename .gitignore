@@ -39,3 +39,7 @@
 
 .DS_Store
 plan.txt
+
+# uncommand practice but since this is open source
+# I don't want to share where my secrets come from.
+.kamal/secrets
