@@ -17,6 +17,11 @@ BakingRack.config do |c|
 
     get "/api/search", content_type: "application/json"
 
+    # HACK: need to explicitly specify this because of how we specify the redirect in RapidUI
+    get "/tools/rapid-ui/components/controls/datatables/adapters", status: 301
+    get "/tools/rapid-ui/components/controls/datatables/extensions", status: 301
+    get "/tools/rapid-ui/components/controls/datatables/features", status: 301
+
     get_other_rails_routes
   end
 end

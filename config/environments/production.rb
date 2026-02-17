@@ -83,5 +83,5 @@ Rails.application.configure do
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   # Middleware to validate X-Origin-Secret header from CloudFront
-  config.middleware.use OriginSecretMiddleware
+  config.middleware.use OriginSecretMiddleware unless $0.end_with?("/baking_rack")
 end
