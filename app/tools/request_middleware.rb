@@ -30,6 +30,7 @@ class RequestMiddleware
       head.build_apple_touch_icon("rapid_ui/apple-touch-icon.png")
 
       head.stylesheet_link_sources = [ "tools" ]
+      head.skip_csrf_meta_tags = true
     end
 
     layout.build_header do |header|

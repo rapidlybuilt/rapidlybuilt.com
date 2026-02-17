@@ -165,6 +165,20 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   ordered_cache_behavior {
+    path_pattern = "/tools/rapid-ui/components/controls/datatables/bulk_action"
+
+    allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "ec2_app"
+
+    cache_policy_id          = local.cloudfront_caching_disabled_policy_id
+    origin_request_policy_id = local.cloudfront_forward_everything_policy_id
+
+    viewer_protocol_policy = "redirect-to-https"
+    compress               = true
+  }
+
+  ordered_cache_behavior {
     path_pattern = "/assets/*"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
