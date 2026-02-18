@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "search", to: "searches#show"
 
   # only static because we're pre-rendering in production
-  get "api/search", to: "rapidly_built/api/searches#static", as: :search_api
+  get "search/index", to: "rapidly_built/searches#index", as: :search_index
 
   namespace :apps do
     root to: "pages#index"

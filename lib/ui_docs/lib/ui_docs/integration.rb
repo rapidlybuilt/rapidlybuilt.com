@@ -1,13 +1,9 @@
 module UiDocs
-  class Tool < RapidlyBuilt::Tool::Base
-    def initialize(path: "rapid-ui", **kwargs)
-      super(**kwargs, path:)
-    end
-
-    def connect(toolkit)
+  class Integration < RapidlyBuilt::Integration::Base
+    def call
       # Register static search items from YAML file
       static_search_items.each do |item|
-        toolkit.search.static.add(
+        search.index.add_result(
           title: item["title"],
           url: url_for(item["path"]),
           description: item["description"]
@@ -23,7 +19,7 @@ module UiDocs
     end
 
     def url_for(child = "")
-      url = File.join("/tools", path, child) # TODO: dynamic "tools"
+      url = File.join("/tools", "rapid-ui", child)
       url = url[0..-2] if url.end_with?("/")
       url
     end

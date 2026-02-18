@@ -1,11 +1,9 @@
-class RequestMiddleware
-  def call(context)
-    ui = context.ui
-    layout = context.layout
-    request = context.request
-    main_app = context.controller.main_app
-    # view_context = context.view_context # no guarentee what's available inside of this
+class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
+  with_options to: :controller do
+    delegate :tools_rapid_ui
+  end
 
+  def call
     # set nav links as active based on the current path
     ui.factory.register_polish! RapidUI::Layout::Sidebar::Navigation::Link, ->(link) do
       link.active = request.path == link.path
@@ -36,25 +34,25 @@ class RequestMiddleware
     layout.build_header do |header|
       header.build_left do |left|
         # TODO: clean this up. #build_link with a single child (the icon)
-        left.build_icon_link("logo", main_app.root_path, size: 32, class: "px-0 size-[34px]") do |link|
+        left.build_icon_link("logo", helpers.root_path, size: 32, class: "px-0 size-[34px]") do |link|
           link.body.first.css_class = "hover:scale-110 rounded-full"
         end
 
-        left.build_search_bar(static_path: main_app.search_api_path)
+        left.build_search_bar(static_path: helpers.search_index_path)
       end
 
       header.build_right do |right|
         # TODO: active attribute when under each section
-        right.build_text_link("Apps", main_app.apps_root_path, class: "hidden md:block")
-        right.build_text_link("Tools", main_app.tools_root_path, class: "hidden md:block")
+        right.build_text_link("Apps", helpers.apps_root_path, class: "hidden md:block")
+        right.build_text_link("Tools", helpers.tools_root_path, class: "hidden md:block")
 
         right.build_dropdown(align: "right", class: "block md:hidden", skip_caret: true) do |dropdown|
           dropdown.build_button(ui.factory.build(RapidUI::Icon, "menu")) # TODO: clean up this
 
           dropdown.build_menu do |menu|
-            menu.build_item("Home", main_app.root_path)
-            menu.build_item("Apps", main_app.apps_root_path)
-            menu.build_item("Tools", main_app.tools_root_path)
+            menu.build_item("Home", helpers.root_path)
+            menu.build_item("Apps", helpers.apps_root_path)
+            menu.build_item("Tools", helpers.tools_root_path)
           end
         end
       end
@@ -92,9 +90,9 @@ class RequestMiddleware
     layout.with_main_container
 
     if request.path.start_with?("/tools")
-      ui.layout.subheader.breadcrumbs.build_breadcrumb "Tools", main_app.tools_root_path
+      ui.layout.subheader.breadcrumbs.build_breadcrumb "Tools", helpers.tools_root_path
     elsif request.path.start_with?("/apps")
-      ui.layout.subheader.breadcrumbs.build_breadcrumb "Apps", main_app.apps_root_path
+      ui.layout.subheader.breadcrumbs.build_breadcrumb "Apps", helpers.apps_root_path
     end
   end
 
@@ -102,8 +100,8 @@ class RequestMiddleware
 
   def dynamic_page?(context)
     [
-      context.controller.tools_rapid_ui.components_controls_datatables_path,
-      context.controller.tools_rapid_ui.bulk_action_components_controls_datatables_path,
+      tools_rapid_ui.components_controls_datatables_path,
+      tools_rapid_ui.bulk_action_components_controls_datatables_path,
     ].include?(context.request.path)
   end
 end

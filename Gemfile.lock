@@ -1,5 +1,26 @@
 PATH
-  remote: tools/ui_docs
+  remote: ../rapid_ui
+  specs:
+    rapid_ui (0.2.2)
+      csv (~> 3.0)
+      importmap-rails (~> 2.0)
+      rails (~> 8.1.1)
+      rubyzip (>= 2.3, < 4.0)
+      stimulus-rails (~> 1.0)
+      turbo-rails (~> 2.0)
+      view_component (~> 4)
+      zeitwerk (~> 2.6)
+
+PATH
+  remote: ../rapidly_built
+  specs:
+    rapidly_built (0.2.1)
+      rails (>= 8.1.1)
+      rapid_ui (= 0.2.2)
+      zeitwerk (~> 2.7)
+
+PATH
+  remote: lib/ui_docs
   specs:
     ui_docs (0.1.0)
       rails (>= 8.1.2)
@@ -394,19 +415,6 @@ GEM
       rack (>= 2.2.4)
       thor (~> 1)
       zeitwerk (~> 2)
-    rapid_ui (0.2.1)
-      csv (~> 3.0)
-      importmap-rails (~> 2.0)
-      rails (~> 8.1.1)
-      rubyzip (>= 2.3, < 4.0)
-      stimulus-rails (~> 1.0)
-      turbo-rails (~> 2.0)
-      view_component (~> 4)
-      zeitwerk (~> 2.6)
-    rapidly_built (0.2.1)
-      rails (>= 8.1.1)
-      rapid_ui (= 0.2.1)
-      zeitwerk (~> 2.7)
 
 PLATFORMS
   aarch64-linux

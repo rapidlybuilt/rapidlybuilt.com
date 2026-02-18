@@ -1,28 +1,28 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-tool = ARGV.shift
+package = ARGV.shift
 
-if tool.nil?
-  puts "Usage: bin/upgrade <tool> [options]"
+if package.nil?
+  puts "Usage: bin/upgrade <package> [options]"
   puts "Example: bin/upgrade ui_docs"
   exit 1
 end
 
-tool_dir = File.expand_path("../tools/#{tool}", __dir__)
+package_lib_dir = File.expand_path("../lib/#{package}", __dir__)
 
-unless Dir.exist?(tool_dir)
-  puts "Error: Tool directory not found: #{tool_dir}"
+unless Dir.exist?(package_lib_dir)
+  puts "Error: Package library directory not found: #{package_lib_dir}"
   exit 1
 end
 
-upgrade_script = File.join(tool_dir, "bin/upgrade")
+upgrade_script = File.join(package_lib_dir, "bin/upgrade")
 
 unless File.exist?(upgrade_script)
-  puts "Error: No bin/upgrade found in #{tool_dir}"
+  puts "Error: No bin/upgrade found in #{package_lib_dir}"
   exit 1
 end
 
-Dir.chdir(tool_dir) do
+Dir.chdir(package_lib_dir) do
   exec("bin/upgrade", *ARGV)
 end
