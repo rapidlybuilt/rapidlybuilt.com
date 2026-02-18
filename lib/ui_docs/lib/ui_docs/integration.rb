@@ -14,12 +14,12 @@ module UiDocs
     private
 
     def static_search_items
-      yaml_path = UiDocs::Engine.root.join("config/static_search.yml")
+      yaml_path = UiDocs::Engine.root.join("config/search_index.yml")
       YAML.load_file(yaml_path)
     end
 
     def url_for(child = "")
-      url = File.join("/tools", "rapid-ui", child)
+      url = File.join(helpers.root_path, child)
       url = url[0..-2] if url.end_with?("/")
       url
     end
