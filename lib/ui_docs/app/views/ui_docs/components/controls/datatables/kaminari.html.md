@@ -4,7 +4,7 @@ Use this adapter when your table is backed by a scope that supports [Kaminari](h
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::Adapters::Kaminari
+  adapter :kamanari
   # ... columns, bulk actions, etc.
 end
 ```

@@ -28,7 +28,7 @@ Column-level (per column):
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::Extensions::Export
+  extensions :export
 
   self.skip_export = false
   self.csv_column_separator = ","

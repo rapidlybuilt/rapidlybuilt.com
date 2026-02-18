@@ -4,7 +4,7 @@ Use this adapter when your table is backed by a plain Ruby array (or array-like 
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::Adapters::Array
+  adapter :array
   # ... columns, etc.
 end
 ```

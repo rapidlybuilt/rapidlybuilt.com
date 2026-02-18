@@ -4,7 +4,7 @@ Use this adapter when your table is backed by an `ActiveRecord::Relation`. Inclu
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::Adapters::ActiveRecord
+  adapter :active_record
   # ... columns, bulk actions, etc.
 end
 ```

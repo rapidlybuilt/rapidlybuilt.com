@@ -26,7 +26,7 @@ Define bulk actions with `bulk_action` in your table class. If no actions are de
 
 ```ruby
 class UsersTable < RapidUI::Datatable::Base
-  include RapidUI::Datatable::Extensions::BulkActions
+  extension :bulk_actions
 
   self.bulk_action_ids_param = :user_ids
 
