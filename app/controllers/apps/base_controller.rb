@@ -1,5 +1,5 @@
 class Apps::BaseController < ApplicationController
-  include RapidlyBuilt::Setup
+  include RapidlyBuilt::UsesConsole
   include Tools::UiFactories
 
   helper RapidUI::IconsHelper

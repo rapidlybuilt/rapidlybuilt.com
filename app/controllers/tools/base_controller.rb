@@ -1,5 +1,5 @@
 class Tools::BaseController < ActionController::Base
-  include RapidlyBuilt::Setup
+  include RapidlyBuilt::UsesConsole
 
   before_action :build_sidebar
 

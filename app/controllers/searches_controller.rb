@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  include RapidlyBuilt::Setup
+  include RapidlyBuilt::UsesConsole
 
   def show
     ui.layout.header.left.items.last.css_class = "hidden"
@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     ui.layout.sidebars.first.css_class = "hidden" if ui.layout.sidebars.first.present?
 
     page = ui.build(RapidUI::Search::Page)
-    page.static_path = search_api_path(format: :json)
+    page.static_path = search_index_path(format: :json)
 
     render page
   end

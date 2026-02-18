@@ -1,7 +1,7 @@
 # Copied from RapidUI | Source: rapid_ui/docs/app/controllers/application_controller.rb
 module UiDocs
   class ApplicationController < ActionController::Base
-    include RapidlyBuilt::Setup
+    include RapidlyBuilt::UsesConsole
     include UiFactories
 
     helper RapidUI::LayoutHelper
