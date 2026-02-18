@@ -17,6 +17,7 @@ PATH
     rapidly_built (0.2.1)
       rails (>= 8.1.1)
       rapid_ui (= 0.2.2)
+      thor (~> 1)
       zeitwerk (~> 2.7)
 
 PATH

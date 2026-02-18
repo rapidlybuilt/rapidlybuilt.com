@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "rapid_ui/commands/tailwind_css"
+require "thor"
+require "rapidly_built/cli"
 
-RapidUI::Commands::TailwindCSS.new(
+RapidlyBuilt::CLI.config.tailwind = {
   tools: {
     input: "app/assets/tailwind/tools.css",
     output: "app/assets/builds/tools.css",
@@ -13,6 +14,8 @@ RapidUI::Commands::TailwindCSS.new(
   nil => {
     input: "app/assets/tailwind/application.css",
     output: "app/assets/builds/application.css",
-    build_dir: "app/assets/builds",
+    build_dir: "app/assets/builds"
   }
-).run(ARGV)
+}
+
+RapidlyBuilt::CLI.start(ARGV)
