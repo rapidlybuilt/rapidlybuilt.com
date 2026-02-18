@@ -38,7 +38,7 @@ RUN apt-get update -qq && \
 # Install application gems
 COPY vendor/* ./vendor/
 COPY Gemfile Gemfile.lock ./
-COPY tools ./tools/
+COPY tools ./lib/ui_docs/
 
 # Authenticate with GitHub Package Registry for private gems (e.g. baking_rack).
 # Set GITHUB_PACKAGES_CREDENTIALS=username:token in .kamal/secrets and builder.secrets in deploy.yml.
