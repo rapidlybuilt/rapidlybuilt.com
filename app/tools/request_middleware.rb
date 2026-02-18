@@ -103,7 +103,7 @@ class RequestMiddleware
   def dynamic_page?(context)
     [
       context.controller.tools_rapid_ui.components_controls_datatables_path,
-      context.controller.tools_rapid_ui.bulk_actions_components_controls_datatables_path,
+      context.controller.tools_rapid_ui.bulk_action_components_controls_datatables_path,
     ].include?(context.request.path)
   end
 end

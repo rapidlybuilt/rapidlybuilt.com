@@ -22,7 +22,11 @@ BakingRack.config do |c|
     get "/tools/rapid-ui/components/controls/datatables/extensions", status: 301
     get "/tools/rapid-ui/components/controls/datatables/features", status: 301
 
-    get_other_rails_routes
+    get_other_rails_routes(
+      except: [
+        "/tools/rapid-ui/components/controls/datatables",
+      ],
+    )
   end
 end
 

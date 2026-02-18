@@ -128,7 +128,7 @@
     <%= headers.h3 "Form Builder" %>
     <p class="demo-description">A form builder to automatically populate values and errors from a model.</p>
     <%= demo_code do %>
-      <%= form_field_groups_for @user, url: request.path do |f| %>
+      <%= form_field_groups_for @user, url: request.path, authenticity_token: false do |f| %>
         <%= f.text_field_group :email %>
         <%= f.text_field_group :first_name, colspan: 4 %>
         <%= f.text_field_group :last_name, colspan: 4 %>
