@@ -36,7 +36,7 @@ class Upgrade
       app/assets/stylesheets/ui_docs/code-theme-light.css
       app/assets/stylesheets/ui_docs/index.css
     ],
-    config: %w[config/static_search.yml config/initializers/markdown_handler.rb],
+    config: %w[config/search_index.yml config/initializers/markdown_handler.rb],
     db: %w[db/countries.yml],
     routes: %w[config/routes.rb]
   }.freeze
@@ -254,7 +254,7 @@ class Upgrade
   def copy_config
     puts "Copying config files..."
 
-    %w[config/static_search.yml config/initializers/markdown_handler.rb].each do |rel_path|
+    %w[config/search_index.yml config/initializers/markdown_handler.rb].each do |rel_path|
       source = File.join(RAPID_UI_DOCS, rel_path)
       target = File.join(UI_DOCS_DIR, rel_path)
       next unless File.exist?(source)
