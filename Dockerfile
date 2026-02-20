@@ -51,11 +51,8 @@ RUN --mount=type=secret,id=BUNDLE_RUBYGEMS__PKG__GITHUB__COM \
 # Copy application code
 COPY . .
 
-# Build Tailwind CSS (main and console targets) and precompile assets in one layer
-# so the precompile step always sees the built console.css (avoids cached precompile without it).
-RUN bin/rapid tailwind build --target main && \
-    bin/rapid tailwind build --target console && \
-    SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
+# Build Tailwind (via rake task) and precompile assets in one layer
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
     test -f app/assets/builds/application.css && \
     test -f app/assets/builds/console.css
 
