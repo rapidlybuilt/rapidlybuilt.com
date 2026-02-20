@@ -89,6 +89,11 @@ resource "aws_instance" "app" {
   subnet_id     = data.aws_subnets.default.ids[0]
   key_name      = aws_key_pair.app.key_name
 
+  root_block_device {
+    volume_size = 8
+    volume_type = "gp3"
+  }
+
   vpc_security_group_ids = [aws_security_group.app.id]
 
   user_data = <<-EOF

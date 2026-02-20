@@ -12,19 +12,19 @@ BakingRack.config do |c|
     # end
 
     UiDocs::Theme.all.each do |theme|
-      get "/tools/rapid-ui/themes/#{theme.path}"
+      get "/gems/rapid-ui/themes/#{theme.path}"
     end
 
-    get "/api/search", content_type: "application/json"
+    get "/search/index", content_type: "application/json"
 
     # HACK: need to explicitly specify this because of how we specify the redirect in RapidUI
-    get "/tools/rapid-ui/components/controls/datatables/adapters", status: 301
-    get "/tools/rapid-ui/components/controls/datatables/extensions", status: 301
-    get "/tools/rapid-ui/components/controls/datatables/features", status: 301
+    get "/gems/rapid-ui/components/controls/datatables/adapters", status: 301
+    get "/gems/rapid-ui/components/controls/datatables/extensions", status: 301
+    get "/gems/rapid-ui/components/controls/datatables/features", status: 301
 
     get_other_rails_routes(
       except: [
-        "/tools/rapid-ui/components/controls/datatables",
+        "/gems/rapid-ui/components/controls/datatables",
       ],
     )
   end

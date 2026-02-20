@@ -24,7 +24,7 @@ RUN apt-get update -qq && \
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development" \
+    BUNDLE_WITHOUT="development:test" \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so"
 
 # Throw-away build stage to reduce size of final image
@@ -38,7 +38,7 @@ RUN apt-get update -qq && \
 # Install application gems
 COPY vendor/* ./vendor/
 COPY Gemfile Gemfile.lock ./
-COPY tools ./tools/
+COPY vendor ./vendor
 
 # Authenticate with GitHub Package Registry for private gems (e.g. baking_rack).
 # Set GITHUB_PACKAGES_CREDENTIALS=username:token in .kamal/secrets and builder.secrets in deploy.yml.
@@ -51,13 +51,13 @@ RUN --mount=type=secret,id=BUNDLE_RUBYGEMS__PKG__GITHUB__COM \
 # Copy application code
 COPY . .
 
-# Build Tailwind CSS (main and tools targets) and precompile assets in one layer
-# so the precompile step always sees the built tools.css (avoids cached precompile without it).
-RUN bin/tailwindcss build --target main && \
-    bin/tailwindcss build --target tools && \
+# Build Tailwind CSS (main and console targets) and precompile assets in one layer
+# so the precompile step always sees the built console.css (avoids cached precompile without it).
+RUN bin/rapid tailwind build --target main && \
+    bin/rapid tailwind build --target console && \
     SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
     test -f app/assets/builds/application.css && \
-    test -f app/assets/builds/tools.css
+    test -f app/assets/builds/console.css
 
 # Final stage for app image
 FROM base

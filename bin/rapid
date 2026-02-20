@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "thor"
+require "rapidly_built/cli"
+
+RapidlyBuilt::CLI.config.tailwind = {
+  console: {
+    input: "app/assets/tailwind/console.css",
+    output: "app/assets/builds/console.css",
+    build_dir: "app/assets/builds",
+    import: [ "tailwindcss", "rapid_ui/themes/night_owl", "rapid_ui/index" ]
+  },
+  nil => {
+    input: "app/assets/tailwind/application.css",
+    output: "app/assets/builds/application.css",
+    build_dir: "app/assets/builds"
+  }
+}
+
+RapidlyBuilt::CLI.start(ARGV)
