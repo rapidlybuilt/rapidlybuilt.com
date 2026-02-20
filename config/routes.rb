@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     get "rapidlybuilt.com", to: "pages#rapidlybuilt_com", as: :rapidlybuilt_com
   end
 
-  namespace :tools do
+  namespace :modules do
+    root to: "pages#index"
+  end
+
+  namespace :gems do
     root to: "pages#index"
 
     get "baking-rack", to: "pages#baking_rack", as: :baking_rack

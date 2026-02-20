@@ -1,4 +1,4 @@
-module Tools
+module Gems
   module UiFactories
     extend ActiveSupport::Concern
 

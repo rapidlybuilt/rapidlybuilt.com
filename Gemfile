@@ -30,7 +30,7 @@ gem "kamal", require: false
 # Markdown rendering
 gem "redcarpet"
 
-# Internal RapidlyBuilt tools
+# Internal RapidlyBuilt module
 gem "ui_docs", path: "vendor/ui_docs"
 gem "kramdown"
 gem "kramdown-parser-gfm"

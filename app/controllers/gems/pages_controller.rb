@@ -1,5 +1,5 @@
-class Tools::PagesController < Tools::BaseController
-  include Tools::UiFactories
+class Gems::PagesController < Gems::BaseController
+  include Gems::UiFactories
 
   helper RapidUI::IconsHelper
   helper RapidUI::Content::BadgesHelper

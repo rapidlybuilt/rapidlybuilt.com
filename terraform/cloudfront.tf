@@ -151,7 +151,7 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   ordered_cache_behavior {
-    path_pattern = "/tools/rapid-ui/components/controls/datatables"
+    path_pattern = "/gems/rapid-ui/components/controls/datatables"
 
     allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods   = ["GET", "HEAD"]
@@ -165,7 +165,7 @@ resource "aws_cloudfront_distribution" "main" {
   }
 
   ordered_cache_behavior {
-    path_pattern = "/tools/rapid-ui/components/controls/datatables/bulk_action"
+    path_pattern = "/gems/rapid-ui/components/controls/datatables/bulk_action"
 
     allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods   = ["GET", "HEAD"]

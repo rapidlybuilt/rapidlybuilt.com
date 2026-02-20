@@ -1,4 +1,4 @@
-class Apps::BaseController < ApplicationController
+class Modules::BaseController < ApplicationController
   include RapidlyBuilt::UsesConsole
   include Gems::UiFactories
 
@@ -11,11 +11,10 @@ class Apps::BaseController < ApplicationController
 
   def build_sidebar
     with_navigation_sidebar do |sidebar|
-      sidebar.title = "Apps"
+      sidebar.title = "Modules"
 
       sidebar.build_navigation do |navigation|
-        navigation.build_link("Home", apps_root_path)
-        navigation.build_link("rapidlybuilt.com", apps_rapidlybuilt_com_path)
+        navigation.build_link("Home", modules_root_path)
       end
     end
   end

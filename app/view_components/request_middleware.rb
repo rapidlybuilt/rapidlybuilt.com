@@ -1,6 +1,6 @@
 class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
   with_options to: :controller do
-    delegate :tools_rapid_ui
+    delegate :gems_rapid_ui
   end
 
   def call
@@ -27,7 +27,7 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
       head.build_favicon("rapid_ui/favicon-16x16.png", type: "image/png", size: 16)
       head.build_apple_touch_icon("rapid_ui/apple-touch-icon.png")
 
-      head.stylesheet_link_sources = [ "tools" ]
+      head.stylesheet_link_sources = [ "console" ]
       head.skip_csrf_meta_tags = !dynamic_page?(context)
     end
 
@@ -44,7 +44,8 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
       header.build_right do |right|
         # TODO: active attribute when under each section
         right.build_text_link("Apps", helpers.apps_root_path, class: "hidden md:block", active: request.path.start_with?("/apps"))
-        right.build_text_link("Tools", helpers.tools_root_path, class: "hidden md:block", active: request.path.start_with?("/tools"))
+        right.build_text_link("Modules", helpers.modules_root_path, class: "hidden md:block", active: request.path.start_with?("/modules"))
+        right.build_text_link("Gems", helpers.gems_root_path, class: "hidden md:block", active: request.path.start_with?("/gems"))
 
         right.build_dropdown(align: "right", class: "block md:hidden", skip_caret: true) do |dropdown|
           dropdown.build_button(ui.factory.build(RapidUI::Icon, "menu")) # TODO: clean up this
@@ -52,7 +53,8 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
           dropdown.build_menu do |menu|
             menu.build_item("Home", helpers.root_path)
             menu.build_item("Apps", helpers.apps_root_path, active: request.path.start_with?("/apps"))
-            menu.build_item("Tools", helpers.tools_root_path, active: request.path.start_with?("/tools"))
+            menu.build_item("Modules", helpers.modules_root_path, active: request.path.start_with?("/modules"))
+            menu.build_item("Gems", helpers.gems_root_path, active: request.path.start_with?("/gems"))
           end
         end
       end
@@ -89,10 +91,12 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
     layout.with_main
     layout.with_main_container
 
-    if request.path.start_with?("/tools")
-      ui.layout.subheader.breadcrumbs.build_breadcrumb "Tools", helpers.tools_root_path
-    elsif request.path.start_with?("/apps")
+    if request.path.start_with?("/apps")
       ui.layout.subheader.breadcrumbs.build_breadcrumb "Apps", helpers.apps_root_path
+    elsif request.path.start_with?("/modules")
+      ui.layout.subheader.breadcrumbs.build_breadcrumb "Modules", helpers.modules_root_path
+    elsif request.path.start_with?("/gems")
+      ui.layout.subheader.breadcrumbs.build_breadcrumb "Gems", helpers.gems_root_path
     end
   end
 
@@ -100,8 +104,8 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
 
   def dynamic_page?(context)
     [
-      tools_rapid_ui.components_controls_datatables_path,
-      tools_rapid_ui.bulk_action_components_controls_datatables_path,
+      gems_rapid_ui.components_controls_datatables_path,
+      gems_rapid_ui.bulk_action_components_controls_datatables_path,
     ].include?(context.request.path)
   end
 end

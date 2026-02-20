@@ -5,9 +5,9 @@ require "thor"
 require "rapidly_built/cli"
 
 RapidlyBuilt::CLI.config.tailwind = {
-  tools: {
-    input: "app/assets/tailwind/tools.css",
-    output: "app/assets/builds/tools.css",
+  console: {
+    input: "app/assets/tailwind/console.css",
+    output: "app/assets/builds/console.css",
     build_dir: "app/assets/builds",
     import: [ "tailwindcss", "rapid_ui/themes/night_owl", "rapid_ui/index" ]
   },
