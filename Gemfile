@@ -31,7 +31,7 @@ gem "kamal", require: false
 gem "redcarpet"
 
 # Internal RapidlyBuilt tools
-gem "ui_docs", path: "lib/ui_docs"
+gem "ui_docs", path: "vendor/ui_docs"
 gem "kramdown"
 gem "kramdown-parser-gfm"
 gem "rouge", "~> 4.0"

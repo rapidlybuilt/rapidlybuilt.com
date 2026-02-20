@@ -9,7 +9,7 @@ if package.nil?
   exit 1
 end
 
-package_lib_dir = File.expand_path("../lib/#{package}", __dir__)
+package_lib_dir = File.expand_path("../vendor/#{package}", __dir__)
 
 unless Dir.exist?(package_lib_dir)
   puts "Error: Package library directory not found: #{package_lib_dir}"

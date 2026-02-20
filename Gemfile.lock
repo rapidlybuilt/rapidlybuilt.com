@@ -1,5 +1,5 @@
 PATH
-  remote: lib/ui_docs
+  remote: vendor/ui_docs
   specs:
     ui_docs (0.1.0)
       rails (>= 8.1.2)
