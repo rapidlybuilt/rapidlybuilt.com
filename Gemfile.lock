@@ -186,7 +186,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0127)
+    mime-types-data (3.2026.0203)
     mini_mime (1.1.5)
     minitest (6.0.1)
       prism (~> 1.5)
@@ -382,12 +382,12 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.4)
+    zeitwerk (2.7.5)
 
 GEM
   remote: https://rubygems.pkg.github.com/rapidlybuilt/
   specs:
-    baking_rack (0.2.0)
+    baking_rack (0.2.1)
       base64 (~> 0.3)
       colorize (~> 1)
       mime-types (~> 3)
