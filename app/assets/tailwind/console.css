@@ -1,3 +1,10 @@
 /* tailwindcss automatically imports tailwindcss and rapid_ui/index.css */
 
 @import "../../../vendor/ui_docs/app/assets/stylesheets/ui_docs/index.css";
+
+/* TODO: good defaults for RapidUI */
+.typography h2 { @apply mt-12; }
+.typography h3 { @apply mt-8; }
+.typography h4 { @apply mt-6; }
+.typography h5 { @apply mt-4; }
+.typography h6 { @apply mt-2; }
