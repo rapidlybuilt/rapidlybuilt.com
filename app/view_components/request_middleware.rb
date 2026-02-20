@@ -43,16 +43,16 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
 
       header.build_right do |right|
         # TODO: active attribute when under each section
-        right.build_text_link("Apps", helpers.apps_root_path, class: "hidden md:block")
-        right.build_text_link("Tools", helpers.tools_root_path, class: "hidden md:block")
+        right.build_text_link("Apps", helpers.apps_root_path, class: "hidden md:block", active: request.path.start_with?("/apps"))
+        right.build_text_link("Tools", helpers.tools_root_path, class: "hidden md:block", active: request.path.start_with?("/tools"))
 
         right.build_dropdown(align: "right", class: "block md:hidden", skip_caret: true) do |dropdown|
           dropdown.build_button(ui.factory.build(RapidUI::Icon, "menu")) # TODO: clean up this
 
           dropdown.build_menu do |menu|
             menu.build_item("Home", helpers.root_path)
-            menu.build_item("Apps", helpers.apps_root_path)
-            menu.build_item("Tools", helpers.tools_root_path)
+            menu.build_item("Apps", helpers.apps_root_path, active: request.path.start_with?("/apps"))
+            menu.build_item("Tools", helpers.tools_root_path, active: request.path.start_with?("/tools"))
           end
         end
       end

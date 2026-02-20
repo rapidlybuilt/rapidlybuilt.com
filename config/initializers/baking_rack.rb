@@ -15,7 +15,7 @@ BakingRack.config do |c|
       get "/tools/rapid-ui/themes/#{theme.path}"
     end
 
-    get "/api/search", content_type: "application/json"
+    get "/search/index", content_type: "application/json"
 
     # HACK: need to explicitly specify this because of how we specify the redirect in RapidUI
     get "/tools/rapid-ui/components/controls/datatables/adapters", status: 301
