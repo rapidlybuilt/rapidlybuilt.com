@@ -59,16 +59,10 @@ No adapters are necessary since the `choices` and `filter` procs perform the ORM
 
 ## Controls
 
-The extension registers one control builder. You build one select per filter definition, usually in a header group alongside search.
-
-### Select filter
+Each `select_filter` call registers a control named `:"#{filter_id}_filter"` (e.g. `:status_filter`, `:role_filter`). Add those to your placement (e.g. `header_controls`) and each is built individually.
 
 ```ruby
-table.build_header do |header|
-  # build all select filters defined by the table
-  header.build_select_filters
-
-  # or build a specific filter
-  header.build_select_filter(:role)
-end
+self.header_controls = [ :search_field_form, :status_filter, :role_filter ]
 ```
+
+The datatable will call `build_status_filter`, `build_role_filter`, etc., when rendering the header; no separate “build all” call is needed.

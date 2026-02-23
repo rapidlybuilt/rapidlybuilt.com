@@ -1,7 +1,7 @@
 # Copied from RapidUI | Source: rapid_ui/docs/app/controllers/components/controls/datatables_controller.rb
 module UiDocs
   class Components::Controls::DatatablesController < Components::BaseController
-    include RapidUI::UsesDatatables
+    include RapidUI::RendersComponents
     include Components::Controls::DatatablesLayout
     include ReplaysActionsWithCookie
 
@@ -39,16 +39,16 @@ module UiDocs
       @cookie_actions = find_cookie_actions("datatables_#{id}", path: url_for(action: "index"))
       countries = @cookie_actions.replay(@countries)
 
-      @full_example_table = build_datatable(CountriesTable, countries, id:) do |table|
-        table.header.items.last.build_component(
-          RapidUI::Button,
-          "Reset",
-          path: table.table_path(view_context:, action: "bulk_action", bulk_action: "reset"),
-          class: "btn btn-outline-naked",
-          disabled: @cookie_actions.cookie_value.blank?,
-          data: { turbo_stream: true, turbo_method: :post },
-        )
-      end
+      @full_example_table = ui.build(
+        CountriesTable,
+        countries,
+        id:,
+        full_params: params,
+        # HACK: should pass this into the control, not the table
+        reset_button_disabled: @cookie_actions.cookie_value.blank?,
+      )
+
+      add_renderable_component @full_example_table
     end
   end
 end

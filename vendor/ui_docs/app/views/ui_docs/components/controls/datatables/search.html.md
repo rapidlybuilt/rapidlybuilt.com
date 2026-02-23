@@ -59,7 +59,7 @@ Renders a form with a single search input. Submitting it sends the table’s par
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `url` | String, nil | `table.table_path(...)` | Form action URL. Omit to use the table’s current path. |
+| `url` | String, nil | `table.component_path(...)` | Form action URL. Omit to use the table’s current path. |
 | `form_method` | Symbol | `:get` | HTTP method for the form. |
 
 ```ruby

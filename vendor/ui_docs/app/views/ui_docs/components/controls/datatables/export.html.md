@@ -92,7 +92,7 @@ The extension registers one control for use in the table UI.
 
 ### Exports links
 
-Renders a title and one link per format in `table.export_formats`. Each link points to `table.table_path(format: format)` (e.g. same URL with `?format=csv` or `format=csv` in the path depending on routing). Typically placed in the footer.
+Renders a title and one link per format in `table.export_formats`. Each link points to `table.component_path(format: format)` (e.g. same URL with `?format=csv` or `format=csv` in the path depending on routing). Typically placed in the footer.
 
 ```ruby
 table.build_footer do |footer|

@@ -66,7 +66,7 @@ The extension registers one control and automatically adds a select column when 
 
 ### Action Select
 
-Renders a select dropdown (one option per bulk action) and a submit button. On submit, the selected action and `bulk_action_ids_param` (e.g. `ids[]`) are sent to `table.table_path(action: :bulk_action)` (POST). Typically placed in the table header.
+Renders a select dropdown (one option per bulk action) and a submit button. On submit, the selected action and `bulk_action_ids_param` (e.g. `ids[]`) are sent to `table.component_path(action: :bulk_action)` (POST). Typically placed in the table header.
 
 ```ruby
 table.build_header do |header|
