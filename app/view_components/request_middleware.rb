@@ -1,8 +1,4 @@
 class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
-  with_options to: :controller do
-    delegate :gems_rapid_ui
-  end
-
   def call
     # set nav links as active based on the current path
     ui.factory.register_polish! RapidUI::Layout::Sidebar::Navigation::Link, ->(link) do
@@ -28,7 +24,7 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
       head.build_apple_touch_icon("rapid_ui/apple-touch-icon.png")
 
       head.stylesheet_link_sources = [ "console" ]
-      head.skip_csrf_meta_tags = !dynamic_page?(context)
+      head.skip_csrf_meta_tags = true
     end
 
     layout.build_header do |header|
@@ -98,14 +94,5 @@ class RequestMiddleware < RapidlyBuilt::Request::Middleware::Entry
     elsif request.path.start_with?("/gems")
       ui.layout.subheader.breadcrumbs.build_breadcrumb "Gems", helpers.gems_root_path
     end
-  end
-
-  private
-
-  def dynamic_page?(context)
-    [
-      gems_rapid_ui.components_controls_datatables_path,
-      gems_rapid_ui.bulk_action_components_controls_datatables_path,
-    ].include?(context.request.path)
   end
 end

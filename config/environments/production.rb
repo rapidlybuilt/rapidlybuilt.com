@@ -1,10 +1,8 @@
 require "active_support/core_ext/integer/time"
-require_relative "../../lib/origin_secret_middleware"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << "rapidlybuilt.com"
-  config.hosts << "app.rapidlybuilt.com"
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
@@ -81,7 +79,4 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # This allows kamal-proxy health checks to work even when Host header doesn't match allowed hosts.
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
-  # Middleware to validate X-Origin-Secret header from CloudFront
-  config.middleware.use OriginSecretMiddleware unless $0.end_with?("/baking_rack")
 end

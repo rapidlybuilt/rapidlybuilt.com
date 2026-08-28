@@ -44,8 +44,6 @@ UiDocs::Engine.routes.draw do
       get :dropdowns
 
       resources :datatables, only: [ :index ] do
-        post :bulk_action, on: :collection
-
         collection do
           get :features, to: redirect2.call("/components/controls/datatables")
           get "features/columns", as: :columns, action: :columns

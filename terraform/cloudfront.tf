@@ -78,28 +78,6 @@ resource "aws_cloudfront_distribution" "main" {
     }
   }
 
-  origin {
-    domain_name = local.app.domain_name
-    origin_id   = "ec2_app"
-
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
-
-    custom_header {
-      name  = "X-Origin-Secret"
-      value = var.origin_secret
-    }
-
-    custom_header {
-      name  = "X-Forwarded-Host"
-      value = local.domain_name
-    }
-  }
-
   ordered_cache_behavior {
     path_pattern = "/mail/assets/*"
 
@@ -142,34 +120,6 @@ resource "aws_cloudfront_distribution" "main" {
     allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "motor_mail"
-
-    cache_policy_id          = local.cloudfront_caching_disabled_policy_id
-    origin_request_policy_id = local.cloudfront_forward_everything_policy_id
-
-    viewer_protocol_policy = "redirect-to-https"
-    compress               = true
-  }
-
-  ordered_cache_behavior {
-    path_pattern = "/gems/rapid-ui/components/controls/datatables"
-
-    allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "ec2_app"
-
-    cache_policy_id          = local.cloudfront_caching_disabled_policy_id
-    origin_request_policy_id = local.cloudfront_forward_everything_policy_id
-
-    viewer_protocol_policy = "redirect-to-https"
-    compress               = true
-  }
-
-  ordered_cache_behavior {
-    path_pattern = "/gems/rapid-ui/components/controls/datatables/bulk_action"
-
-    allowed_methods  = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "ec2_app"
 
     cache_policy_id          = local.cloudfront_caching_disabled_policy_id
     origin_request_policy_id = local.cloudfront_forward_everything_policy_id
